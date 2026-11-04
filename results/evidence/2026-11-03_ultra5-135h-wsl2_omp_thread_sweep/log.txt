@@ -1,0 +1,11 @@
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_1 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_2 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_4 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_6 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_8 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_10 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_12 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_14 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_16 (status measured)
+benchmark: wrote 300 samples to results/local/2026-11-03_omp_thread_sweep/threads_18 (status measured)
+done

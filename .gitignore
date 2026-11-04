@@ -1,0 +1,19 @@
+# Build trees and local tooling
+/build/
+/.venv/
+compile_commands.json
+
+# Generated benchmark inputs and routine results (see results/README.md)
+/data/
+/results/local/
+/results/*.nsys-rep
+/results/*.qdrep
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+__pycache__/
+
+# Evidence directories ARE committed (results/evidence/); large raw samples are gzip'd.

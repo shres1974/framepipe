@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "backend": "cpu-omp",
+  "output_stage": "blur",
+  "resize": {"width": 640, "height": 360},
+  "gaussian": {"radius": 2, "sigma": 0.8},
+  "cpu": {"threads": 8}
+}

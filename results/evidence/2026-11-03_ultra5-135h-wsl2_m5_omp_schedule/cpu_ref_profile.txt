@@ -1,0 +1,12 @@
+perf 6.18.54.1.g26d1ceb55087 on 6.18.54.1-microsoft-standard-WSL2; sampling 2000 Hz, call graphs
+Command: perf record -F 2000 -g -- build/cpu/bin/framepipe benchmark --manifest data/bench/hd.jsonl \
+  --config data/bench/hd.config.json --backends cpu-ref --scopes host_processing --warmup 5 --iterations 60 --repetitions 1
+Workload: HD 1920x1080 RGB -> 1280x720 edges, radius 3, sigma 1.2, scalar cpu-ref, Release -O3
+Self-time share (symbolized with addr2line from PIE offsets):
+ 30.2%  cpu::gaussian_vertical
+ 27.7%  cpu::gaussian_horizontal
+ 16.2%  cpu::grayscale            (operates at input resolution 1920x1080)
+ 13.3%  cpu::sobel_edges
+  7.5%  cpu::resize_bilinear
+  ~4%   other (sha256 of input, file read, runtime)
+Note: profiling perturbs execution; timings come from the benchmark runs, not this profile.

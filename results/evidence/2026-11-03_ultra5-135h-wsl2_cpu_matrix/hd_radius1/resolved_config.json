@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "backend": "auto",
+  "device_index": 0,
+  "output_stage": "edges",
+  "resize": {
+    "width": 1280,
+    "height": 720,
+    "mode": "bilinear_half_pixel",
+    "aspect_policy": "stretch"
+  },
+  "gaussian": {
+    "radius": 1,
+    "sigma": 1.2
+  },
+  "border": "replicate",
+  "cpu": {
+    "threads": 12
+  },
+  "cuda": {
+    "implementation": "basic"
+  },
+  "resources": {
+    "max_dimension": 16384,
+    "max_device_bytes": 1073741824,
+    "max_pinned_host_bytes": 268435456,
+    "max_in_flight_frames": 1
+  }
+}

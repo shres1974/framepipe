@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "reference": "cpu-ref",
+  "note": "cpu-ref correctness is established by the independent NumPy oracle and hand fixtures (ctest); this file records candidate-vs-cpu-ref parity for the benchmarked inputs.",
+  "output_stage": "edges",
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "status": "reference"
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=10)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 921600,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.003024284727871418,
+            "candidate": 0.003024284727871418
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "hd_0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+backend,implementation,metric,frame_id,input_width,input_height,output_width,output_height,count,min_ms,max_ms,mean_ms,stddev_ms,median_ms,p95_ms,median_of_run_medians_ms,repetitions
+cpu-omp,openmp-rows(threads=12),application_wall_ms,tiny_0,64,64,64,64,250,0.235920,1.197944,0.373916,0.122746,0.351009,0.629324,0.321925,5
+cpu-omp,openmp-rows(threads=12),application_wall_ms,tiny_1,64,64,64,64,250,0.241323,3.326868,0.406940,0.261950,0.343108,0.771729,0.319601,5
+cpu-omp,openmp-rows(threads=12),application_wall_ms,tiny_2,64,64,64,64,250,0.237006,2.081967,0.389703,0.175864,0.337860,0.674897,0.312044,5
+cpu-omp,openmp-rows(threads=12),application_wall_ms,tiny_3,64,64,64,64,250,0.241112,13.623984,0.431714,0.845434,0.346961,0.625897,0.333188,5
+cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0,0,64,64,5,1.033855,2.102672,1.433197,0.406325,1.410237,2.102672,1.410237,5
+cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,tiny_0,64,64,64,64,250,0.028150,0.358763,0.042227,0.028729,0.034139,0.071563,0.034373,5
+cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,tiny_1,64,64,64,64,250,0.028600,0.265865,0.039907,0.019437,0.034009,0.070562,0.033703,5
+cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,tiny_2,64,64,64,64,250,0.027622,0.333560,0.041734,0.032452,0.033848,0.064139,0.033719,5
+cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,tiny_3,64,64,64,64,250,0.028226,0.344767,0.041312,0.028039,0.033841,0.069628,0.033870,5
+cpu-omp,openmp-rows(threads=12),startup_wall_ms,tiny_0,64,64,64,64,5,0.031965,0.047873,0.040049,0.005964,0.041175,0.047873,0.041175,5
+cpu-ref,scalar,application_wall_ms,tiny_0,64,64,64,64,250,0.251322,1.453892,0.312643,0.083804,0.302430,0.410993,0.301380,5
+cpu-ref,scalar,application_wall_ms,tiny_1,64,64,64,64,250,0.253001,1.835062,0.322339,0.130978,0.301068,0.404640,0.298254,5
+cpu-ref,scalar,application_wall_ms,tiny_2,64,64,64,64,250,0.253415,0.606465,0.310605,0.050821,0.300594,0.415935,0.295130,5
+cpu-ref,scalar,application_wall_ms,tiny_3,64,64,64,64,250,0.251652,3.210392,0.324135,0.191984,0.304129,0.393472,0.297023,5
+cpu-ref,scalar,batch_wall_ms,__batch__,0,0,64,64,5,1.029682,1.295964,1.184487,0.116906,1.212260,1.295964,1.212260,5
+cpu-ref,scalar,cpu_core_wall_ms,tiny_0,64,64,64,64,250,0.062086,0.125276,0.074890,0.013702,0.070550,0.102297,0.068063,5
+cpu-ref,scalar,cpu_core_wall_ms,tiny_1,64,64,64,64,250,0.062013,0.129532,0.074917,0.014160,0.070633,0.102645,0.068224,5
+cpu-ref,scalar,cpu_core_wall_ms,tiny_2,64,64,64,64,250,0.062032,0.376759,0.075632,0.022994,0.070404,0.102021,0.068032,5
+cpu-ref,scalar,cpu_core_wall_ms,tiny_3,64,64,64,64,250,0.061972,0.161501,0.075214,0.015091,0.070314,0.108585,0.068030,5
+cpu-ref,scalar,startup_wall_ms,tiny_0,64,64,64,64,5,0.024349,0.039162,0.028040,0.006265,0.025755,0.039162,0.025755,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_0,64,64,64,64,250,0.230207,1.660093,0.307778,0.111466,0.278587,0.474786,0.276041,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_1,64,64,64,64,250,0.233141,1.493421,0.315197,0.142786,0.280214,0.478684,0.277915,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_2,64,64,64,64,250,0.232982,0.597818,0.301864,0.064562,0.279478,0.439047,0.275197,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_3,64,64,64,64,250,0.229408,0.518152,0.300664,0.060275,0.281775,0.439890,0.284928,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0,0,64,64,5,0.976660,2.265451,1.432442,0.582257,1.099911,2.265451,1.099911,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_0,64,64,64,64,250,0.025362,0.059312,0.032106,0.005383,0.030765,0.038644,0.030497,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_1,64,64,64,64,250,0.025335,0.073969,0.032131,0.005645,0.030641,0.038874,0.030448,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_2,64,64,64,64,250,0.025311,0.098204,0.032003,0.006125,0.030628,0.038483,0.030434,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_3,64,64,64,64,250,0.025348,0.052474,0.031916,0.004765,0.030635,0.038835,0.030366,5

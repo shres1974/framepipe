@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "reference": "cpu-ref",
+  "note": "cpu-ref correctness is established by the independent NumPy oracle and hand fixtures (ctest); this file records candidate-vs-cpu-ref parity for the benchmarked inputs.",
+  "output_stage": "edges",
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "status": "reference"
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=12)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 921600,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.003027927130460739,
+            "candidate": 0.003027927130460739
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "hd_0"
+        }
+      ]
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 921600,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 2.1513551473617554e-07,
+          "mean_abs_error": 2.6741931413651332e-08,
+          "rmse": 3.556795729707284e-08,
+          "max_error_at": {
+            "x": 306,
+            "y": 111,
+            "reference": 0.008317168802022934,
+            "candidate": 0.008316953666508198
+          },
+          "exact_match": false,
+          "psnr_db": 148.97882152118373,
+          "message": "all pixels within tolerance",
+          "frame_id": "hd_0"
+        }
+      ],
+      "matched_semantics": true
+    },
+    {
+      "backend": "cuda",
+      "implementation": "",
+      "status": "not_executed",
+      "reason": "backend_unavailable: cuda backend requested but unusable: not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF [operation=select, backend=cuda]"
+    }
+  ]
+}

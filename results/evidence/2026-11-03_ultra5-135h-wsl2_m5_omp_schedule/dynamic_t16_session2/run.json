@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "20261104T044836Z-3a11-47bba",
+  "started_utc": "2026-11-04T04:48:36Z",
+  "finished_utc": "2026-11-04T04:48:40Z",
+  "command_line": "framepipe benchmark --manifest data/bench/hd.jsonl --config data/bench/hd.config.json --backends cpu-omp --scopes host_processing --warmup 20 --iterations 100 --repetitions 3 --threads 16 --output-dir results/local/2026-11-03_m5_omp_schedule/dynamic_t16_session2",
+  "git_revision": null,
+  "git_dirty": null,
+  "git_note": "git revision unavailable (not a git checkout or no commits yet)",
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "data/bench/hd.jsonl",
+    "sha256": "80efc70bba8ab3e48ee68be1f77405b364a630972304bbeac02be335b212abfd",
+    "frames": 1
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-omp"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp"
+      ]
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "cpu-omp"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing"
+  ],
+  "math_config_hash": "ac3000705531a06a0cc43bc15f5daad10cf50e0c16366a7263976a261b64bf46",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

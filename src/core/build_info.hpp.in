@@ -1,0 +1,22 @@
+#pragma once
+// Generated at configure time. Describes how this binary was built.
+
+#define FRAMEPIPE_VERSION "@PROJECT_VERSION@"
+
+namespace framepipe::build_info {
+inline constexpr const char* kVersion = "@PROJECT_VERSION@";
+inline constexpr const char* kBuildType = "@CMAKE_BUILD_TYPE@";
+inline constexpr const char* kCxxCompilerId = "@CMAKE_CXX_COMPILER_ID@";
+inline constexpr const char* kCxxCompilerVersion = "@CMAKE_CXX_COMPILER_VERSION@";
+inline constexpr const char* kCxxFlags = "@FRAMEPIPE_CXX_FLAGS_EFFECTIVE@";
+inline constexpr const char* kCmakeVersion = "@CMAKE_VERSION@";
+inline constexpr const char* kOpenCvVersion = "@OpenCV_VERSION@";
+inline constexpr bool kCudaBuilt = @FRAMEPIPE_HAVE_CUDA_INT@;
+inline constexpr bool kOpenMpBuilt = @FRAMEPIPE_HAVE_OPENMP_INT@;
+inline constexpr bool kSanitized = @FRAMEPIPE_SANITIZE_INT@;
+inline constexpr bool kCudaDebugSync = @FRAMEPIPE_CUDA_DEBUG_SYNC_INT@;
+inline constexpr const char* kCudaCompilerVersion = "@CMAKE_CUDA_COMPILER_VERSION@";
+inline constexpr const char* kCudaFlags = "@FRAMEPIPE_CUDA_FLAGS_EFFECTIVE@";
+inline constexpr const char* kCudaArchitectures = "@FRAMEPIPE_CUDA_ARCHS@";
+inline constexpr const char* kOpenMpVersion = "@OpenMP_CXX_VERSION@";
+}  // namespace framepipe::build_info

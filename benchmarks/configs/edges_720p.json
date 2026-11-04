@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "output_stage": "edges",
+  "resize": {"width": 1280, "height": 720},
+  "gaussian": {"radius": 3, "sigma": 1.2}
+}

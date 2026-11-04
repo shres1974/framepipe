@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "reference": "cpu-ref",
+  "note": "cpu-ref correctness is established by the independent NumPy oracle and hand fixtures (ctest); this file records candidate-vs-cpu-ref parity for the benchmarked inputs.",
+  "output_stage": "edges",
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "status": "reference"
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=12)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.03206036612391472,
+            "candidate": 0.03206036612391472
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_0"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.005836804397404194,
+            "candidate": 0.005836804397404194
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_1"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.005812459625303745,
+            "candidate": 0.005812459625303745
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_2"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.025432327762246132,
+            "candidate": 0.025432327762246132
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_3"
+        }
+      ]
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.5832483768463135e-07,
+          "mean_abs_error": 2.200309268118872e-08,
+          "rmse": 2.842320032232746e-08,
+          "max_error_at": {
+            "x": 61,
+            "y": 17,
+            "reference": 0.013685288839042187,
+            "candidate": 0.013685130514204502
+          },
+          "exact_match": false,
+          "psnr_db": 150.92654048167063,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_0"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.1362135410308838e-07,
+          "mean_abs_error": 2.2906757379814735e-08,
+          "rmse": 2.99145556010742e-08,
+          "max_error_at": {
+            "x": 23,
+            "y": 40,
+            "reference": 0.018806064501404762,
+            "candidate": 0.018806178122758865
+          },
+          "exact_match": false,
+          "psnr_db": 150.482348889656,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_1"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.0803341865539551e-07,
+          "mean_abs_error": 2.1704380515075172e-08,
+          "rmse": 2.8162826512563783e-08,
+          "max_error_at": {
+            "x": 7,
+            "y": 27,
+            "reference": 0.03210633993148804,
+            "candidate": 0.03210623189806938
+          },
+          "exact_match": false,
+          "psnr_db": 151.00647520280907,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_2"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 4096,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.1920928955078125e-07,
+          "mean_abs_error": 2.1291015173119376e-08,
+          "rmse": 2.7739635936314066e-08,
+          "max_error_at": {
+            "x": 53,
+            "y": 50,
+            "reference": 0.05226747319102287,
+            "candidate": 0.052267592400312424
+          },
+          "exact_match": false,
+          "psnr_db": 151.1379848608476,
+          "message": "all pixels within tolerance",
+          "frame_id": "tiny_3"
+        }
+      ],
+      "matched_semantics": true
+    },
+    {
+      "backend": "cuda",
+      "implementation": "",
+      "status": "not_executed",
+      "reason": "backend_unavailable: cuda backend requested but unusable: not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF [operation=select, backend=cuda]"
+    }
+  ]
+}

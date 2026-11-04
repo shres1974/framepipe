@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "run_id": "20261104T040933Z-edce-4573b",
+  "started_utc": "2026-11-04T04:09:33Z",
+  "finished_utc": "2026-11-04T04:14:19Z",
+  "command_line": "framepipe benchmark --manifest data/bench/hd.jsonl --config data/bench/hd.config.json --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --warmup 20 --iterations 200 --repetitions 5 --threads 12 --output-dir results/local/2026-11-03_cpu_matrix/hd_radius1 --radius 1",
+  "git_revision": null,
+  "git_dirty": null,
+  "git_note": "git revision unavailable (not a git checkout or no commits yet)",
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "data/bench/hd.jsonl",
+    "sha256": "80efc70bba8ab3e48ee68be1f77405b364a630972304bbeac02be335b212abfd",
+    "frames": 1
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref"
+      ]
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref",
+        "cpu-omp"
+      ]
+    },
+    {
+      "repetition": 3,
+      "order": [
+        "cuda",
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu"
+      ]
+    },
+    {
+      "repetition": 4,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing",
+    "device_pipeline",
+    "application",
+    "startup",
+    "batch"
+  ],
+  "math_config_hash": "52520f077fc8ae224ac120f2ef48d080ac7480e11bf089be40aa2e0302219bb4",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

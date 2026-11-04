@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "run_id": "20261104T035512Z-2b1d-455c0",
+  "started_utc": "2026-11-04T03:55:12Z",
+  "finished_utc": "2026-11-04T03:57:28Z",
+  "command_line": "framepipe benchmark --manifest data/bench/upscale_ring.jsonl --config data/bench/upscale.config.json --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --warmup 20 --iterations 200 --repetitions 5 --threads 12 --output-dir results/local/2026-11-03_cpu_matrix/upscale_ring --workload ring",
+  "git_revision": null,
+  "git_dirty": null,
+  "git_note": "git revision unavailable (not a git checkout or no commits yet)",
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "data/bench/upscale_ring.jsonl",
+    "sha256": "1043e7218c97c81a85ea1a465f88510d478bc6acbdc31a9af42a793fc92a502f",
+    "frames": 4
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref"
+      ]
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref",
+        "cpu-omp"
+      ]
+    },
+    {
+      "repetition": 3,
+      "order": [
+        "cuda",
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu"
+      ]
+    },
+    {
+      "repetition": 4,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing",
+    "device_pipeline",
+    "application",
+    "startup",
+    "batch"
+  ],
+  "math_config_hash": "011e7b43c0057035bed408a1742413b5788f5dc0758222ada49dd8bd253cd391",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

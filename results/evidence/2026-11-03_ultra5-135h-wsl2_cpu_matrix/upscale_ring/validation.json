@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "reference": "cpu-ref",
+  "note": "cpu-ref correctness is established by the independent NumPy oracle and hand fixtures (ctest); this file records candidate-vs-cpu-ref parity for the benchmarked inputs.",
+  "output_stage": "edges",
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "status": "reference"
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=12)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.0030988799408078194,
+            "candidate": 0.0030988799408078194
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_0"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.0008754795417189598,
+            "candidate": 0.0008754795417189598
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_1"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.002422414254397154,
+            "candidate": 0.002422414254397154
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_2"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "rmse": 0.0,
+          "max_error_at": {
+            "x": 0,
+            "y": 0,
+            "reference": 0.0012599133187904954,
+            "candidate": 0.0012599133187904954
+          },
+          "exact_match": true,
+          "psnr_db": null,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_3"
+        }
+      ]
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "status": "passed",
+      "frames": [
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.6530975699424744e-07,
+          "mean_abs_error": 2.11309017997986e-08,
+          "rmse": 2.80791098065337e-08,
+          "max_error_at": {
+            "x": 1244,
+            "y": 640,
+            "reference": 0.002699577948078513,
+            "candidate": 0.0026997432578355074
+          },
+          "exact_match": false,
+          "psnr_db": 151.03233329568687,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_0"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.6135163605213165e-07,
+          "mean_abs_error": 2.0972964493301666e-08,
+          "rmse": 2.7906912368414983e-08,
+          "max_error_at": {
+            "x": 478,
+            "y": 93,
+            "reference": 0.0037952568382024765,
+            "candidate": 0.0037950954865664244
+          },
+          "exact_match": false,
+          "psnr_db": 151.0857642272592,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_1"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.8347054719924927e-07,
+          "mean_abs_error": 2.149289286021543e-08,
+          "rmse": 2.8447467468682457e-08,
+          "max_error_at": {
+            "x": 793,
+            "y": 748,
+            "reference": 0.0028614436741918325,
+            "candidate": 0.0028612602036446333
+          },
+          "exact_match": false,
+          "psnr_db": 150.9191278109196,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_2"
+        },
+        {
+          "status": "passed",
+          "dimensions_match": true,
+          "tolerance": {
+            "atol": 1e-05,
+            "rtol": 1e-05
+          },
+          "pixel_count": 1228800,
+          "failing_pixels": 0,
+          "nonfinite_reference": 0,
+          "nonfinite_candidate": 0,
+          "max_abs_error": 1.7974525690078735e-07,
+          "mean_abs_error": 2.1358752358525852e-08,
+          "rmse": 2.828731983254466e-08,
+          "max_error_at": {
+            "x": 1279,
+            "y": 774,
+            "reference": 0.010039166547358036,
+            "candidate": 0.010038986802101135
+          },
+          "exact_match": false,
+          "psnr_db": 150.96816398269277,
+          "message": "all pixels within tolerance",
+          "frame_id": "upscale_3"
+        }
+      ],
+      "matched_semantics": true
+    },
+    {
+      "backend": "cuda",
+      "implementation": "",
+      "status": "not_executed",
+      "reason": "backend_unavailable: cuda backend requested but unusable: not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF [operation=select, backend=cuda]"
+    }
+  ]
+}

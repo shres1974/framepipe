@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "run_id": "20261104T044814Z-4d10-47b6f",
+  "status": "measured",
+  "workload": "repeat",
+  "workload_note": "Each frame processed repeatedly; repeated timings of one image are not independent observations of real-world image diversity.",
+  "counts": {
+    "warmup": 20,
+    "iterations": 100,
+    "repetitions": 3
+  },
+  "statistics_definitions": {
+    "median": "middle value, or mean of the two middle values",
+    "p95": "nearest rank: sorted[ceil(0.95*N)-1]",
+    "stddev": "sample standard deviation (N-1); null when N<2",
+    "pooled_within_runs": "all samples of all repetitions pooled",
+    "median_of_run_medians_ms": "median across repetitions of each repetition's median"
+  },
+  "backends": [
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=16,schedule=static)",
+      "status": "ok",
+      "reason": null,
+      "threads": 16,
+      "workspace": {
+        "host_logical_bytes": 15691228,
+        "host_allocated_bytes": 15691228,
+        "device_logical_bytes": 0,
+        "device_allocated_bytes": 0,
+        "pinned_host_bytes": 0,
+        "transfer_mode": ""
+      }
+    }
+  ],
+  "groups": [
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=16,schedule=static)",
+      "metric": "cpu_core_wall_ms",
+      "frame_id": "hd_0",
+      "input_size": [
+        1920,
+        1080
+      ],
+      "output_size": [
+        1280,
+        720
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 2.653755,
+        "max_ms": 57.965311,
+        "mean_ms": 10.373981083333332,
+        "stddev_ms": 10.627213249575442,
+        "median_ms": 4.0107159999999995,
+        "p95_ms": 30.636349
+      },
+      "median_of_run_medians_ms": 3.4119125,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 3.056232,
+          "max_ms": 57.965311,
+          "mean_ms": 19.918839790000003,
+          "stddev_ms": 11.458586745544233,
+          "median_ms": 18.461530500000002,
+          "p95_ms": 40.106721,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 2.653755,
+          "max_ms": 43.036174,
+          "mean_ms": 7.15287345,
+          "stddev_ms": 7.937086726852438,
+          "median_ms": 3.3441975,
+          "p95_ms": 26.139455,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 3.062627,
+          "max_ms": 15.139611,
+          "mean_ms": 4.050230010000001,
+          "stddev_ms": 1.9746698055422458,
+          "median_ms": 3.4119125,
+          "p95_ms": 7.103347,
+          "repetition": 2
+        }
+      ]
+    }
+  ],
+  "ratios": [
+    {
+      "frame_id": "hd_0",
+      "host_processing_speedup_vs_scalar_cpu_ref": null,
+      "host_processing_speedup_vs_cpu_omp": null,
+      "resident_processing_ratio_vs_scalar_cpu_ref": null,
+      "cpu_omp_speedup_vs_scalar_cpu_ref": null,
+      "note": "Ratios of pooled medians. resident_processing_ratio describes GPU-resident processing and is NOT an application speedup. null means a required measurement was not taken."
+    }
+  ],
+  "zero_duration_samples": 0,
+  "math_config_hash": "ac3000705531a06a0cc43bc15f5daad10cf50e0c16366a7263976a261b64bf46"
+}

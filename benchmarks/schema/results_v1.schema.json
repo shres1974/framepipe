@@ -1,0 +1,83 @@
+{
+  "$comment": "FramePipe result schemas, version 1. Interpreted by scripts/validate_results.py (a small stdlib checker for this subset: type, required, properties, enum, items, nullable via type lists, minimum). Not a full JSON Schema implementation.",
+  "run.json": {
+    "type": "object",
+    "required": ["schema_version", "run_id", "started_utc", "finished_utc", "command_line", "git_revision",
+                 "git_dirty", "experiment_status", "manifest", "backend_run_order", "scopes", "math_config_hash",
+                 "measurement_settings"],
+    "properties": {
+      "schema_version": {"type": "integer", "enum": [1]},
+      "run_id": {"type": "string"},
+      "git_revision": {"type": ["string", "null"]},
+      "git_dirty": {"type": ["boolean", "null"]},
+      "experiment_status": {"type": "string", "enum": ["measured", "partial", "not_run"]},
+      "manifest": {"type": "object", "required": ["path", "sha256", "frames"]},
+      "scopes": {"type": "array", "items": {"type": "string",
+                 "enum": ["host_processing", "device_pipeline", "application", "startup", "batch"]}}
+    }
+  },
+  "environment.json": {
+    "type": "object",
+    "required": ["schema_version", "host", "build", "dependencies", "cuda", "settings", "unknown_reasons"],
+    "properties": {
+      "schema_version": {"type": "integer", "enum": [1]},
+      "host": {"type": "object", "required": ["cpu_model", "logical_cpus", "ram_bytes", "kernel", "os"]},
+      "build": {"type": "object", "required": ["build_type", "cxx_compiler", "cxx_flags", "cuda_built",
+                                               "openmp_built", "fast_math", "cuda_debug_sync"]},
+      "cuda": {"type": "object", "required": ["built", "device_count", "devices", "selected_device_index"]}
+    }
+  },
+  "validation.json": {
+    "type": "object",
+    "required": ["schema_version", "reference", "backends"],
+    "properties": {
+      "backends": {"type": "array", "items": {"type": "object", "required": ["backend", "status"],
+        "properties": {"status": {"type": "string", "enum": ["reference", "passed", "failed", "not_executed"]}}}}
+    }
+  },
+  "sample": {
+    "type": "object",
+    "required": ["run_id", "backend", "implementation", "metric", "scope", "workload", "frame_id", "input_width",
+                 "input_height", "output_width", "output_height", "repetition", "iteration", "duration_ms",
+                 "success", "math_config_hash"],
+    "properties": {
+      "metric": {"type": "string", "enum": ["cpu_core_wall_ms", "gpu_transfer_inclusive_wall_ms",
+                 "gpu_device_pipeline_ms", "application_wall_ms", "startup_wall_ms", "batch_wall_ms"]},
+      "backend": {"type": "string", "enum": ["cpu-ref", "cpu-omp", "cuda", "opencv-cpu"]},
+      "duration_ms": {"type": "number", "minimum": 0},
+      "repetition": {"type": "integer", "minimum": 0},
+      "iteration": {"type": "integer", "minimum": 0},
+      "success": {"type": "boolean"}
+    }
+  },
+  "summary.json": {
+    "type": "object",
+    "required": ["schema_version", "run_id", "status", "workload", "counts", "backends", "groups", "ratios",
+                 "statistics_definitions", "math_config_hash"],
+    "properties": {
+      "status": {"type": "string", "enum": ["measured", "partial", "not_run"]},
+      "backends": {"type": "array", "items": {"type": "object", "required": ["backend", "implementation", "status"],
+        "properties": {"status": {"type": "string",
+          "enum": ["ok", "unavailable", "failed_correctness", "failed_runtime"]}}}},
+      "groups": {"type": "array", "items": {"type": "object",
+        "required": ["backend", "implementation", "metric", "frame_id", "pooled_within_runs",
+                     "median_of_run_medians_ms", "per_run"]}},
+      "ratios": {"type": "array", "items": {"type": "object",
+        "required": ["frame_id", "host_processing_speedup_vs_scalar_cpu_ref",
+                     "resident_processing_ratio_vs_scalar_cpu_ref"],
+        "properties": {
+          "host_processing_speedup_vs_scalar_cpu_ref": {"type": ["number", "null"]},
+          "resident_processing_ratio_vs_scalar_cpu_ref": {"type": ["number", "null"]}}}}
+    }
+  },
+  "report_shell": {
+    "$comment": "Honest unmeasured report (spec Section 19). See benchmarks/schema/not_run_example.json.",
+    "type": "object",
+    "required": ["schema_version", "status", "git_revision", "hardware", "validation", "metrics", "note"],
+    "properties": {
+      "status": {"type": "string", "enum": ["not_run"]},
+      "metrics": {"type": "object", "required": ["cpu_core_wall_ms_median", "gpu_device_pipeline_ms_median",
+                  "gpu_transfer_inclusive_wall_ms_median", "host_processing_speedup"]}
+    }
+  }
+}

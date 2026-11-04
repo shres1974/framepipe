@@ -1,0 +1,103 @@
+# FramePipe CI (spec 21.2). CPU tests, CUDA *compilation*, and actual GPU
+# execution are separate jobs. A green CPU job does not establish GPU
+# correctness. GPU jobs run only on a self-hosted runner labeled `gpu`.
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  FRAMEPIPE_DEPS: ${{ github.workspace }}/.deps
+
+jobs:
+  cpu:
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [cpu-debug, cpu, cpu-sanitize]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: .deps
+          key: deps-${{ runner.os }}-${{ hashFiles('scripts/install_deps.sh') }}
+      - name: Dependencies (pinned, SHA-256 verified)
+        run: test -d .deps/lib || scripts/install_deps.sh "$FRAMEPIPE_DEPS"
+      - run: cmake --preset ${{ matrix.preset }}
+      - run: cmake --build --preset ${{ matrix.preset }}
+      - run: ctest --preset ${{ matrix.preset }}
+      - name: CLI smoke test
+        if: matrix.preset == 'cpu'
+        run: |
+          build/cpu/bin/framepipe doctor --json > /dev/null
+          build/cpu/bin/framepipe process --input tests/fixtures/checkerboard_rgb.png \
+            --output /tmp/edges.png --backend cpu-ref --width 32 --height 24 --report -
+
+  oracle:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: .deps
+          key: deps-${{ runner.os }}-${{ hashFiles('scripts/install_deps.sh') }}
+      - run: test -d .deps/lib || scripts/install_deps.sh "$FRAMEPIPE_DEPS"
+      - run: cmake --preset cpu && cmake --build --preset cpu
+      - run: ctest --preset cpu -L oracle
+
+  benchmark-smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: .deps
+          key: deps-${{ runner.os }}-${{ hashFiles('scripts/install_deps.sh') }}
+      - run: test -d .deps/lib || scripts/install_deps.sh "$FRAMEPIPE_DEPS"
+      - run: cmake --preset cpu && cmake --build --preset cpu
+      - name: Schema, finite values, output consumption (no speed gate)
+        run: ctest --preset cpu -L benchmark
+
+  cuda-compile:
+    # Compiles the CUDA target with explicit architectures. Does NOT execute.
+    runs-on: ubuntu-24.04
+    container: nvidia/cuda:12.6.3-devel-ubuntu24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: apt-get update && apt-get install -y python3-pip python3-venv git curl
+      - run: python3 -m venv /venv && /venv/bin/pip install -r requirements.txt
+      - run: PATH=/venv/bin:$PATH scripts/install_deps.sh "$FRAMEPIPE_DEPS"
+      - run: PATH=/venv/bin:$PATH cmake --preset cuda-compile && PATH=/venv/bin:$PATH cmake --build --preset cuda-compile
+      - name: CPU tests still pass in the CUDA build; GPU tests must report SKIPPED
+        run: PATH=/venv/bin:$PATH ctest --test-dir build/cuda-compile --output-on-failure
+
+  cuda-execution:
+    if: ${{ vars.HAS_GPU_RUNNER == 'true' }}
+    runs-on: [self-hosted, gpu]
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+      - run: PATH=$PWD/.venv/bin:$PATH scripts/install_deps.sh "$FRAMEPIPE_DEPS"
+      - run: PATH=$PWD/.venv/bin:$PATH cmake --preset cuda && PATH=$PWD/.venv/bin:$PATH cmake --build --preset cuda
+      - name: GPU tests must execute (fail if skipped)
+        run: |
+          build/cuda/bin/framepipe_cuda_tests --gtest_brief=1 | tee gpu.txt
+          ! grep -q SKIPPED gpu.txt
+      - run: .venv/bin/python scripts/run_oracle_suite.py --framepipe build/cuda/bin/framepipe --work-dir build/cuda/ow --candidates cpu-ref,cuda
+      - name: Compute Sanitizer (focused suite)
+        run: |
+          for t in memcheck racecheck initcheck synccheck; do
+            compute-sanitizer --tool $t --error-exitcode 99 build/cuda/bin/framepipe_cuda_tests
+          done

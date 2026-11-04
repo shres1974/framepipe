@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "framepipe/pipeline_config/v1",
+  "title": "FramePipe pipeline configuration, schema_version 1",
+  "description": "Unknown fields and unsupported enum values are errors. Omitted fields take built-in defaults. Precedence: defaults < file < CLI overrides. The C++ loader (src/core/config.cpp) is authoritative; tests check that this schema and the loader agree on the example and on rejection cases.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": {"type": "integer", "enum": [1]},
+    "backend": {"type": "string", "enum": ["auto", "cpu-ref", "cpu-omp", "cuda"]},
+    "device_index": {"type": "integer", "minimum": 0},
+    "output_stage": {"type": "string", "enum": ["resize", "blur", "edges"]},
+    "resize": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "width": {"type": "integer", "minimum": 1, "maximum": 16384},
+        "height": {"type": "integer", "minimum": 1, "maximum": 16384},
+        "mode": {"type": "string", "enum": ["bilinear_half_pixel"]},
+        "aspect_policy": {"type": "string", "enum": ["stretch"]}
+      }
+    },
+    "gaussian": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "radius": {"type": "integer", "minimum": 0, "maximum": 15},
+        "sigma": {"type": "number", "minimum": 0.1, "maximum": 100.0}
+      }
+    },
+    "border": {"type": "string", "enum": ["replicate"]},
+    "cpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"threads": {"type": "integer", "minimum": 1, "maximum": 1024}}
+    },
+    "cuda": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"implementation": {"type": "string", "enum": ["basic"]}}
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_dimension": {"type": "integer", "minimum": 1, "maximum": 16384},
+        "max_device_bytes": {"type": "integer", "minimum": 1},
+        "max_pinned_host_bytes": {"type": "integer", "minimum": 0},
+        "max_in_flight_frames": {"type": "integer", "minimum": 1, "maximum": 8}
+      }
+    }
+  }
+}

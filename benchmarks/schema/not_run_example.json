@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "not_run",
+  "git_revision": null,
+  "hardware": {"cpu": null, "gpu": null},
+  "validation": {"status": "not_executed"},
+  "metrics": {
+    "cpu_core_wall_ms_median": null,
+    "gpu_device_pipeline_ms_median": null,
+    "gpu_transfer_inclusive_wall_ms_median": null,
+    "host_processing_speedup": null
+  },
+  "note": "Schema illustration only; no measurements have been taken."
+}

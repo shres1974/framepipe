@@ -1,0 +1,78 @@
+source,backend,implementation,metric,frame_id,input,output,workload,count,median_ms,p95_ms,min_ms,max_ms
+results/local/2026-11-03_cpu_matrix/tiny,cpu-omp,openmp-rows(threads=12),application_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.39545399999999997,0.665312,0.217888,2.245818
+results/local/2026-11-03_cpu_matrix/tiny,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,64x64,batch,5,0.314663,0.345167,0.307461,0.345167
+results/local/2026-11-03_cpu_matrix/tiny,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.030681,0.067353,0.023555,1.4661
+results/local/2026-11-03_cpu_matrix/tiny,cpu-omp,openmp-rows(threads=12),startup_wall_ms,tiny_0,64x64,64x64,repeat,5,0.032531,0.043219,0.028662,0.043219
+results/local/2026-11-03_cpu_matrix/tiny,cpu-ref,scalar,application_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.260846,0.444829,0.191552,1.531306
+results/local/2026-11-03_cpu_matrix/tiny,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,64x64,batch,5,0.265806,0.315955,0.211178,0.315955
+results/local/2026-11-03_cpu_matrix/tiny,cpu-ref,scalar,cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.063884,0.078867,0.047824,0.268047
+results/local/2026-11-03_cpu_matrix/tiny,cpu-ref,scalar,startup_wall_ms,tiny_0,64x64,64x64,repeat,5,0.025499,0.028327,0.023197,0.028327
+results/local/2026-11-03_cpu_matrix/tiny,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.2699415,0.482888,0.188805,1.750283
+results/local/2026-11-03_cpu_matrix/tiny,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,64x64,batch,5,0.266898,0.394889,0.230399,0.394889
+results/local/2026-11-03_cpu_matrix/tiny,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,1000,0.033338,0.052265,0.022037,0.144775
+results/local/2026-11-03_cpu_matrix/small,cpu-omp,openmp-rows(threads=12),application_wall_ms,small_0,640x480,320x240,repeat,1000,10.528462000000001,16.05039,7.112106,69.571226
+results/local/2026-11-03_cpu_matrix/small,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,320x240,batch,5,10.166346,13.888493,9.390829,13.888493
+results/local/2026-11-03_cpu_matrix/small,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,small_0,640x480,320x240,repeat,1000,0.2878415,0.595111,0.20363,6.519718
+results/local/2026-11-03_cpu_matrix/small,cpu-omp,openmp-rows(threads=12),startup_wall_ms,small_0,640x480,320x240,repeat,5,0.661422,0.827551,0.149481,0.827551
+results/local/2026-11-03_cpu_matrix/small,cpu-ref,scalar,application_wall_ms,small_0,640x480,320x240,repeat,1000,8.4859985,10.68717,6.939779,16.292652
+results/local/2026-11-03_cpu_matrix/small,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,320x240,batch,5,8.098066,9.573638,7.835677,9.573638
+results/local/2026-11-03_cpu_matrix/small,cpu-ref,scalar,cpu_core_wall_ms,small_0,640x480,320x240,repeat,1000,1.4512174999999998,1.97785,1.209691,6.13801
+results/local/2026-11-03_cpu_matrix/small,cpu-ref,scalar,startup_wall_ms,small_0,640x480,320x240,repeat,5,0.499757,0.63495,0.141205,0.63495
+results/local/2026-11-03_cpu_matrix/small,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,small_0,640x480,320x240,repeat,1000,8.310901000000001,10.49915,6.329083,18.752692
+results/local/2026-11-03_cpu_matrix/small,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,320x240,batch,5,9.051352,10.915089,7.028555,10.915089
+results/local/2026-11-03_cpu_matrix/small,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,small_0,640x480,320x240,repeat,1000,0.7863530000000001,0.955322,0.550368,4.254918
+results/local/2026-11-03_cpu_matrix/hd,cpu-omp,openmp-rows(threads=12),application_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,62.705251,81.324456,47.514536,114.698781
+results/local/2026-11-03_cpu_matrix/hd,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,1280x720,batch,5,63.488498,69.493497,59.441589,69.493497
+results/local/2026-11-03_cpu_matrix/hd,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,4.7665755,13.257479,2.24763,111.522082
+results/local/2026-11-03_cpu_matrix/hd,cpu-omp,openmp-rows(threads=12),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,5,2.050851,2.491903,1.942532,2.491903
+results/local/2026-11-03_cpu_matrix/hd,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,61.9978715,84.30529,52.646792,118.604632
+results/local/2026-11-03_cpu_matrix/hd,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,5,69.320065,94.365832,63.500188,94.365832
+results/local/2026-11-03_cpu_matrix/hd,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,15.3191485,19.880218,12.293276,24.784535
+results/local/2026-11-03_cpu_matrix/hd,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,5,2.001504,3.142662,1.628677,3.142662
+results/local/2026-11-03_cpu_matrix/hd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,58.458576,68.094819,44.874422,83.6381
+results/local/2026-11-03_cpu_matrix/hd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,5,63.293284,66.629012,51.632423,66.629012
+results/local/2026-11-03_cpu_matrix/hd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,1000,8.338652,10.673769,6.605826,13.16901
+results/local/2026-11-03_cpu_matrix/uhd,cpu-omp,openmp-rows(threads=12),application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,190.73596650000002,248.960286,152.690918,752.320705
+results/local/2026-11-03_cpu_matrix/uhd,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,1920x1080,batch,5,191.615107,464.419702,179.502136,464.419702
+results/local/2026-11-03_cpu_matrix/uhd,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,13.360517999999999,25.204568,7.036068,95.592783
+results/local/2026-11-03_cpu_matrix/uhd,cpu-omp,openmp-rows(threads=12),startup_wall_ms,uhd_0,3840x2160,1920x1080,repeat,5,5.234512,7.594896,4.748194,7.594896
+results/local/2026-11-03_cpu_matrix/uhd,cpu-ref,scalar,application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,199.9323205,254.48866,175.252447,315.972857
+results/local/2026-11-03_cpu_matrix/uhd,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1920x1080,batch,5,222.887301,270.689433,187.727666,270.689433
+results/local/2026-11-03_cpu_matrix/uhd,cpu-ref,scalar,cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,43.002782499999995,53.945092,32.613186,70.583523
+results/local/2026-11-03_cpu_matrix/uhd,cpu-ref,scalar,startup_wall_ms,uhd_0,3840x2160,1920x1080,repeat,5,5.096179,6.91921,4.832408,6.91921
+results/local/2026-11-03_cpu_matrix/uhd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,196.167743,268.208381,162.039956,553.258307
+results/local/2026-11-03_cpu_matrix/uhd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1920x1080,batch,5,184.365336,256.681628,177.453628,256.681628
+results/local/2026-11-03_cpu_matrix/uhd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,1000,25.108037000000003,34.72071,19.580977,43.221007
+results/local/2026-11-03_cpu_matrix/odd,cpu-omp,openmp-rows(threads=12),application_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,59.397143,74.628049,46.509335,102.423782
+results/local/2026-11-03_cpu_matrix/odd,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,1279x719,batch,5,58.336318,76.103528,50.226094,76.103528
+results/local/2026-11-03_cpu_matrix/odd,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,2.9003715,6.306672,2.101871,29.244744
+results/local/2026-11-03_cpu_matrix/odd,cpu-omp,openmp-rows(threads=12),startup_wall_ms,odd_0,1919x1079,1279x719,repeat,5,2.03401,2.601049,1.86927,2.601049
+results/local/2026-11-03_cpu_matrix/odd,cpu-ref,scalar,application_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,59.3225815,69.37745,51.329755,82.268026
+results/local/2026-11-03_cpu_matrix/odd,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1279x719,batch,5,58.586761,59.270012,58.147305,59.270012
+results/local/2026-11-03_cpu_matrix/odd,cpu-ref,scalar,cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,14.2734775,17.913103,12.610459,26.101119
+results/local/2026-11-03_cpu_matrix/odd,cpu-ref,scalar,startup_wall_ms,odd_0,1919x1079,1279x719,repeat,5,1.996451,2.243123,1.693498,2.243123
+results/local/2026-11-03_cpu_matrix/odd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,51.9690795,58.524893,45.185349,68.012186
+results/local/2026-11-03_cpu_matrix/odd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1279x719,batch,5,51.253737,56.219334,47.529115,56.219334
+results/local/2026-11-03_cpu_matrix/odd,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,1000,7.514371000000001,8.94987,6.563441,11.836334
+results/local/2026-11-03_cpu_matrix/upscale,cpu-omp,openmp-rows(threads=12),application_wall_ms,upscale_0,640x480,1280x960,repeat,1000,34.408280000000005,44.149443,25.278613,164.94176
+results/local/2026-11-03_cpu_matrix/upscale,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,1280x960,batch,5,34.724968,35.731536,30.610644,35.731536
+results/local/2026-11-03_cpu_matrix/upscale,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,1000,3.8842090000000002,5.596696,2.41539,58.656506
+results/local/2026-11-03_cpu_matrix/upscale,cpu-omp,openmp-rows(threads=12),startup_wall_ms,upscale_0,640x480,1280x960,repeat,5,5.509816,5.652133,4.710359,5.652133
+results/local/2026-11-03_cpu_matrix/upscale,cpu-ref,scalar,application_wall_ms,upscale_0,640x480,1280x960,repeat,1000,35.704899,43.779696,31.219587,52.905216
+results/local/2026-11-03_cpu_matrix/upscale,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x960,batch,5,35.310204,37.811791,34.773529,37.811791
+results/local/2026-11-03_cpu_matrix/upscale,cpu-ref,scalar,cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,1000,15.9175675,18.715435,14.626265,25.457469
+results/local/2026-11-03_cpu_matrix/upscale,cpu-ref,scalar,startup_wall_ms,upscale_0,640x480,1280x960,repeat,5,3.497976,4.509505,2.524751,4.509505
+results/local/2026-11-03_cpu_matrix/upscale,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,upscale_0,640x480,1280x960,repeat,1000,26.9921625,32.689456,23.918414,42.219856
+results/local/2026-11-03_cpu_matrix/upscale,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x960,batch,5,27.448576,30.162881,24.70416,30.162881
+results/local/2026-11-03_cpu_matrix/upscale,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,1000,6.6903625,8.129984,5.163386,12.604119
+results/local/2026-11-03_cpu_matrix/same,cpu-omp,openmp-rows(threads=12),application_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,82.1142675,144.598137,61.177264,212.965565
+results/local/2026-11-03_cpu_matrix/same,cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0x0,1920x1080,batch,5,76.667902,123.136976,73.537757,123.136976
+results/local/2026-11-03_cpu_matrix/same,cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,9.947621,20.555185,4.273039,50.211889
+results/local/2026-11-03_cpu_matrix/same,cpu-omp,openmp-rows(threads=12),startup_wall_ms,same_0,1920x1080,1920x1080,repeat,5,7.833778,10.050173,6.36865,10.050173
+results/local/2026-11-03_cpu_matrix/same,cpu-ref,scalar,application_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,87.822677,110.630625,75.75076,201.806624
+results/local/2026-11-03_cpu_matrix/same,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1920x1080,batch,5,88.325345,154.161238,79.814049,154.161238
+results/local/2026-11-03_cpu_matrix/same,cpu-ref,scalar,cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,28.8992,34.69774,24.650769,40.003574
+results/local/2026-11-03_cpu_matrix/same,cpu-ref,scalar,startup_wall_ms,same_0,1920x1080,1920x1080,repeat,5,8.698221,29.926334,6.54828,29.926334
+results/local/2026-11-03_cpu_matrix/same,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,72.0579795,112.283191,63.226895,144.312585
+results/local/2026-11-03_cpu_matrix/same,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1920x1080,batch,5,75.472363,113.769976,68.129718,113.769976
+results/local/2026-11-03_cpu_matrix/same,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,1000,12.456620999999998,18.445549,10.724466,28.739215

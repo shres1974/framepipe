@@ -1,0 +1,80 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {"major": 3, "minor": 24, "patch": 0},
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "$env{FRAMEPIPE_DEPS}",
+        "FRAMEPIPE_BUILD_TESTS": "ON"
+      }
+    },
+    {
+      "name": "cpu-debug",
+      "inherits": "base",
+      "displayName": "CPU debug (no CUDA)",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug", "FRAMEPIPE_ENABLE_CUDA": "OFF"}
+    },
+    {
+      "name": "cpu",
+      "inherits": "base",
+      "displayName": "CPU release (no CUDA)",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Release", "FRAMEPIPE_ENABLE_CUDA": "OFF"}
+    },
+    {
+      "name": "cpu-sanitize",
+      "inherits": "base",
+      "displayName": "CPU ASan+UBSan diagnostic build",
+      "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug", "FRAMEPIPE_ENABLE_CUDA": "OFF", "FRAMEPIPE_SANITIZE": "ON"}
+    },
+    {
+      "name": "cuda",
+      "inherits": "base",
+      "displayName": "CUDA release, native architecture (requires visible GPU)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "FRAMEPIPE_ENABLE_CUDA": "ON",
+        "CMAKE_CUDA_ARCHITECTURES": "native"
+      }
+    },
+    {
+      "name": "cuda-compile",
+      "inherits": "base",
+      "displayName": "CUDA compile-only check, explicit architectures (no GPU needed)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "FRAMEPIPE_ENABLE_CUDA": "ON",
+        "CMAKE_CUDA_ARCHITECTURES": "75;86;89"
+      }
+    },
+    {
+      "name": "cuda-debug-sync",
+      "inherits": "base",
+      "displayName": "CUDA diagnostic build: synchronize after every kernel (never benchmark)",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "FRAMEPIPE_ENABLE_CUDA": "ON",
+        "CMAKE_CUDA_ARCHITECTURES": "native",
+        "FRAMEPIPE_CUDA_DEBUG_SYNC": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {"name": "cpu-debug", "configurePreset": "cpu-debug"},
+    {"name": "cpu", "configurePreset": "cpu"},
+    {"name": "cpu-sanitize", "configurePreset": "cpu-sanitize"},
+    {"name": "cuda", "configurePreset": "cuda"},
+    {"name": "cuda-compile", "configurePreset": "cuda-compile"},
+    {"name": "cuda-debug-sync", "configurePreset": "cuda-debug-sync"}
+  ],
+  "testPresets": [
+    {"name": "cpu-debug", "configurePreset": "cpu-debug", "output": {"outputOnFailure": true}},
+    {"name": "cpu", "configurePreset": "cpu", "output": {"outputOnFailure": true}},
+    {"name": "cpu-sanitize", "configurePreset": "cpu-sanitize", "output": {"outputOnFailure": true},
+     "filter": {"exclude": {"label": "oracle"}}},
+    {"name": "cuda", "configurePreset": "cuda", "output": {"outputOnFailure": true}}
+  ]
+}

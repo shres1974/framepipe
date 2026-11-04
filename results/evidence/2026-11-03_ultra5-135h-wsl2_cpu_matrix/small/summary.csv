@@ -1,0 +1,12 @@
+backend,implementation,metric,frame_id,input_width,input_height,output_width,output_height,count,min_ms,max_ms,mean_ms,stddev_ms,median_ms,p95_ms,median_of_run_medians_ms,repetitions
+cpu-omp,openmp-rows(threads=12),application_wall_ms,small_0,640,480,320,240,1000,7.112106,69.571226,11.360365,4.041413,10.528462,16.050390,10.645097,5
+cpu-omp,openmp-rows(threads=12),batch_wall_ms,__batch__,0,0,320,240,5,9.390829,13.888493,11.022886,1.874571,10.166346,13.888493,10.166346,5
+cpu-omp,openmp-rows(threads=12),cpu_core_wall_ms,small_0,640,480,320,240,1000,0.203630,6.519718,0.362512,0.379441,0.287841,0.595111,0.289026,5
+cpu-omp,openmp-rows(threads=12),startup_wall_ms,small_0,640,480,320,240,5,0.149481,0.827551,0.553811,0.306088,0.661422,0.827551,0.661422,5
+cpu-ref,scalar,application_wall_ms,small_0,640,480,320,240,1000,6.939779,16.292652,8.603675,1.134705,8.485999,10.687170,8.724357,5
+cpu-ref,scalar,batch_wall_ms,__batch__,0,0,320,240,5,7.835677,9.573638,8.458435,0.740539,8.098066,9.573638,8.098066,5
+cpu-ref,scalar,cpu_core_wall_ms,small_0,640,480,320,240,1000,1.209691,6.138010,1.531847,0.366338,1.451217,1.977850,1.454807,5
+cpu-ref,scalar,startup_wall_ms,small_0,640,480,320,240,5,0.141205,0.634950,0.432434,0.186454,0.499757,0.634950,0.499757,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,small_0,640,480,320,240,1000,6.329083,18.752692,8.456817,1.251274,8.310901,10.499150,8.018695,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0,0,320,240,5,7.028555,10.915089,9.313936,1.594847,9.051352,10.915089,9.051352,5
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,small_0,640,480,320,240,1000,0.550368,4.254918,0.784294,0.162791,0.786353,0.955322,0.776921,5
