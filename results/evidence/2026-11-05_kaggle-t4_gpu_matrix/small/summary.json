@@ -1,0 +1,989 @@
+{
+  "schema_version": 1,
+  "run_id": "20261105T230327Z-217-137d",
+  "status": "measured",
+  "workload": "repeat",
+  "workload_note": "Each frame processed repeatedly; repeated timings of one image are not independent observations of real-world image diversity.",
+  "counts": {
+    "warmup": 20,
+    "iterations": 100,
+    "repetitions": 3
+  },
+  "statistics_definitions": {
+    "median": "middle value, or mean of the two middle values",
+    "p95": "nearest rank: sorted[ceil(0.95*N)-1]",
+    "stddev": "sample standard deviation (N-1); null when N<2",
+    "pooled_within_runs": "all samples of all repetitions pooled",
+    "median_of_run_medians_ms": "median across repetitions of each repetition's median"
+  },
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "status": "ok",
+      "reason": null,
+      "workspace": {
+        "host_logical_bytes": 1849948,
+        "host_allocated_bytes": 1849948,
+        "device_logical_bytes": 0,
+        "device_allocated_bytes": 0,
+        "pinned_host_bytes": 0,
+        "transfer_mode": ""
+      }
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+      "status": "ok",
+      "reason": null,
+      "threads": 4,
+      "workspace": {
+        "host_logical_bytes": 1849948,
+        "host_allocated_bytes": 1849948,
+        "device_logical_bytes": 0,
+        "device_allocated_bytes": 0,
+        "pinned_host_bytes": 0,
+        "transfer_mode": ""
+      }
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "status": "ok",
+      "reason": null,
+      "threads": 1
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "status": "ok",
+      "reason": null,
+      "workspace": {
+        "host_logical_bytes": 0,
+        "host_allocated_bytes": 0,
+        "device_logical_bytes": 2771548,
+        "device_allocated_bytes": 2955868,
+        "pinned_host_bytes": 1228800,
+        "transfer_mode": "pinned_staging"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+      "metric": "application_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 11.676214,
+        "max_ms": 28.245547,
+        "mean_ms": 13.272867389999993,
+        "stddev_ms": 1.4382551896543565,
+        "median_ms": 12.9825275,
+        "p95_ms": 15.309357
+      },
+      "median_of_run_medians_ms": 12.8810215,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 11.815097,
+          "max_ms": 16.011591,
+          "mean_ms": 12.805529269999997,
+          "stddev_ms": 0.5633420208961073,
+          "median_ms": 12.804627,
+          "p95_ms": 13.519344,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 11.751905,
+          "max_ms": 28.245547,
+          "mean_ms": 14.215697880000002,
+          "stddev_ms": 2.0506445892802216,
+          "median_ms": 14.0026235,
+          "p95_ms": 16.946532,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 11.676214,
+          "max_ms": 15.94027,
+          "mean_ms": 12.797375020000006,
+          "stddev_ms": 0.6149225599428157,
+          "median_ms": 12.8810215,
+          "p95_ms": 13.483403,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+      "metric": "batch_wall_ms",
+      "frame_id": "__batch__",
+      "input_size": [
+        0,
+        0
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 12.04155,
+        "max_ms": 12.792252,
+        "mean_ms": 12.520601666666666,
+        "stddev_ms": 0.4161127948072886,
+        "median_ms": 12.728003,
+        "p95_ms": 12.792252
+      },
+      "median_of_run_medians_ms": 12.728003,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 12.04155,
+          "max_ms": 12.04155,
+          "mean_ms": 12.04155,
+          "stddev_ms": null,
+          "median_ms": 12.04155,
+          "p95_ms": 12.04155,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 12.728003,
+          "max_ms": 12.728003,
+          "mean_ms": 12.728003,
+          "stddev_ms": null,
+          "median_ms": 12.728003,
+          "p95_ms": 12.728003,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 12.792252,
+          "max_ms": 12.792252,
+          "mean_ms": 12.792252,
+          "stddev_ms": null,
+          "median_ms": 12.792252,
+          "p95_ms": 12.792252,
+          "repetition": 2
+        }
+      ],
+      "throughput_completed_fps_median": 78.56692051376795,
+      "throughput_definition": "completed frames / measured batch wall seconds, per repetition"
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+      "metric": "cpu_core_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 1.180623,
+        "max_ms": 1.475406,
+        "mean_ms": 1.3222541899999993,
+        "stddev_ms": 0.05497545389411027,
+        "median_ms": 1.3265965,
+        "p95_ms": 1.40178
+      },
+      "median_of_run_medians_ms": 1.322201,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 1.180623,
+          "max_ms": 1.445755,
+          "mean_ms": 1.3040448599999996,
+          "stddev_ms": 0.055445245185290405,
+          "median_ms": 1.3037670000000001,
+          "p95_ms": 1.398,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 1.223966,
+          "max_ms": 1.431704,
+          "mean_ms": 1.34256036,
+          "stddev_ms": 0.04417598927168149,
+          "median_ms": 1.3540435,
+          "p95_ms": 1.399018,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 1.220568,
+          "max_ms": 1.475406,
+          "mean_ms": 1.3201573499999997,
+          "stddev_ms": 0.05784798348028088,
+          "median_ms": 1.322201,
+          "p95_ms": 1.404871,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cpu-omp",
+      "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+      "metric": "startup_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 0.13729,
+        "max_ms": 0.182225,
+        "mean_ms": 0.16691733333333333,
+        "stddev_ms": 0.02566277842193502,
+        "median_ms": 0.181237,
+        "p95_ms": 0.182225
+      },
+      "median_of_run_medians_ms": 0.181237,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 0.13729,
+          "max_ms": 0.13729,
+          "mean_ms": 0.13729,
+          "stddev_ms": null,
+          "median_ms": 0.13729,
+          "p95_ms": 0.13729,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 0.182225,
+          "max_ms": 0.182225,
+          "mean_ms": 0.182225,
+          "stddev_ms": null,
+          "median_ms": 0.182225,
+          "p95_ms": 0.182225,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 0.181237,
+          "max_ms": 0.181237,
+          "mean_ms": 0.181237,
+          "stddev_ms": null,
+          "median_ms": 0.181237,
+          "p95_ms": 0.181237,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "metric": "application_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 11.586429,
+        "max_ms": 19.803401,
+        "mean_ms": 12.844528886666666,
+        "stddev_ms": 0.8647636594666318,
+        "median_ms": 12.8085945,
+        "p95_ms": 13.933776
+      },
+      "median_of_run_medians_ms": 12.8124535,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 11.586429,
+          "max_ms": 14.738362,
+          "mean_ms": 12.756060119999999,
+          "stddev_ms": 0.6337289509806506,
+          "median_ms": 12.815345,
+          "p95_ms": 13.510783,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 11.625597,
+          "max_ms": 14.178464,
+          "mean_ms": 12.757985779999991,
+          "stddev_ms": 0.5174215603504423,
+          "median_ms": 12.8124535,
+          "p95_ms": 13.538328,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 11.708374,
+          "max_ms": 19.803401,
+          "mean_ms": 13.019540760000009,
+          "stddev_ms": 1.2420985544016017,
+          "median_ms": 12.7757545,
+          "p95_ms": 15.459959,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "metric": "batch_wall_ms",
+      "frame_id": "__batch__",
+      "input_size": [
+        0,
+        0
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 11.87587,
+        "max_ms": 12.748768,
+        "mean_ms": 12.367526,
+        "stddev_ms": 0.4468010386603859,
+        "median_ms": 12.47794,
+        "p95_ms": 12.748768
+      },
+      "median_of_run_medians_ms": 12.47794,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 11.87587,
+          "max_ms": 11.87587,
+          "mean_ms": 11.87587,
+          "stddev_ms": null,
+          "median_ms": 11.87587,
+          "p95_ms": 11.87587,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 12.748768,
+          "max_ms": 12.748768,
+          "mean_ms": 12.748768,
+          "stddev_ms": null,
+          "median_ms": 12.748768,
+          "p95_ms": 12.748768,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 12.47794,
+          "max_ms": 12.47794,
+          "mean_ms": 12.47794,
+          "stddev_ms": null,
+          "median_ms": 12.47794,
+          "p95_ms": 12.47794,
+          "repetition": 2
+        }
+      ],
+      "throughput_completed_fps_median": 80.14143360202085,
+      "throughput_definition": "completed frames / measured batch wall seconds, per repetition"
+    },
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "metric": "cpu_core_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 2.428513,
+        "max_ms": 4.4985290000000004,
+        "mean_ms": 2.7023066599999983,
+        "stddev_ms": 0.1669275665107126,
+        "median_ms": 2.6865215,
+        "p95_ms": 2.829099
+      },
+      "median_of_run_medians_ms": 2.6853445,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 2.476403,
+          "max_ms": 4.05452,
+          "mean_ms": 2.7133265399999993,
+          "stddev_ms": 0.1771077554648194,
+          "median_ms": 2.6853445,
+          "p95_ms": 2.829099,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 2.45517,
+          "max_ms": 4.4985290000000004,
+          "mean_ms": 2.70572843,
+          "stddev_ms": 0.215067712818815,
+          "median_ms": 2.681127,
+          "p95_ms": 2.951549,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 2.428513,
+          "max_ms": 2.90638,
+          "mean_ms": 2.68786501,
+          "stddev_ms": 0.0786824353585309,
+          "median_ms": 2.6918435,
+          "p95_ms": 2.803776,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cpu-ref",
+      "implementation": "scalar",
+      "metric": "startup_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 0.170129,
+        "max_ms": 0.212823,
+        "mean_ms": 0.19547366666666668,
+        "stddev_ms": 0.022441889967944623,
+        "median_ms": 0.203469,
+        "p95_ms": 0.212823
+      },
+      "median_of_run_medians_ms": 0.203469,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 0.170129,
+          "max_ms": 0.170129,
+          "mean_ms": 0.170129,
+          "stddev_ms": null,
+          "median_ms": 0.170129,
+          "p95_ms": 0.170129,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 0.212823,
+          "max_ms": 0.212823,
+          "mean_ms": 0.212823,
+          "stddev_ms": null,
+          "median_ms": 0.212823,
+          "p95_ms": 0.212823,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 0.203469,
+          "max_ms": 0.203469,
+          "mean_ms": 0.203469,
+          "stddev_ms": null,
+          "median_ms": 0.203469,
+          "p95_ms": 0.203469,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "metric": "application_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 9.201583,
+        "max_ms": 14.826802,
+        "mean_ms": 10.285458450000004,
+        "stddev_ms": 0.5627961664737058,
+        "median_ms": 10.2762295,
+        "p95_ms": 10.967202
+      },
+      "median_of_run_medians_ms": 10.2686435,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 9.266291,
+          "max_ms": 14.826802,
+          "mean_ms": 10.43591445,
+          "stddev_ms": 0.6261138828384483,
+          "median_ms": 10.4574915,
+          "p95_ms": 10.967202,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 9.497052,
+          "max_ms": 11.16196,
+          "mean_ms": 10.312766960000001,
+          "stddev_ms": 0.4479496531468939,
+          "median_ms": 10.2686435,
+          "p95_ms": 10.968214,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 9.201583,
+          "max_ms": 12.297406,
+          "mean_ms": 10.107693939999999,
+          "stddev_ms": 0.5553390855094035,
+          "median_ms": 9.9848165,
+          "p95_ms": 10.933175,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "metric": "batch_wall_ms",
+      "frame_id": "__batch__",
+      "input_size": [
+        0,
+        0
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 10.510427,
+        "max_ms": 10.915213,
+        "mean_ms": 10.721858333333332,
+        "stddev_ms": 0.20299753904255405,
+        "median_ms": 10.739935,
+        "p95_ms": 10.915213
+      },
+      "median_of_run_medians_ms": 10.739935,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 10.915213,
+          "max_ms": 10.915213,
+          "mean_ms": 10.915213,
+          "stddev_ms": null,
+          "median_ms": 10.915213,
+          "p95_ms": 10.915213,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 10.739935,
+          "max_ms": 10.739935,
+          "mean_ms": 10.739935,
+          "stddev_ms": null,
+          "median_ms": 10.739935,
+          "p95_ms": 10.739935,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 10.510427,
+          "max_ms": 10.510427,
+          "mean_ms": 10.510427,
+          "stddev_ms": null,
+          "median_ms": 10.510427,
+          "p95_ms": 10.510427,
+          "repetition": 2
+        }
+      ],
+      "throughput_completed_fps_median": 93.11043316370166,
+      "throughput_definition": "completed frames / measured batch wall seconds, per repetition"
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "metric": "gpu_device_pipeline_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 0.057631999254226685,
+        "max_ms": 0.08899199962615967,
+        "mean_ms": 0.06020703997462988,
+        "stddev_ms": 0.002585541246148745,
+        "median_ms": 0.05984000116586685,
+        "p95_ms": 0.06204799935221672
+      },
+      "median_of_run_medians_ms": 0.05991999991238117,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 0.058368001133203506,
+          "max_ms": 0.07001599669456482,
+          "mean_ms": 0.060354560017585754,
+          "stddev_ms": 0.0016655758975959666,
+          "median_ms": 0.05995199829339981,
+          "p95_ms": 0.06355199962854385,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 0.05801599845290184,
+          "max_ms": 0.08899199962615967,
+          "mean_ms": 0.06009439989924431,
+          "stddev_ms": 0.003033371157821897,
+          "median_ms": 0.05991999991238117,
+          "p95_ms": 0.06115199998021126,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 0.057631999254226685,
+          "max_ms": 0.08320000022649765,
+          "mean_ms": 0.06017216000705958,
+          "stddev_ms": 0.002859827111080582,
+          "median_ms": 0.05974400043487549,
+          "p95_ms": 0.06143999844789505,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "metric": "gpu_transfer_inclusive_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 0.260348,
+        "max_ms": 0.329004,
+        "mean_ms": 0.2765671966666663,
+        "stddev_ms": 0.008967949441684962,
+        "median_ms": 0.2747575,
+        "p95_ms": 0.292204
+      },
+      "median_of_run_medians_ms": 0.27309950000000005,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 0.260348,
+          "max_ms": 0.298402,
+          "mean_ms": 0.2745607100000001,
+          "stddev_ms": 0.008607612459235359,
+          "median_ms": 0.272812,
+          "p95_ms": 0.293225,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 0.266447,
+          "max_ms": 0.329004,
+          "mean_ms": 0.28000437,
+          "stddev_ms": 0.009126854822036188,
+          "median_ms": 0.2785425,
+          "p95_ms": 0.292244,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 0.264805,
+          "max_ms": 0.302234,
+          "mean_ms": 0.2751365100000001,
+          "stddev_ms": 0.008212120280716155,
+          "median_ms": 0.27309950000000005,
+          "p95_ms": 0.290598,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "cuda",
+      "implementation": "cuda-basic(block=16x16)",
+      "metric": "startup_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 1.711745,
+        "max_ms": 1.8627,
+        "mean_ms": 1.7839703333333332,
+        "stddev_ms": 0.07568740166192343,
+        "median_ms": 1.777466,
+        "p95_ms": 1.8627
+      },
+      "median_of_run_medians_ms": 1.777466,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 1.711745,
+          "max_ms": 1.711745,
+          "mean_ms": 1.711745,
+          "stddev_ms": null,
+          "median_ms": 1.711745,
+          "p95_ms": 1.711745,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 1.8627,
+          "max_ms": 1.8627,
+          "mean_ms": 1.8627,
+          "stddev_ms": null,
+          "median_ms": 1.8627,
+          "p95_ms": 1.8627,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 1.777466,
+          "max_ms": 1.777466,
+          "mean_ms": 1.777466,
+          "stddev_ms": null,
+          "median_ms": 1.777466,
+          "p95_ms": 1.777466,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "metric": "application_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 10.064202,
+        "max_ms": 14.412818,
+        "mean_ms": 11.356861133333338,
+        "stddev_ms": 0.6057595254405628,
+        "median_ms": 11.3169225,
+        "p95_ms": 12.209499
+      },
+      "median_of_run_medians_ms": 11.362147,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 10.396346,
+          "max_ms": 14.412818,
+          "mean_ms": 11.468083479999997,
+          "stddev_ms": 0.6489593072891257,
+          "median_ms": 11.362147,
+          "p95_ms": 12.43273,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 10.258176,
+          "max_ms": 13.408724,
+          "mean_ms": 11.420741369999998,
+          "stddev_ms": 0.5507764068566962,
+          "median_ms": 11.365854500000001,
+          "p95_ms": 12.209499,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 10.064202,
+          "max_ms": 12.650561,
+          "mean_ms": 11.181758550000005,
+          "stddev_ms": 0.579789710829735,
+          "median_ms": 11.141893,
+          "p95_ms": 11.976029,
+          "repetition": 2
+        }
+      ]
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "metric": "batch_wall_ms",
+      "frame_id": "__batch__",
+      "input_size": [
+        0,
+        0
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 3,
+        "min_ms": 10.655744,
+        "max_ms": 11.260848,
+        "mean_ms": 11.002028999999999,
+        "stddev_ms": 0.3118901065615895,
+        "median_ms": 11.089495,
+        "p95_ms": 11.260848
+      },
+      "median_of_run_medians_ms": 11.089495,
+      "per_run": [
+        {
+          "count": 1,
+          "min_ms": 10.655744,
+          "max_ms": 10.655744,
+          "mean_ms": 10.655744,
+          "stddev_ms": null,
+          "median_ms": 10.655744,
+          "p95_ms": 10.655744,
+          "repetition": 0
+        },
+        {
+          "count": 1,
+          "min_ms": 11.089495,
+          "max_ms": 11.089495,
+          "mean_ms": 11.089495,
+          "stddev_ms": null,
+          "median_ms": 11.089495,
+          "p95_ms": 11.089495,
+          "repetition": 1
+        },
+        {
+          "count": 1,
+          "min_ms": 11.260848,
+          "max_ms": 11.260848,
+          "mean_ms": 11.260848,
+          "stddev_ms": null,
+          "median_ms": 11.260848,
+          "p95_ms": 11.260848,
+          "repetition": 2
+        }
+      ],
+      "throughput_completed_fps_median": 90.17543179378322,
+      "throughput_definition": "completed frames / measured batch wall seconds, per repetition"
+    },
+    {
+      "backend": "opencv-cpu",
+      "implementation": "opencv-imgproc 4.10.0 (threads=1)",
+      "metric": "cpu_core_wall_ms",
+      "frame_id": "small_0",
+      "input_size": [
+        640,
+        480
+      ],
+      "output_size": [
+        320,
+        240
+      ],
+      "pooled_within_runs": {
+        "count": 300,
+        "min_ms": 1.065524,
+        "max_ms": 1.847405,
+        "mean_ms": 1.1881309500000008,
+        "stddev_ms": 0.07354930847905138,
+        "median_ms": 1.1826515,
+        "p95_ms": 1.296308
+      },
+      "median_of_run_medians_ms": 1.1807945,
+      "per_run": [
+        {
+          "count": 100,
+          "min_ms": 1.065524,
+          "max_ms": 1.847405,
+          "mean_ms": 1.1946326899999997,
+          "stddev_ms": 0.09747734971835792,
+          "median_ms": 1.1807945,
+          "p95_ms": 1.340408,
+          "repetition": 0
+        },
+        {
+          "count": 100,
+          "min_ms": 1.069846,
+          "max_ms": 1.410871,
+          "mean_ms": 1.1762855700000006,
+          "stddev_ms": 0.06272757971864278,
+          "median_ms": 1.170717,
+          "p95_ms": 1.264796,
+          "repetition": 1
+        },
+        {
+          "count": 100,
+          "min_ms": 1.09426,
+          "max_ms": 1.327039,
+          "mean_ms": 1.1934745899999997,
+          "stddev_ms": 0.05184524418174288,
+          "median_ms": 1.1974545,
+          "p95_ms": 1.278426,
+          "repetition": 2
+        }
+      ]
+    }
+  ],
+  "ratios": [
+    {
+      "frame_id": "small_0",
+      "host_processing_speedup_vs_scalar_cpu_ref": 9.777791325077569,
+      "host_processing_speedup_vs_cpu_omp": 4.828244906872424,
+      "resident_processing_ratio_vs_scalar_cpu_ref": 44.89507766808685,
+      "cpu_omp_speedup_vs_scalar_cpu_ref": 2.0251233136827964,
+      "note": "Ratios of pooled medians. resident_processing_ratio describes GPU-resident processing and is NOT an application speedup. null means a required measurement was not taken."
+    }
+  ],
+  "zero_duration_samples": 0,
+  "math_config_hash": "87bd25cc24f7e5dcf83b400e91d9cae67045bd98afba716b859a3355622443f1"
+}

@@ -1,0 +1,50 @@
+{
+  "env": {
+    "rc": 0,
+    "secs": 1
+  },
+  "clone": {
+    "rc": 0,
+    "secs": 1
+  },
+  "pip": {
+    "rc": 0,
+    "secs": 8
+  },
+  "deps": {
+    "rc": 0,
+    "secs": 360
+  },
+  "configure": {
+    "rc": 0,
+    "secs": 17
+  },
+  "build": {
+    "rc": 0,
+    "secs": 56
+  },
+  "doctor": {
+    "rc": 0,
+    "secs": 1
+  },
+  "test_all": {
+    "rc": 8,
+    "secs": 15
+  },
+  "test_gpu": {
+    "rc": 0,
+    "secs": 6
+  },
+  "fixtures": {
+    "rc": 0,
+    "secs": 16
+  },
+  "bench": {
+    "rc": 0,
+    "secs": 2197
+  },
+  "validate": {
+    "rc": 0,
+    "secs": 2
+  }
+}

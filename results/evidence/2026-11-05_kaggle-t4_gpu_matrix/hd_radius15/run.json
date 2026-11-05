@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "run_id": "20261105T232952Z-4819-13d7",
+  "started_utc": "2026-11-05T23:29:52Z",
+  "finished_utc": "2026-11-05T23:33:14Z",
+  "command_line": "framepipe benchmark --manifest data/bench/hd.jsonl --config data/bench/hd.config.json --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --warmup 20 --iterations 100 --repetitions 3 --threads 4 --output-dir /kaggle/working/kaggle_gpu/hd_radius15 --radius 15",
+  "git_revision": "fd080d4071e814e937f1904abdefa32ffcd131f6",
+  "git_dirty": false,
+  "git_note": null,
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "data/bench/hd.jsonl",
+    "sha256": "80efc70bba8ab3e48ee68be1f77405b364a630972304bbeac02be335b212abfd",
+    "frames": 1
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref"
+      ]
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref",
+        "cpu-omp"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing",
+    "device_pipeline",
+    "application",
+    "startup",
+    "batch"
+  ],
+  "math_config_hash": "18fea59eb684d4d82f6acb552dbaeee74bf6aecbc04968875e7a0fdf5c2cbdf1",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

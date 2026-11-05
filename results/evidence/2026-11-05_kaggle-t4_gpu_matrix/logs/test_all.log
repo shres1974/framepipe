@@ -1,0 +1,340 @@
+Internal ctest changing into directory: /tmp/framepipe/build/cuda
+Test project /tmp/framepipe/build/cuda
+        Start   1: Grayscale.PrimaryColorsExact
+  1/125 Test   #1: Grayscale.PrimaryColorsExact ..............................   Passed    0.00 sec
+        Start   2: Grayscale.ExhaustiveIntegerConvention
+  2/125 Test   #2: Grayscale.ExhaustiveIntegerConvention .....................   Passed    0.05 sec
+        Start   3: Grayscale.ChannelOrderMatters
+  3/125 Test   #3: Grayscale.ChannelOrderMatters .............................   Passed    0.00 sec
+        Start   4: Grayscale.NormalizationAndPaddedStride
+  4/125 Test   #4: Grayscale.NormalizationAndPaddedStride ....................   Passed    0.00 sec
+        Start   5: Grayscale.Gray8PassThrough
+  5/125 Test   #5: Grayscale.Gray8PassThrough ................................   Passed    0.00 sec
+        Start   6: ResizeTables.IdentityIsExact
+  6/125 Test   #6: ResizeTables.IdentityIsExact ..............................   Passed    0.00 sec
+        Start   7: ResizeTables.UpscaleNegativeFractionalCoordinateAtEdge
+  7/125 Test   #7: ResizeTables.UpscaleNegativeFractionalCoordinateAtEdge ....   Passed    0.00 sec
+        Start   8: ResizeTables.TruncationWouldDiffer
+  8/125 Test   #8: ResizeTables.TruncationWouldDiffer ........................   Passed    0.00 sec
+        Start   9: ResizeTables.DownscaleToOne
+  9/125 Test   #9: ResizeTables.DownscaleToOne ...............................   Passed    0.00 sec
+        Start  10: ResizeTables.OnePixelInputClampsEverything
+ 10/125 Test  #10: ResizeTables.OnePixelInputClampsEverything ................   Passed    0.00 sec
+        Start  11: ResizeTables.MatchesDoubleFormulaManyRatios
+ 11/125 Test  #11: ResizeTables.MatchesDoubleFormulaManyRatios ...............   Passed    0.00 sec
+        Start  12: GaussianWeights.RadiusZeroIsOne
+ 12/125 Test  #12: GaussianWeights.RadiusZeroIsOne ...........................   Passed    0.00 sec
+        Start  13: GaussianWeights.SymmetricNormalized
+ 13/125 Test  #13: GaussianWeights.SymmetricNormalized .......................   Passed    0.01 sec
+        Start  14: GaussianWeights.MatchesDoubleDefinition
+ 14/125 Test  #14: GaussianWeights.MatchesDoubleDefinition ...................   Passed    0.00 sec
+        Start  15: GaussianWeights.RejectsOutOfRange
+ 15/125 Test  #15: GaussianWeights.RejectsOutOfRange .........................   Passed    0.01 sec
+        Start  16: Resize.HandFixture2x2To3x3
+ 16/125 Test  #16: Resize.HandFixture2x2To3x3 ................................   Passed    0.00 sec
+        Start  17: Resize.HandFixture2x2To1x1
+ 17/125 Test  #17: Resize.HandFixture2x2To1x1 ................................   Passed    0.00 sec
+        Start  18: Resize.IdentityIsExact
+ 18/125 Test  #18: Resize.IdentityIsExact ....................................   Passed    0.00 sec
+        Start  19: Resize.OnePixelToAnySize
+ 19/125 Test  #19: Resize.OnePixelToAnySize ..................................   Passed    0.00 sec
+        Start  20: Resize.HorizontalRampDownscalePreservesLinearInterior
+ 20/125 Test  #20: Resize.HorizontalRampDownscalePreservesLinearInterior .....   Passed    0.00 sec
+        Start  21: Resize.PaddedInputAndOutputViews
+ 21/125 Test  #21: Resize.PaddedInputAndOutputViews ..........................   Passed    0.00 sec
+        Start  22: Gaussian.ConstantStaysConstantIncludingCorners
+ 22/125 Test  #22: Gaussian.ConstantStaysConstantIncludingCorners ............   Passed    0.00 sec
+        Start  23: Gaussian.RadiusZeroIsIdentity
+ 23/125 Test  #23: Gaussian.RadiusZeroIsIdentity .............................   Passed    0.00 sec
+        Start  24: Gaussian.ImpulseResponseIsOuterProductOfWeights
+ 24/125 Test  #24: Gaussian.ImpulseResponseIsOuterProductOfWeights ...........   Passed    0.00 sec
+        Start  25: Gaussian.ReplicatedBorderAtEdge
+ 25/125 Test  #25: Gaussian.ReplicatedBorderAtEdge ...........................   Passed    0.00 sec
+        Start  26: Gaussian.PaddedViewsMatchPacked
+ 26/125 Test  #26: Gaussian.PaddedViewsMatchPacked ...........................   Passed    0.00 sec
+        Start  27: Sobel.HorizontalRampHandFixture
+ 27/125 Test  #27: Sobel.HorizontalRampHandFixture ...........................   Passed    0.00 sec
+        Start  28: Sobel.SignsAreCorrelationNotConvolution
+ 28/125 Test  #28: Sobel.SignsAreCorrelationNotConvolution ...................   Passed    0.00 sec
+        Start  29: Sobel.ConstantAndOnePixelAreZero
+ 29/125 Test  #29: Sobel.ConstantAndOnePixelAreZero ..........................   Passed    0.00 sec
+        Start  30: Sobel.ReplicatedBorderAtRampEdge
+ 30/125 Test  #30: Sobel.ReplicatedBorderAtRampEdge ..........................   Passed    0.00 sec
+        Start  31: Sobel.MaxResponseClampsToOne
+ 31/125 Test  #31: Sobel.MaxResponseClampsToOne ..............................   Passed    0.00 sec
+        Start  32: Sobel.PaddedOutput
+ 32/125 Test  #32: Sobel.PaddedOutput ........................................   Passed    0.00 sec
+        Start  33: ImageView.ValidInputViews
+ 33/125 Test  #33: ImageView.ValidInputViews .................................   Passed    0.00 sec
+        Start  34: ImageView.ZeroAndNegativeDimensions
+ 34/125 Test  #34: ImageView.ZeroAndNegativeDimensions .......................   Passed    0.00 sec
+        Start  35: ImageView.StrideTooSmall
+ 35/125 Test  #35: ImageView.StrideTooSmall ..................................   Passed    0.00 sec
+        Start  36: ImageView.ExtentCannotContainLastPixel
+ 36/125 Test  #36: ImageView.ExtentCannotContainLastPixel ....................   Passed    0.00 sec
+        Start  37: ImageView.NullData
+ 37/125 Test  #37: ImageView.NullData ........................................   Passed    0.00 sec
+        Start  38: ImageView.FloatStrideMustBeMultipleOfFloat
+ 38/125 Test  #38: ImageView.FloatStrideMustBeMultipleOfFloat ................   Passed    0.00 sec
+        Start  39: ImageView.FloatMisalignedPointer
+ 39/125 Test  #39: ImageView.FloatMisalignedPointer ..........................   Passed    0.00 sec
+        Start  40: ImageView.MaxDimension
+ 40/125 Test  #40: ImageView.MaxDimension ....................................   Passed    0.00 sec
+        Start  41: ImageView.CheckedArithmeticOverflow
+ 41/125 Test  #41: ImageView.CheckedArithmeticOverflow .......................   Passed    0.00 sec
+        Start  42: ImageView.OverlapDetection
+ 42/125 Test  #42: ImageView.OverlapDetection ................................   Passed    0.00 sec
+        Start  43: ImageView.HostFloatImageFillsWithNaN
+ 43/125 Test  #43: ImageView.HostFloatImageFillsWithNaN ......................   Passed    0.00 sec
+        Start  44: Config.DefaultsMatchSpec
+ 44/125 Test  #44: Config.DefaultsMatchSpec ..................................   Passed    0.00 sec
+        Start  45: Config.RoundTripResolved
+ 45/125 Test  #45: Config.RoundTripResolved ..................................   Passed    0.00 sec
+        Start  46: Config.PartialOverridesBase
+ 46/125 Test  #46: Config.PartialOverridesBase ...............................   Passed    0.00 sec
+        Start  47: Config.UnknownFieldsRejected
+ 47/125 Test  #47: Config.UnknownFieldsRejected ..............................   Passed    0.00 sec
+        Start  48: Config.BadEnumsRejected
+ 48/125 Test  #48: Config.BadEnumsRejected ...................................   Passed    0.00 sec
+        Start  49: Config.RangesEnforced
+ 49/125 Test  #49: Config.RangesEnforced .....................................   Passed    0.00 sec
+        Start  50: Config.TypesEnforced
+ 50/125 Test  #50: Config.TypesEnforced ......................................   Passed    0.00 sec
+        Start  51: Config.SchemaVersionRequired
+ 51/125 Test  #51: Config.SchemaVersionRequired ..............................   Passed    0.00 sec
+        Start  52: Config.NaNSigmaRejectedProgrammatically
+ 52/125 Test  #52: Config.NaNSigmaRejectedProgrammatically ...................   Passed    0.00 sec
+        Start  53: Config.HashCoversMathParametersOnly
+ 53/125 Test  #53: Config.HashCoversMathParametersOnly .......................   Passed    0.00 sec
+        Start  54: Config.ExampleFilesParse
+ 54/125 Test  #54: Config.ExampleFilesParse ..................................   Passed    0.00 sec
+        Start  55: Pipeline.HandFixtureGray1x1
+ 55/125 Test  #55: Pipeline.HandFixtureGray1x1 ...............................   Passed    0.00 sec
+        Start  56: Pipeline.OutputStagePrefixMatchesCapture
+ 56/125 Test  #56: Pipeline.OutputStagePrefixMatchesCapture ..................   Passed    0.00 sec
+        Start  57: Pipeline.ExplicitCudaNeverFallsBack
+ 57/125 Test  #57: Pipeline.ExplicitCudaNeverFallsBack .......................***Skipped   0.50 sec
+        Start  58: Pipeline.WrongDeviceIndexIsReported
+ 58/125 Test  #58: Pipeline.WrongDeviceIndexIsReported .......................   Passed    0.23 sec
+        Start  59: Pipeline.AutoSelectsAndReportsReason
+ 59/125 Test  #59: Pipeline.AutoSelectsAndReportsReason ......................   Passed    0.49 sec
+        Start  60: Pipeline.MustPrepareFirst
+ 60/125 Test  #60: Pipeline.MustPrepareFirst .................................   Passed    0.00 sec
+        Start  61: Pipeline.RejectsWrongOutputSize
+ 61/125 Test  #61: Pipeline.RejectsWrongOutputSize ...........................   Passed    0.00 sec
+        Start  62: Pipeline.RejectsShapeMismatchWithoutReprepare
+ 62/125 Test  #62: Pipeline.RejectsShapeMismatchWithoutReprepare .............   Passed    0.00 sec
+        Start  63: Pipeline.RejectsOverlappingBuffers
+ 63/125 Test  #63: Pipeline.RejectsOverlappingBuffers ........................   Passed    0.00 sec
+        Start  64: Pipeline.PrepareRejectsOversizeInputPerConfig
+ 64/125 Test  #64: Pipeline.PrepareRejectsOversizeInputPerConfig .............   Passed    0.00 sec
+        Start  65: Pipeline.CroppedInputViewMatchesCopiedImage
+ 65/125 Test  #65: Pipeline.CroppedInputViewMatchesCopiedImage ...............   Passed    0.00 sec
+        Start  66: Lifecycle.RepeatedPrepareAndShapeChanges
+ 66/125 Test  #66: Lifecycle.RepeatedPrepareAndShapeChanges ..................   Passed    0.00 sec
+        Start  67: Lifecycle.SteadyStateRetainedAllocationIsStable
+ 67/125 Test  #67: Lifecycle.SteadyStateRetainedAllocationIsStable ...........   Passed    0.03 sec
+        Start  68: Lifecycle.ReprepareSameShapeKeepsRetainedBytes
+ 68/125 Test  #68: Lifecycle.ReprepareSameShapeKeepsRetainedBytes ............   Passed    0.00 sec
+        Start  69: Lifecycle.FailureHalfwayThroughAllocation
+ 69/125 Test  #69: Lifecycle.FailureHalfwayThroughAllocation .................   Passed    0.00 sec
+        Start  70: Lifecycle.DestructionAfterFailedOperation
+ 70/125 Test  #70: Lifecycle.DestructionAfterFailedOperation .................   Passed    0.00 sec
+        Start  71: Lifecycle.IndependentInstancesHaveIndependentParameters
+ 71/125 Test  #71: Lifecycle.IndependentInstancesHaveIndependentParameters ...   Passed    0.00 sec
+        Start  72: Lifecycle.MovedFromPipelineIsSafe
+ 72/125 Test  #72: Lifecycle.MovedFromPipelineIsSafe .........................   Passed    0.00 sec
+        Start  73: Lifecycle.HostBufferMoveOnlyNoDoubleFree
+ 73/125 Test  #73: Lifecycle.HostBufferMoveOnlyNoDoubleFree ..................   Passed    0.00 sec
+        Start  74: Compare.ExactMatchHasNullPsnr
+ 74/125 Test  #74: Compare.ExactMatchHasNullPsnr .............................   Passed    0.00 sec
+        Start  75: Compare.ToleranceRuleAndDiagnostics
+ 75/125 Test  #75: Compare.ToleranceRuleAndDiagnostics .......................   Passed    0.00 sec
+        Start  76: Compare.NonFiniteAlwaysFails
+ 76/125 Test  #76: Compare.NonFiniteAlwaysFails ..............................   Passed    0.00 sec
+        Start  77: Compare.DimensionMismatchFails
+ 77/125 Test  #77: Compare.DimensionMismatchFails ............................   Passed    0.00 sec
+        Start  78: Compare.RangeCheckForEdges
+ 78/125 Test  #78: Compare.RangeCheckForEdges ................................   Passed    0.00 sec
+        Start  79: Compare.SpecToleranceTable
+ 79/125 Test  #79: Compare.SpecToleranceTable ................................   Passed    0.00 sec
+        Start  80: CpuParallel.MatchesReferenceExactly
+ 80/125 Test  #80: CpuParallel.MatchesReferenceExactly .......................   Passed    0.07 sec
+        Start  81: CpuParallel.UnavailableIsExplicit
+ 81/125 Test  #81: CpuParallel.UnavailableIsExplicit .........................***Skipped   0.00 sec
+        Start  82: Sha256.KnownVectors
+ 82/125 Test  #82: Sha256.KnownVectors .......................................   Passed    0.01 sec
+        Start  83: RandomMatrix.GeometryRatiosAndRadii
+ 83/125 Test  #83: RandomMatrix.GeometryRatiosAndRadii .......................   Passed    0.02 sec
+        Start  84: RandomMatrix.IntensityExtremes
+ 84/125 Test  #84: RandomMatrix.IntensityExtremes ............................   Passed    0.00 sec
+        Start  85: ImageIo.BgrIsReorderedToRgb
+ 85/125 Test  #85: ImageIo.BgrIsReorderedToRgb ...............................   Passed    0.01 sec
+        Start  86: ImageIo.GrayPreserved
+ 86/125 Test  #86: ImageIo.GrayPreserved .....................................   Passed    0.01 sec
+        Start  87: ImageIo.RejectsAlpha16BitAndCorrupt
+ 87/125 Test  #87: ImageIo.RejectsAlpha16BitAndCorrupt .......................   Passed    0.01 sec
+        Start  88: ImageIo.JpegDecodes
+ 88/125 Test  #88: ImageIo.JpegDecodes .......................................   Passed    0.01 sec
+        Start  89: ImageIo.ExifOrientationIgnored
+ 89/125 Test  #89: ImageIo.ExifOrientationIgnored ............................   Passed    0.00 sec
+        Start  90: ImageIo.MaxDimensionEnforcedAtDecode
+ 90/125 Test  #90: ImageIo.MaxDimensionEnforcedAtDecode ......................   Passed    0.01 sec
+        Start  91: ImageIo.QuantizationFormula
+ 91/125 Test  #91: ImageIo.QuantizationFormula ...............................   Passed    0.00 sec
+        Start  92: ImageIo.QuantizedPngRoundTrip
+ 92/125 Test  #92: ImageIo.QuantizedPngRoundTrip .............................   Passed    0.00 sec
+        Start  93: Manifest.ParsesOrderAndRelativePaths
+ 93/125 Test  #93: Manifest.ParsesOrderAndRelativePaths ......................   Passed    0.01 sec
+        Start  94: Manifest.RejectsBadRecords
+ 94/125 Test  #94: Manifest.RejectsBadRecords ................................   Passed    0.01 sec
+        Start  95: BoundedQueue.BlocksWhenFullAndPreservesOrder
+ 95/125 Test  #95: BoundedQueue.BlocksWhenFullAndPreservesOrder ..............   Passed    0.06 sec
+        Start  96: Batch.PreservesOrderIdsAndHandlesShapeChanges
+ 96/125 Test  #96: Batch.PreservesOrderIdsAndHandlesShapeChanges .............   Passed    0.01 sec
+        Start  97: Batch.FailFastStopsAndRecords
+ 97/125 Test  #97: Batch.FailFastStopsAndRecords .............................   Passed    0.01 sec
+        Start  98: Batch.ContinueOnErrorRecordsEveryFailure
+ 98/125 Test  #98: Batch.ContinueOnErrorRecordsEveryFailure ..................   Passed    0.01 sec
+        Start  99: Batch.BackpressureBoundsDecodedFramesAndMemory
+ 99/125 Test  #99: Batch.BackpressureBoundsDecodedFramesAndMemory ............   Passed    0.02 sec
+        Start 100: Batch.RefusesOverwriteByDefault
+100/125 Test #100: Batch.RefusesOverwriteByDefault ...........................   Passed    0.01 sec
+        Start 101: Harness.CpuRunProducesAllArtifacts
+101/125 Test #101: Harness.CpuRunProducesAllArtifacts ........................***Failed    0.55 sec
+Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Harness.CpuRunProducesAllArtifacts
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Harness
+[ RUN      ] Harness.CpuRunProducesAllArtifacts
+benchmark: wrote 68 samples to /tmp/framepipe_bench_4591_CpuRunProducesAllArtifacts/out (status measured)
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+/tmp/framepipe/tests/integration/test_harness.cpp:71: Failure
+Expected: (s["metric"]) != ("gpu_device_pipeline_ms"), actual: "gpu_device_pipeline_ms" vs 0x5d52b5cba263
+device_pipeline must not be synthesized for CPU
+
+[  FAILED  ] Harness.CpuRunProducesAllArtifacts (401 ms)
+[----------] 1 test from Harness (401 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (401 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Harness.CpuRunProducesAllArtifacts
+
+ 1 FAILED TEST
+
+        Start 102: Harness.RefusesToOverwrite
+102/125 Test #102: Harness.RefusesToOverwrite ................................   Passed    0.01 sec
+        Start 103: Harness.OmpAndOpenCvBaselineValidatedAndLabeled
+103/125 Test #103: Harness.OmpAndOpenCvBaselineValidatedAndLabeled ...........   Passed    0.23 sec
+        Start 104: Harness.BadArguments
+104/125 Test #104: Harness.BadArguments ......................................   Passed    0.01 sec
+        Start 105: Stats.MedianOddEven
+105/125 Test #105: Stats.MedianOddEven .......................................   Passed    0.00 sec
+        Start 106: Stats.P95NearestRank
+106/125 Test #106: Stats.P95NearestRank ......................................   Passed    0.00 sec
+        Start 107: Stats.FullSummary
+107/125 Test #107: Stats.FullSummary .........................................   Passed    0.00 sec
+        Start 108: Stats.SingleSampleHasNoStddev
+108/125 Test #108: Stats.SingleSampleHasNoStddev .............................   Passed    0.00 sec
+        Start 109: Stats.EmptyThrows
+109/125 Test #109: Stats.EmptyThrows .........................................   Passed    0.00 sec
+        Start 110: CudaParity.LaunchBoundaryAndSmallGeometry
+110/125 Test #110: CudaParity.LaunchBoundaryAndSmallGeometry .................   Passed    0.62 sec
+        Start 111: CudaParity.ResizeRatiosAndOneByOne
+111/125 Test #111: CudaParity.ResizeRatiosAndOneByOne ........................   Passed    0.51 sec
+        Start 112: CudaParity.GaussianRadiiAndSigmas
+112/125 Test #112: CudaParity.GaussianRadiiAndSigmas .........................   Passed    0.53 sec
+        Start 113: CudaParity.IntensityExtremesAndStructuredPatterns
+113/125 Test #113: CudaParity.IntensityExtremesAndStructuredPatterns .........   Passed    0.51 sec
+        Start 114: CudaParity.CroppedInputView
+114/125 Test #114: CudaParity.CroppedInputView ...............................   Passed    0.48 sec
+        Start 115: CudaParity.PinnedAndPageableTransferPathsAgree
+115/125 Test #115: CudaParity.PinnedAndPageableTransferPathsAgree ............   Passed    0.47 sec
+        Start 116: CudaParity.DeviceResidentPathMatches
+116/125 Test #116: CudaParity.DeviceResidentPathMatches ......................   Passed    0.48 sec
+        Start 117: CudaLifecycle.NoDeviceAllocationInSteadyState
+117/125 Test #117: CudaLifecycle.NoDeviceAllocationInSteadyState .............   Passed    0.49 sec
+        Start 118: CudaLifecycle.ReprepareShapeChangesAndInstances
+118/125 Test #118: CudaLifecycle.ReprepareShapeChangesAndInstances ...........   Passed    0.48 sec
+        Start 119: CudaErrors.BudgetExceededIsAllocationFailure
+119/125 Test #119: CudaErrors.BudgetExceededIsAllocationFailure ..............   Passed    0.49 sec
+        Start 120: CudaErrors.WrongDeviceIndex
+120/125 Test #120: CudaErrors.WrongDeviceIndex ...............................   Passed    0.47 sec
+        Start 121: CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+121/125 Test #121: CudaErrors.ExplicitCudaUnavailableNeverFallsBack ..........***Skipped   0.46 sec
+        Start 122: cli_integration
+122/125 Test #122: cli_integration ...........................................   Passed    2.24 sec
+        Start 123: oracle_vs_cpp
+123/125 Test #123: oracle_vs_cpp .............................................   Passed    1.73 sec
+        Start 124: oracle_self_tests
+124/125 Test #124: oracle_self_tests .........................................   Passed    0.20 sec
+        Start 125: results_schema
+125/125 Test #125: results_schema ............................................   Passed    1.90 sec
+
+99% tests passed, 1 tests failed out of 125
+
+Label Time Summary:
+benchmark      =   1.90 sec*proc (1 test)
+cli            =   2.24 sec*proc (1 test)
+cpu            =   6.07 sec*proc (4 tests)
+gpu            =   6.00 sec*proc (12 tests)
+integration    =   5.11 sec*proc (27 tests)
+oracle         =   1.93 sec*proc (2 tests)
+unit           =   1.67 sec*proc (84 tests)
+
+Total Test time (real) =  14.76 sec
+
+The following tests did not run:
+	 57 - Pipeline.ExplicitCudaNeverFallsBack (Skipped)
+	 81 - CpuParallel.UnavailableIsExplicit (Skipped)
+	121 - CudaErrors.ExplicitCudaUnavailableNeverFallsBack (Skipped)
+
+The following tests FAILED:
+	101 - Harness.CpuRunProducesAllArtifacts (Failed)
+Errors while running CTest

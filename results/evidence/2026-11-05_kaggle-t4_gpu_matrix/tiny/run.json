@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "run_id": "20261105T230326Z-7b80-1373",
+  "started_utc": "2026-11-05T23:03:26Z",
+  "finished_utc": "2026-11-05T23:03:27Z",
+  "command_line": "framepipe benchmark --manifest data/bench/tiny.jsonl --config data/bench/tiny.config.json --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --warmup 20 --iterations 100 --repetitions 3 --threads 4 --output-dir /kaggle/working/kaggle_gpu/tiny",
+  "git_revision": "fd080d4071e814e937f1904abdefa32ffcd131f6",
+  "git_dirty": false,
+  "git_note": null,
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "data/bench/tiny.jsonl",
+    "sha256": "9203d318f72b47970a390dc1e0edf6068f2117fbc137f3f940a329c0d79545fc",
+    "frames": 1
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-ref",
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp",
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref"
+      ]
+    },
+    {
+      "repetition": 2,
+      "order": [
+        "opencv-cpu",
+        "cuda",
+        "cpu-ref",
+        "cpu-omp"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing",
+    "device_pipeline",
+    "application",
+    "startup",
+    "batch"
+  ],
+  "math_config_hash": "2067a5d46872180fc480e9994cf1a3ed49403b5af4a94d76ae2c6a18718099c3",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

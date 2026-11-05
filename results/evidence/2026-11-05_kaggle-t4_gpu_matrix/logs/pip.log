@@ -1,0 +1,7 @@
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bigframes 2.51.0 requires google-cloud-bigquery-storage<3.0.0,>=2.30.0, which is not installed.
+/root/.local/bin/cmake
+/root/.local/bin/ninja
+cmake version 3.30.5
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).

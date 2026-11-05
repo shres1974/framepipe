@@ -1,0 +1,225 @@
+source,backend,implementation,metric,frame_id,input,output,workload,count,median_ms,p95_ms,min_ms,max_ms
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,88.04086,99.005013,82.311795,115.855341
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,87.293203,89.195128,84.6453,89.195128
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,14.109860999999999,16.360729,13.127395,26.113798
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.89441,2.625264,1.561153,2.625264
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,99.371276,103.495688,93.015087,123.726472
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,100.945915,101.417355,100.138195,101.417355
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,28.4806955,29.865004,25.927505,32.988421
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,2.099506,2.559749,1.951326,2.559749
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,73.8134605,77.64775,68.333929,93.619101
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,71.859421,75.920165,71.677186,75.920165
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.35951998829841614,0.3691839873790741,0.30486398935317993,0.45235198736190796
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.2429565,2.834563,2.091177,3.193031
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.309545,6.735668,6.253285,6.735668
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,83.02737400000001,87.694903,77.580077,106.44954
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,80.48073,86.677155,79.652646,86.677155
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,11.274553000000001,13.352175,10.057274,16.162198
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,88.15358549999999,98.337921,81.904257,128.146183
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,84.11477,84.831712,83.424859,84.831712
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,9.931693,15.00036,8.782493,24.578271
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.955975,2.353733,1.777609,2.353733
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,96.56838350000001,109.463716,88.444671,118.216311
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,93.146595,97.202042,91.256574,97.202042
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,21.147188,25.351731,18.702643,29.684676
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.91307,2.365412,1.727582,2.365412
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,78.64776850000001,85.500486,68.728513,100.251165
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,78.576251,82.05276,77.823291,82.05276
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.32598400115966797,0.342272013425827,0.2726080119609833,0.3491840064525604
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.3075785,2.608976,2.08379,3.678017
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.576103,7.008836,6.568673,7.008836
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,85.837722,90.46947,79.872986,109.666708
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,84.900303,87.870922,82.392105,87.870922
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius1/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,10.882166,12.806674,9.377802,14.62626
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,108.3675465,114.305101,101.372477,139.595106
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,109.736372,112.353837,108.771272,112.353837
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,36.837136,41.005893,33.577335,69.534724
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,2.09013,2.535092,1.797417,2.535092
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,147.292722,160.371816,137.543875,172.463991
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,148.914012,151.398198,146.538363,151.398198
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,78.4315355,82.171609,72.637796,101.078066
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,2.069856,2.582748,1.879462,2.582748
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,73.405894,81.572954,67.126371,90.285174
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,74.984353,75.00356,73.072062,75.00356
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.4710399955511093,0.5839040279388428,0.40483200550079346,0.5963519811630249
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.532884,2.806555,2.235013,3.98429
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.677769,6.886099,6.545078,6.886099
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,85.2829285,90.23238,78.910818,107.106112
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,81.6561,81.748376,81.382683,81.748376
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius15/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,15.351799499999998,17.80347,13.382398,20.564536
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,89.2528365,100.681948,83.082255,113.437813
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,86.67209,118.326145,85.591077,118.326145
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,13.970396000000001,14.678814,12.906884,18.814242
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.819988,2.54582,1.741429,2.54582
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,101.652184,112.667253,94.444666,125.634233
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,99.898606,101.794781,98.315868,101.794781
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,29.156513500000003,30.771922,26.403557,47.817561
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.984561,2.536911,1.868905,2.536911
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,75.3906525,82.261133,69.400958,92.057926
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,78.053901,82.471436,77.825642,82.471436
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.3622079938650131,0.387935996055603,0.31536000967025757,0.41785600781440735
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.4410705,3.03804,2.241969,4.007866
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.827019,7.355156,6.639611,7.355156
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,84.951215,94.764232,78.076918,108.119427
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,84.674912,106.338947,79.68406,106.338947
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius3/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,11.934058,13.706988,10.358231,16.011633
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,95.3859345,104.635099,88.696513,118.834814
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,97.22517,97.989018,93.266757,97.989018
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,21.690558,24.925659,19.615395,39.12696
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.958411,2.788382,1.78506,2.788382
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,113.88752149999999,121.077663,106.430039,141.20119
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,112.281486,114.592674,111.948774,114.592674
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,43.560517000000004,45.583349,39.836084,47.094142
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.930341,2.437619,1.80319,2.437619
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,73.421353,77.400864,68.417545,91.30639
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,73.014181,74.418614,68.412548,74.418614
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.41655999422073364,0.5143679976463318,0.34307199716567993,0.53193598985672
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.4994189999999996,3.514511,2.212251,3.781373
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.523151,6.585734,6.38388,6.585734
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,83.749328,87.997507,76.878589,101.244139
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,81.634298,86.563847,80.548285,86.563847
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_radius7/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,12.69561,14.808974,11.16978,15.966141
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,88.2612145,98.721301,81.142939,119.369132
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,88.197962,90.534024,86.56839,90.534024
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,11.23137,13.115807,10.264688,15.043158
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.619467,1.777313,1.478107,1.777313
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,94.33567450000001,100.615429,88.735563,114.011918
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,95.14195,98.222184,89.108453,98.222184
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,22.4453525,23.978501,20.546624,25.654203
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.600501,2.798248,1.489895,2.798248
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,75.474559,84.17679,69.455513,91.320892
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,77.640831,78.992897,76.429187,78.992897
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.3100000023841858,0.3583039939403534,0.26313599944114685,0.3781439960002899
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.2938520000000002,3.217878,2.076074,3.427006
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.565241,6.881334,6.527678,6.881334
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,80.61017100000001,86.333184,74.111985,102.071138
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,77.373772,83.349758,77.11045,83.349758
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_blur/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,8.0383825,8.857664,6.849261,9.804088
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,86.032411,98.705152,78.862787,110.266879
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,83.770692,85.653932,83.67487,85.653932
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,13.562054499999999,15.449149,12.412354,19.975296
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.671765,1.698944,1.558678,1.698944
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,97.331526,103.793435,89.714683,121.534526
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,96.792711,101.307561,95.537334,101.307561
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,28.085900000000002,29.692592,25.411592,31.368296
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,1.823047,2.354523,1.779273,2.354523
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,71.769469,79.912502,65.888549,97.803959
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,77.102992,87.570209,75.2826,87.570209
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.3547840118408203,0.40751999616622925,0.29929599165916443,0.4103040099143982
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.3078469999999998,3.18058,2.083781,3.803427
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.591763,7.356007,6.26545,7.356007
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,80.9358505,87.811637,75.202903,97.139044
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,81.504043,84.438631,81.130125,84.438631
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_edges/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,11.5233485,13.548504,9.504745,18.914827
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,78.21239750000001,87.446934,71.602275,93.086753
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x720,batch,3,77.778911,94.01268,75.053797,94.01268
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,3.1963875,5.236142,2.82036,9.340127
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,0.992413,1.217661,0.908895,1.217661
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-ref,scalar,application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,77.96994749999999,83.978557,72.292585,99.960766
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x720,batch,3,85.064343,87.966127,74.074686,87.966127
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,6.9074765,7.791981,6.141944,12.087985
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cpu-ref,scalar,startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,0.985801,1.243597,0.816088,1.243597
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cuda,cuda-basic(block=16x16),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,73.018065,77.0985,67.913435,84.748871
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x720,batch,3,73.074175,74.294777,72.8283,74.294777
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,hd_0,1920x1080,1280x720,repeat,300,0.17337600141763687,0.18566399812698364,0.15849600732326508,0.20534400641918182
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,hd_0,1920x1080,1280x720,repeat,300,2.2455095,3.040928,1.871154,3.24692
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,cuda,cuda-basic(block=16x16),startup_wall_ms,hd_0,1920x1080,1280x720,repeat,3,6.255722,6.799391,6.238437,6.799391
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,hd_0,1920x1080,1280x720,repeat,300,77.39407,80.525674,71.54491,95.485488
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x720,batch,3,77.420764,80.063868,75.921044,80.063868
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/hd_stage_resize/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,hd_0,1920x1080,1280x720,repeat,300,6.250204,6.942383,5.574054,7.464318
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,odd_0,1919x1079,1279x719,repeat,300,89.71775199999999,95.829614,79.852553,117.673511
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1279x719,batch,3,90.10484,92.151719,79.799054,92.151719
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,300,14.066476,15.411373,12.160133,24.867283
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,odd_0,1919x1079,1279x719,repeat,3,1.677524,1.807678,1.388247,1.807678
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-ref,scalar,application_wall_ms,odd_0,1919x1079,1279x719,repeat,300,96.75174050000001,111.695369,88.586187,122.818161
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1279x719,batch,3,102.571388,104.088678,92.339742,104.088678
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-ref,scalar,cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,300,27.619901499999997,29.613333,25.082404,35.694198
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cpu-ref,scalar,startup_wall_ms,odd_0,1919x1079,1279x719,repeat,3,2.128212,2.278911,2.057549,2.278911
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cuda,cuda-basic(block=16x16),application_wall_ms,odd_0,1919x1079,1279x719,repeat,300,71.978121,75.463528,67.373519,87.120218
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1279x719,batch,3,72.377926,73.649412,70.309692,73.649412
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,odd_0,1919x1079,1279x719,repeat,300,0.3558399975299835,0.373663991689682,0.29843199253082275,0.4004479944705963
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,odd_0,1919x1079,1279x719,repeat,300,2.240777,2.561723,2.089865,3.58507
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,cuda,cuda-basic(block=16x16),startup_wall_ms,odd_0,1919x1079,1279x719,repeat,3,6.651716,7.081915,6.243556,7.081915
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,odd_0,1919x1079,1279x719,repeat,300,80.68857249999999,85.55234,74.076177,102.033789
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1279x719,batch,3,81.160098,81.750502,79.880665,81.750502
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/odd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,odd_0,1919x1079,1279x719,repeat,300,11.004179,13.584009,9.539498,19.088386
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,same_0,1920x1080,1920x1080,repeat,300,129.936281,143.617935,119.610958,169.782581
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1920x1080,batch,3,126.222521,133.803696,126.207533,133.803696
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,300,28.9247455,30.129949,25.662326,35.183869
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,same_0,1920x1080,1920x1080,repeat,3,12.668806,13.347778,12.596094,13.347778
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-ref,scalar,application_wall_ms,same_0,1920x1080,1920x1080,repeat,300,158.52632749999998,167.276218,143.816473,187.002
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1920x1080,batch,3,151.789834,157.025292,150.262519,157.025292
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-ref,scalar,cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,300,59.861992,62.465166,53.833704,79.925769
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cpu-ref,scalar,startup_wall_ms,same_0,1920x1080,1920x1080,repeat,3,13.102514,18.803634,12.625829,18.803634
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cuda,cuda-basic(block=16x16),application_wall_ms,same_0,1920x1080,1920x1080,repeat,300,103.01960199999999,107.123019,95.880245,124.349621
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1920x1080,batch,3,104.131112,126.340765,103.846746,126.340765
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,same_0,1920x1080,1920x1080,repeat,300,0.6692000031471252,0.7120000123977661,0.5898560285568237,0.7292159795761108
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,same_0,1920x1080,1920x1080,repeat,300,4.5244115,5.23319,3.750911,5.739282
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,cuda,cuda-basic(block=16x16),startup_wall_ms,same_0,1920x1080,1920x1080,repeat,3,9.373499,10.180481,9.133044,10.180481
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,same_0,1920x1080,1920x1080,repeat,300,117.68422100000001,123.500986,109.429458,144.442061
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1920x1080,batch,3,119.534067,124.105411,116.186325,124.105411
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/same/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,same_0,1920x1080,1920x1080,repeat,300,19.893297,22.299395,17.579026,25.518466
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,small_0,640x480,320x240,repeat,300,12.9825275,15.309357,11.676214,28.245547
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,320x240,batch,3,12.728003,12.792252,12.04155,12.792252
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,small_0,640x480,320x240,repeat,300,1.3265965,1.40178,1.180623,1.475406
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,small_0,640x480,320x240,repeat,3,0.181237,0.182225,0.13729,0.182225
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-ref,scalar,application_wall_ms,small_0,640x480,320x240,repeat,300,12.8085945,13.933776,11.586429,19.803401
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,320x240,batch,3,12.47794,12.748768,11.87587,12.748768
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-ref,scalar,cpu_core_wall_ms,small_0,640x480,320x240,repeat,300,2.6865215,2.829099,2.428513,4.498529
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cpu-ref,scalar,startup_wall_ms,small_0,640x480,320x240,repeat,3,0.203469,0.212823,0.170129,0.212823
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cuda,cuda-basic(block=16x16),application_wall_ms,small_0,640x480,320x240,repeat,300,10.2762295,10.967202,9.201583,14.826802
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,320x240,batch,3,10.739935,10.915213,10.510427,10.915213
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,small_0,640x480,320x240,repeat,300,0.05984000116586685,0.06204799935221672,0.057631999254226685,0.08899199962615967
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,small_0,640x480,320x240,repeat,300,0.2747575,0.292204,0.260348,0.329004
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,cuda,cuda-basic(block=16x16),startup_wall_ms,small_0,640x480,320x240,repeat,3,1.777466,1.8627,1.711745,1.8627
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,small_0,640x480,320x240,repeat,300,11.3169225,12.209499,10.064202,14.412818
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,320x240,batch,3,11.089495,11.260848,10.655744,11.260848
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/small/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,small_0,640x480,320x240,repeat,300,1.1826515,1.296308,1.065524,1.847405
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,tiny_0,64x64,64x64,repeat,300,0.4970755,0.561421,0.421205,0.72527
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,64x64,batch,3,0.49356,0.555177,0.491848,0.555177
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,300,0.077573,0.096391,0.064983,0.540524
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,tiny_0,64x64,64x64,repeat,3,0.030248,0.031195,0.028073,0.031195
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-ref,scalar,application_wall_ms,tiny_0,64x64,64x64,repeat,300,0.4974045,0.575363,0.393927,0.734109
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,64x64,batch,3,0.488168,0.521366,0.458041,0.521366
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-ref,scalar,cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,300,0.12406049999999999,0.179179,0.103587,0.225552
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cpu-ref,scalar,startup_wall_ms,tiny_0,64x64,64x64,repeat,3,0.025564,0.030982,0.023911,0.030982
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cuda,cuda-basic(block=16x16),application_wall_ms,tiny_0,64x64,64x64,repeat,300,0.4270025,0.485684,0.34977,0.683115
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,64x64,batch,3,0.435367,0.517175,0.432419,0.517175
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,tiny_0,64x64,64x64,repeat,300,0.02127999998629093,0.025536000728607178,0.019648000597953796,0.04960000142455101
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,tiny_0,64x64,64x64,repeat,300,0.0359145,0.048392,0.033253,0.078165
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,cuda,cuda-basic(block=16x16),startup_wall_ms,tiny_0,64x64,64x64,repeat,3,0.187149,0.201259,0.184321,0.201259
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_0,64x64,64x64,repeat,300,0.45783050000000003,0.552667,0.380176,0.726971
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,64x64,batch,3,0.450743,0.46072,0.409727,0.46072
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/tiny/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_0,64x64,64x64,repeat,300,0.061923,0.082454,0.048422,0.108391
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,287.082844,304.952538,265.015406,338.625098
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1920x1080,batch,3,291.749358,299.387115,272.292,299.387115
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,34.7902815,36.804386,31.591182,40.30587
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,uhd_0,3840x2160,1920x1080,repeat,3,5.621264,5.828335,5.38235,5.828335
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-ref,scalar,application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,320.924664,345.508956,292.534923,372.408086
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1920x1080,batch,3,312.741314,338.859397,310.229958,338.859397
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-ref,scalar,cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,71.72879549999999,75.883851,65.00524,90.718999
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cpu-ref,scalar,startup_wall_ms,uhd_0,3840x2160,1920x1080,repeat,3,6.434292,6.601853,5.67702,6.601853
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cuda,cuda-basic(block=16x16),application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,260.5368635,277.545066,245.247351,294.1536
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1920x1080,batch,3,254.10257,258.728279,244.037453,258.728279
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,uhd_0,3840x2160,1920x1080,repeat,300,1.1584959626197815,1.1666239500045776,1.1504000425338745,1.1802239418029785
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,10.9349315,11.803956,9.6504,12.330288
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,cuda,cuda-basic(block=16x16),startup_wall_ms,uhd_0,3840x2160,1920x1080,repeat,3,18.992436,19.125581,18.069479,19.125581
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,285.058053,303.998401,270.536801,341.141554
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1920x1080,batch,3,286.144352,291.006557,278.750765,291.006557
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/uhd/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,uhd_0,3840x2160,1920x1080,repeat,300,34.6842745,38.279583,31.73712,41.288956
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,upscale_0,640x480,1280x960,repeat,300,54.7589145,60.799791,51.199808,94.188203
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0x0,1280x960,batch,3,54.511034,54.673126,52.974888,54.673126
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,300,16.3796095,17.287306,14.504179,21.120626
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,upscale_0,640x480,1280x960,repeat,3,7.088769,7.218361,7.020948,7.218361
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-ref,scalar,application_wall_ms,upscale_0,640x480,1280x960,repeat,300,69.086979,71.512282,66.341212,91.677289
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-ref,scalar,batch_wall_ms,__batch__,0x0,1280x960,batch,3,68.337219,76.311948,66.469667,76.311948
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-ref,scalar,cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,300,34.0376915,35.359522,31.423475,44.475135
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cpu-ref,scalar,startup_wall_ms,upscale_0,640x480,1280x960,repeat,3,7.117146,9.90188,7.017051,9.90188
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cuda,cuda-basic(block=16x16),application_wall_ms,upscale_0,640x480,1280x960,repeat,300,36.6924245,38.999115,33.875485,52.232926
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0x0,1280x960,batch,3,36.367826,37.633778,36.095655,37.633778
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,upscale_0,640x480,1280x960,repeat,300,0.346560001373291,0.4257279932498932,0.335999995470047,0.43219199776649475
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,upscale_0,640x480,1280x960,repeat,300,1.5474264999999998,1.926265,1.423904,2.15985
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,cuda,cuda-basic(block=16x16),startup_wall_ms,upscale_0,640x480,1280x960,repeat,3,3.588498,3.688901,3.561836,3.688901
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,upscale_0,640x480,1280x960,repeat,300,45.0440615,47.334951,42.349967,50.151801
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0x0,1280x960,batch,3,45.013891,45.84885,42.520775,45.84885
+results/evidence/2026-11-05_kaggle-t4_gpu_matrix/upscale/,opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,upscale_0,640x480,1280x960,repeat,300,9.341104999999999,11.649312,8.136482,15.29856

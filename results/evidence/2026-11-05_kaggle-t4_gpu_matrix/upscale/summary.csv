@@ -1,0 +1,17 @@
+backend,implementation,metric,frame_id,input_width,input_height,output_width,output_height,count,min_ms,max_ms,mean_ms,stddev_ms,median_ms,p95_ms,median_of_run_medians_ms,repetitions
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,upscale_0,640,480,1280,960,300,51.199808,94.188203,55.236972,3.146291,54.758915,60.799791,54.597423,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0,0,1280,960,3,52.974888,54.673126,54.053016,0.937197,54.511034,54.673126,54.511034,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,upscale_0,640,480,1280,960,300,14.504179,21.120626,16.362640,0.663371,16.379610,17.287306,16.362152,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,upscale_0,640,480,1280,960,3,7.020948,7.218361,7.109359,0.100304,7.088769,7.218361,7.088769,3
+cpu-ref,scalar,application_wall_ms,upscale_0,640,480,1280,960,300,66.341212,91.677289,69.344149,2.187645,69.086979,71.512282,69.044465,3
+cpu-ref,scalar,batch_wall_ms,__batch__,0,0,1280,960,3,66.469667,76.311948,70.372945,5.227405,68.337219,76.311948,68.337219,3
+cpu-ref,scalar,cpu_core_wall_ms,upscale_0,640,480,1280,960,300,31.423475,44.475135,34.056542,1.123113,34.037692,35.359522,34.027747,3
+cpu-ref,scalar,startup_wall_ms,upscale_0,640,480,1280,960,3,7.017051,9.901880,8.012026,1.637427,7.117146,9.901880,7.117146,3
+cuda,cuda-basic(block=16x16),application_wall_ms,upscale_0,640,480,1280,960,300,33.875485,52.232926,36.834256,1.658317,36.692425,38.999115,36.723283,3
+cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0,0,1280,960,3,36.095655,37.633778,36.699086,0.820826,36.367826,37.633778,36.367826,3
+cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,upscale_0,640,480,1280,960,300,0.336000,0.432192,0.361701,0.026448,0.346560,0.425728,0.346288,3
+cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,upscale_0,640,480,1280,960,300,1.423904,2.159850,1.591679,0.148265,1.547426,1.926265,1.535896,3
+cuda,cuda-basic(block=16x16),startup_wall_ms,upscale_0,640,480,1280,960,3,3.561836,3.688901,3.613078,0.067004,3.588498,3.688901,3.588498,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,upscale_0,640,480,1280,960,300,42.349967,50.151801,45.203693,1.147390,45.044061,47.334951,45.114895,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0,0,1280,960,3,42.520775,45.848850,44.461172,1.731515,45.013891,45.848850,45.013891,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,upscale_0,640,480,1280,960,300,8.136482,15.298560,9.689077,1.154690,9.341105,11.649312,9.439223,3

@@ -1,0 +1,253 @@
+Internal ctest changing into directory: /tmp/framepipe/build/cuda
+UpdateCTestConfiguration  from :/tmp/framepipe/build/cuda/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/tmp/framepipe/build/cuda/DartConfiguration.tcl
+Test project /tmp/framepipe/build/cuda
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 110
+      Start 110: CudaParity.LaunchBoundaryAndSmallGeometry
+
+110: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.LaunchBoundaryAndSmallGeometry" "--gtest_also_run_disabled_tests"
+110: Working Directory: /tmp/framepipe/build/cuda/tests
+110: Test timeout computed to be: 10000000
+110: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+110: Note: Google Test filter = CudaParity.LaunchBoundaryAndSmallGeometry
+110: [==========] Running 1 test from 1 test suite.
+110: [----------] Global test environment set-up.
+110: [----------] 1 test from CudaParity
+110: [ RUN      ] CudaParity.LaunchBoundaryAndSmallGeometry
+110: [       OK ] CudaParity.LaunchBoundaryAndSmallGeometry (438 ms)
+110: [----------] 1 test from CudaParity (438 ms total)
+110: 
+110: [----------] Global test environment tear-down
+110: [==========] 1 test from 1 test suite ran. (438 ms total)
+110: [  PASSED  ] 1 test.
+ 1/12 Test #110: CudaParity.LaunchBoundaryAndSmallGeometry ...........   Passed    0.59 sec
+test 111
+      Start 111: CudaParity.ResizeRatiosAndOneByOne
+
+111: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.ResizeRatiosAndOneByOne" "--gtest_also_run_disabled_tests"
+111: Working Directory: /tmp/framepipe/build/cuda/tests
+111: Test timeout computed to be: 10000000
+111: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+111: Note: Google Test filter = CudaParity.ResizeRatiosAndOneByOne
+111: [==========] Running 1 test from 1 test suite.
+111: [----------] Global test environment set-up.
+111: [----------] 1 test from CudaParity
+111: [ RUN      ] CudaParity.ResizeRatiosAndOneByOne
+111: [       OK ] CudaParity.ResizeRatiosAndOneByOne (301 ms)
+111: [----------] 1 test from CudaParity (301 ms total)
+111: 
+111: [----------] Global test environment tear-down
+111: [==========] 1 test from 1 test suite ran. (301 ms total)
+111: [  PASSED  ] 1 test.
+ 2/12 Test #111: CudaParity.ResizeRatiosAndOneByOne ..................   Passed    0.45 sec
+test 112
+      Start 112: CudaParity.GaussianRadiiAndSigmas
+
+112: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.GaussianRadiiAndSigmas" "--gtest_also_run_disabled_tests"
+112: Working Directory: /tmp/framepipe/build/cuda/tests
+112: Test timeout computed to be: 10000000
+112: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+112: Note: Google Test filter = CudaParity.GaussianRadiiAndSigmas
+112: [==========] Running 1 test from 1 test suite.
+112: [----------] Global test environment set-up.
+112: [----------] 1 test from CudaParity
+112: [ RUN      ] CudaParity.GaussianRadiiAndSigmas
+112: [       OK ] CudaParity.GaussianRadiiAndSigmas (358 ms)
+112: [----------] 1 test from CudaParity (358 ms total)
+112: 
+112: [----------] Global test environment tear-down
+112: [==========] 1 test from 1 test suite ran. (358 ms total)
+112: [  PASSED  ] 1 test.
+ 3/12 Test #112: CudaParity.GaussianRadiiAndSigmas ...................   Passed    0.52 sec
+test 113
+      Start 113: CudaParity.IntensityExtremesAndStructuredPatterns
+
+113: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.IntensityExtremesAndStructuredPatterns" "--gtest_also_run_disabled_tests"
+113: Working Directory: /tmp/framepipe/build/cuda/tests
+113: Test timeout computed to be: 10000000
+113: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+113: Note: Google Test filter = CudaParity.IntensityExtremesAndStructuredPatterns
+113: [==========] Running 1 test from 1 test suite.
+113: [----------] Global test environment set-up.
+113: [----------] 1 test from CudaParity
+113: [ RUN      ] CudaParity.IntensityExtremesAndStructuredPatterns
+113: [       OK ] CudaParity.IntensityExtremesAndStructuredPatterns (322 ms)
+113: [----------] 1 test from CudaParity (322 ms total)
+113: 
+113: [----------] Global test environment tear-down
+113: [==========] 1 test from 1 test suite ran. (322 ms total)
+113: [  PASSED  ] 1 test.
+ 4/12 Test #113: CudaParity.IntensityExtremesAndStructuredPatterns ...   Passed    0.49 sec
+test 114
+      Start 114: CudaParity.CroppedInputView
+
+114: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.CroppedInputView" "--gtest_also_run_disabled_tests"
+114: Working Directory: /tmp/framepipe/build/cuda/tests
+114: Test timeout computed to be: 10000000
+114: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+114: Note: Google Test filter = CudaParity.CroppedInputView
+114: [==========] Running 1 test from 1 test suite.
+114: [----------] Global test environment set-up.
+114: [----------] 1 test from CudaParity
+114: [ RUN      ] CudaParity.CroppedInputView
+114: [       OK ] CudaParity.CroppedInputView (321 ms)
+114: [----------] 1 test from CudaParity (321 ms total)
+114: 
+114: [----------] Global test environment tear-down
+114: [==========] 1 test from 1 test suite ran. (321 ms total)
+114: [  PASSED  ] 1 test.
+ 5/12 Test #114: CudaParity.CroppedInputView .........................   Passed    0.50 sec
+test 115
+      Start 115: CudaParity.PinnedAndPageableTransferPathsAgree
+
+115: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.PinnedAndPageableTransferPathsAgree" "--gtest_also_run_disabled_tests"
+115: Working Directory: /tmp/framepipe/build/cuda/tests
+115: Test timeout computed to be: 10000000
+115: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+115: Note: Google Test filter = CudaParity.PinnedAndPageableTransferPathsAgree
+115: [==========] Running 1 test from 1 test suite.
+115: [----------] Global test environment set-up.
+115: [----------] 1 test from CudaParity
+115: [ RUN      ] CudaParity.PinnedAndPageableTransferPathsAgree
+115: [       OK ] CudaParity.PinnedAndPageableTransferPathsAgree (326 ms)
+115: [----------] 1 test from CudaParity (326 ms total)
+115: 
+115: [----------] Global test environment tear-down
+115: [==========] 1 test from 1 test suite ran. (326 ms total)
+115: [  PASSED  ] 1 test.
+ 6/12 Test #115: CudaParity.PinnedAndPageableTransferPathsAgree ......   Passed    0.50 sec
+test 116
+      Start 116: CudaParity.DeviceResidentPathMatches
+
+116: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaParity.DeviceResidentPathMatches" "--gtest_also_run_disabled_tests"
+116: Working Directory: /tmp/framepipe/build/cuda/tests
+116: Test timeout computed to be: 10000000
+116: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+116: Note: Google Test filter = CudaParity.DeviceResidentPathMatches
+116: [==========] Running 1 test from 1 test suite.
+116: [----------] Global test environment set-up.
+116: [----------] 1 test from CudaParity
+116: [ RUN      ] CudaParity.DeviceResidentPathMatches
+116: [       OK ] CudaParity.DeviceResidentPathMatches (330 ms)
+116: [----------] 1 test from CudaParity (330 ms total)
+116: 
+116: [----------] Global test environment tear-down
+116: [==========] 1 test from 1 test suite ran. (330 ms total)
+116: [  PASSED  ] 1 test.
+ 7/12 Test #116: CudaParity.DeviceResidentPathMatches ................   Passed    0.50 sec
+test 117
+      Start 117: CudaLifecycle.NoDeviceAllocationInSteadyState
+
+117: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaLifecycle.NoDeviceAllocationInSteadyState" "--gtest_also_run_disabled_tests"
+117: Working Directory: /tmp/framepipe/build/cuda/tests
+117: Test timeout computed to be: 10000000
+117: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+117: Note: Google Test filter = CudaLifecycle.NoDeviceAllocationInSteadyState
+117: [==========] Running 1 test from 1 test suite.
+117: [----------] Global test environment set-up.
+117: [----------] 1 test from CudaLifecycle
+117: [ RUN      ] CudaLifecycle.NoDeviceAllocationInSteadyState
+117: [       OK ] CudaLifecycle.NoDeviceAllocationInSteadyState (342 ms)
+117: [----------] 1 test from CudaLifecycle (342 ms total)
+117: 
+117: [----------] Global test environment tear-down
+117: [==========] 1 test from 1 test suite ran. (342 ms total)
+117: [  PASSED  ] 1 test.
+ 8/12 Test #117: CudaLifecycle.NoDeviceAllocationInSteadyState .......   Passed    0.52 sec
+test 118
+      Start 118: CudaLifecycle.ReprepareShapeChangesAndInstances
+
+118: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaLifecycle.ReprepareShapeChangesAndInstances" "--gtest_also_run_disabled_tests"
+118: Working Directory: /tmp/framepipe/build/cuda/tests
+118: Test timeout computed to be: 10000000
+118: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+118: Note: Google Test filter = CudaLifecycle.ReprepareShapeChangesAndInstances
+118: [==========] Running 1 test from 1 test suite.
+118: [----------] Global test environment set-up.
+118: [----------] 1 test from CudaLifecycle
+118: [ RUN      ] CudaLifecycle.ReprepareShapeChangesAndInstances
+118: [       OK ] CudaLifecycle.ReprepareShapeChangesAndInstances (335 ms)
+118: [----------] 1 test from CudaLifecycle (335 ms total)
+118: 
+118: [----------] Global test environment tear-down
+118: [==========] 1 test from 1 test suite ran. (335 ms total)
+118: [  PASSED  ] 1 test.
+ 9/12 Test #118: CudaLifecycle.ReprepareShapeChangesAndInstances .....   Passed    0.51 sec
+test 119
+      Start 119: CudaErrors.BudgetExceededIsAllocationFailure
+
+119: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaErrors.BudgetExceededIsAllocationFailure" "--gtest_also_run_disabled_tests"
+119: Working Directory: /tmp/framepipe/build/cuda/tests
+119: Test timeout computed to be: 10000000
+119: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+119: Note: Google Test filter = CudaErrors.BudgetExceededIsAllocationFailure
+119: [==========] Running 1 test from 1 test suite.
+119: [----------] Global test environment set-up.
+119: [----------] 1 test from CudaErrors
+119: [ RUN      ] CudaErrors.BudgetExceededIsAllocationFailure
+119: [       OK ] CudaErrors.BudgetExceededIsAllocationFailure (368 ms)
+119: [----------] 1 test from CudaErrors (368 ms total)
+119: 
+119: [----------] Global test environment tear-down
+119: [==========] 1 test from 1 test suite ran. (368 ms total)
+119: [  PASSED  ] 1 test.
+10/12 Test #119: CudaErrors.BudgetExceededIsAllocationFailure ........   Passed    0.54 sec
+test 120
+      Start 120: CudaErrors.WrongDeviceIndex
+
+120: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaErrors.WrongDeviceIndex" "--gtest_also_run_disabled_tests"
+120: Working Directory: /tmp/framepipe/build/cuda/tests
+120: Test timeout computed to be: 10000000
+120: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+120: Note: Google Test filter = CudaErrors.WrongDeviceIndex
+120: [==========] Running 1 test from 1 test suite.
+120: [----------] Global test environment set-up.
+120: [----------] 1 test from CudaErrors
+120: [ RUN      ] CudaErrors.WrongDeviceIndex
+120: [       OK ] CudaErrors.WrongDeviceIndex (309 ms)
+120: [----------] 1 test from CudaErrors (309 ms total)
+120: 
+120: [----------] Global test environment tear-down
+120: [==========] 1 test from 1 test suite ran. (309 ms total)
+120: [  PASSED  ] 1 test.
+11/12 Test #120: CudaErrors.WrongDeviceIndex .........................   Passed    0.47 sec
+test 121
+      Start 121: CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+
+121: Test command: /tmp/framepipe/build/cuda/bin/framepipe_cuda_tests "--gtest_filter=CudaErrors.ExplicitCudaUnavailableNeverFallsBack" "--gtest_also_run_disabled_tests"
+121: Working Directory: /tmp/framepipe/build/cuda/tests
+121: Test timeout computed to be: 10000000
+121: Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+121: Note: Google Test filter = CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+121: [==========] Running 1 test from 1 test suite.
+121: [----------] Global test environment set-up.
+121: [----------] 1 test from CudaErrors
+121: [ RUN      ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+121: /tmp/framepipe/tests/gpu/test_cuda_parity.cpp:229: Skipped
+121: device usable; this checks the no-device path
+121: 
+121: [  SKIPPED ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack (298 ms)
+121: [----------] 1 test from CudaErrors (298 ms total)
+121: 
+121: [----------] Global test environment tear-down
+121: [==========] 1 test from 1 test suite ran. (298 ms total)
+121: [  PASSED  ] 0 tests.
+121: [  SKIPPED ] 1 test, listed below:
+121: [  SKIPPED ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+12/12 Test #121: CudaErrors.ExplicitCudaUnavailableNeverFallsBack ....***Skipped   0.45 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Label Time Summary:
+gpu    =   6.03 sec*proc (12 tests)
+
+Total Test time (real) =   6.04 sec
+
+The following tests did not run:
+	121 - CudaErrors.ExplicitCudaUnavailableNeverFallsBack (Skipped)

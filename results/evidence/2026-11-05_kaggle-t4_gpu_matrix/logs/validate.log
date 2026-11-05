@@ -1,0 +1,14 @@
+valid: /kaggle/working/kaggle_gpu/hd/
+valid: /kaggle/working/kaggle_gpu/hd_radius1/
+valid: /kaggle/working/kaggle_gpu/hd_radius15/
+valid: /kaggle/working/kaggle_gpu/hd_radius3/
+valid: /kaggle/working/kaggle_gpu/hd_radius7/
+valid: /kaggle/working/kaggle_gpu/hd_stage_blur/
+valid: /kaggle/working/kaggle_gpu/hd_stage_edges/
+valid: /kaggle/working/kaggle_gpu/hd_stage_resize/
+valid: /kaggle/working/kaggle_gpu/odd/
+valid: /kaggle/working/kaggle_gpu/same/
+valid: /kaggle/working/kaggle_gpu/small/
+valid: /kaggle/working/kaggle_gpu/tiny/
+valid: /kaggle/working/kaggle_gpu/uhd/
+valid: /kaggle/working/kaggle_gpu/upscale/

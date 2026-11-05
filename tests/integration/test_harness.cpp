@@ -68,7 +68,9 @@ TEST(Harness, CpuRunProducesAllArtifacts) {
         if (s["backend"] == "cpu-ref") ++cpu;
         if (s["backend"] == "cuda") ++gpu;
         EXPECT_GT(s["duration_ms"].get<double>(), 0.0);
-        EXPECT_NE(s["metric"], "gpu_device_pipeline_ms") << "device_pipeline must not be synthesized for CPU";
+        if (s["backend"] != "cuda") {
+            EXPECT_NE(s["metric"], "gpu_device_pipeline_ms") << "device_pipeline must not be synthesized for CPU";
+        }
         if (s["backend"] == "cpu-ref" && s["scope"] == "host_processing") {
             EXPECT_EQ(s["metric"], "cpu_core_wall_ms");
         }

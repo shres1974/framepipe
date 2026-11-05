@@ -1,0 +1,1095 @@
+opencv.tar.gz: OK
+gtest.tar.gz: OK
+json.tar.gz: OK
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using the multi-header code from /tmp/framepipe-deps-build/json-src/include/
+-- Configuring done (1.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/framepipe-deps-build/json-build
+ninja: no work to do.
+-- Install configuration: "Release"
+-- Installing: /root/.local/framepipe-deps/include
+-- Installing: /root/.local/framepipe-deps/include/nlohmann
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/json.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/thirdparty
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/thirdparty/hedley
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/thirdparty/hedley/hedley.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/byte_container_with_subtype.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/macro_scope.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/string_concat.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/macro_unscope.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/json_pointer.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/conversions
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/conversions/to_json.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/conversions/to_chars.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/conversions/from_json.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/value_t.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/exceptions.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/parser.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/position_t.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/lexer.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/input_adapters.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/json_sax.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/input/binary_reader.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/json_ref.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/string_escape.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/type_traits.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/std_fs.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/identity_tag.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/void_t.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/call_std
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/call_std/end.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/call_std/begin.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/cpp_future.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/detected.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/meta/is_sax.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/abi_macros.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/iter_impl.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/iterator_traits.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/internal_iterator.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/json_reverse_iterator.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/primitive_iterator.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/iterators/iteration_proxy.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/json_custom_base_class.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/output
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/output/binary_writer.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/output/output_adapters.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/output/serializer.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/detail/hash.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/json_fwd.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/adl_serializer.hpp
+-- Installing: /root/.local/framepipe-deps/include/nlohmann/ordered_map.hpp
+-- Installing: /root/.local/framepipe-deps/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake
+-- Installing: /root/.local/framepipe-deps/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake
+-- Installing: /root/.local/framepipe-deps/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake
+-- Installing: /root/.local/framepipe-deps/share/pkgconfig/nlohmann_json.pc
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (2.7s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/framepipe-deps-build/gtest-build
+[1/4] Building CXX object googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[2/4] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[3/4] Linking CXX static library lib/libgtest.a
+[4/4] Linking CXX static library lib/libgtest_main.a
+-- Install configuration: "Release"
+-- Installing: /root/.local/framepipe-deps/lib/cmake/GTest/GTestTargets.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/GTest/GTestTargets-release.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/GTest/GTestConfigVersion.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/GTest/GTestConfig.cmake
+-- Up-to-date: /root/.local/framepipe-deps/include
+-- Installing: /root/.local/framepipe-deps/include/gtest
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest_prod.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest_pred_impl.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-message.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-port.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-string.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-type-util.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/custom
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/custom/gtest-port.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/custom/gtest.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/custom/README.md
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/custom/gtest-printers.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-param-util.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-death-test-internal.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-filepath.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-internal.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/internal/gtest-port-arch.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-assertion-result.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-spi.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-typed-test.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-param-test.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-test-part.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-printers.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-matchers.h
+-- Installing: /root/.local/framepipe-deps/include/gtest/gtest-death-test.h
+-- Installing: /root/.local/framepipe-deps/lib/libgtest.a
+-- Installing: /root/.local/framepipe-deps/lib/libgtest_main.a
+-- Installing: /root/.local/framepipe-deps/lib/pkgconfig/gtest.pc
+-- Installing: /root/.local/framepipe-deps/lib/pkgconfig/gtest_main.pc
+CMake Warning (dev) at CMakeLists.txt:127 (enable_language):
+  project() should be called prior to this enable_language() call.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- The CXX compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- ocv_init_download: OpenCV source tree is not fetched as git repository. 3rdparty resources will be downloaded from github.com by default.
+-- Detected processor: x86_64
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.13.16", minimum required is "3.2")
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.13.so (found suitable exact version "3.13.16")
+-- Looking for ccache - not found
+-- Performing Test HAVE_CXX_FSIGNED_CHAR
+-- Performing Test HAVE_CXX_FSIGNED_CHAR - Success
+-- Performing Test HAVE_C_FSIGNED_CHAR
+-- Performing Test HAVE_C_FSIGNED_CHAR - Success
+-- Performing Test HAVE_CXX_W
+-- Performing Test HAVE_CXX_W - Success
+-- Performing Test HAVE_C_W
+-- Performing Test HAVE_C_W - Success
+-- Performing Test HAVE_CXX_WALL
+-- Performing Test HAVE_CXX_WALL - Success
+-- Performing Test HAVE_C_WALL
+-- Performing Test HAVE_C_WALL - Success
+-- Performing Test HAVE_CXX_WRETURN_TYPE
+-- Performing Test HAVE_CXX_WRETURN_TYPE - Success
+-- Performing Test HAVE_C_WRETURN_TYPE
+-- Performing Test HAVE_C_WRETURN_TYPE - Success
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNON_VIRTUAL_DTOR - Failed
+-- Performing Test HAVE_CXX_WADDRESS
+-- Performing Test HAVE_CXX_WADDRESS - Success
+-- Performing Test HAVE_C_WADDRESS
+-- Performing Test HAVE_C_WADDRESS - Success
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT
+-- Performing Test HAVE_CXX_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_C_WSEQUENCE_POINT
+-- Performing Test HAVE_C_WSEQUENCE_POINT - Success
+-- Performing Test HAVE_CXX_WFORMAT
+-- Performing Test HAVE_CXX_WFORMAT - Success
+-- Performing Test HAVE_C_WFORMAT
+-- Performing Test HAVE_C_WFORMAT - Success
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY
+-- Performing Test HAVE_CXX_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_C_WFORMAT_SECURITY
+-- Performing Test HAVE_C_WFORMAT_SECURITY - Success
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS
+-- Performing Test HAVE_CXX_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS
+-- Performing Test HAVE_C_WMISSING_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES
+-- Performing Test HAVE_CXX_WMISSING_PROTOTYPES - Failed
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES
+-- Performing Test HAVE_C_WMISSING_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_CXX_WSTRICT_PROTOTYPES - Failed
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES
+-- Performing Test HAVE_C_WSTRICT_PROTOTYPES - Success
+-- Performing Test HAVE_CXX_WUNDEF
+-- Performing Test HAVE_CXX_WUNDEF - Success
+-- Performing Test HAVE_C_WUNDEF
+-- Performing Test HAVE_C_WUNDEF - Success
+-- Performing Test HAVE_CXX_WINIT_SELF
+-- Performing Test HAVE_CXX_WINIT_SELF - Success
+-- Performing Test HAVE_C_WINIT_SELF
+-- Performing Test HAVE_C_WINIT_SELF - Success
+-- Performing Test HAVE_CXX_WPOINTER_ARITH
+-- Performing Test HAVE_CXX_WPOINTER_ARITH - Success
+-- Performing Test HAVE_C_WPOINTER_ARITH
+-- Performing Test HAVE_C_WPOINTER_ARITH - Success
+-- Performing Test HAVE_CXX_WSHADOW
+-- Performing Test HAVE_CXX_WSHADOW - Success
+-- Performing Test HAVE_C_WSHADOW
+-- Performing Test HAVE_C_WSHADOW - Success
+-- Performing Test HAVE_CXX_WSIGN_PROMO
+-- Performing Test HAVE_CXX_WSIGN_PROMO - Success
+-- Performing Test HAVE_C_WSIGN_PROMO
+-- Performing Test HAVE_C_WSIGN_PROMO - Failed
+-- Performing Test HAVE_CXX_WUNINITIALIZED
+-- Performing Test HAVE_CXX_WUNINITIALIZED - Success
+-- Performing Test HAVE_C_WUNINITIALIZED
+-- Performing Test HAVE_C_WUNINITIALIZED - Success
+-- Performing Test HAVE_CXX_WSUGGEST_OVERRIDE
+-- Performing Test HAVE_CXX_WSUGGEST_OVERRIDE - Success
+-- Performing Test HAVE_C_WSUGGEST_OVERRIDE
+-- Performing Test HAVE_C_WSUGGEST_OVERRIDE - Failed
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_CXX_WNO_DELETE_NON_VIRTUAL_DTOR - Success
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR
+-- Performing Test HAVE_C_WNO_DELETE_NON_VIRTUAL_DTOR - Failed
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_CXX_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Failed
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS
+-- Performing Test HAVE_C_WNO_UNNAMED_TYPE_TEMPLATE_ARGS - Failed
+-- Performing Test HAVE_CXX_WNO_COMMENT
+-- Performing Test HAVE_CXX_WNO_COMMENT - Success
+-- Performing Test HAVE_C_WNO_COMMENT
+-- Performing Test HAVE_C_WNO_COMMENT - Success
+-- Performing Test HAVE_CXX_WIMPLICIT_FALLTHROUGH_3
+-- Performing Test HAVE_CXX_WIMPLICIT_FALLTHROUGH_3 - Success
+-- Performing Test HAVE_C_WIMPLICIT_FALLTHROUGH_3
+-- Performing Test HAVE_C_WIMPLICIT_FALLTHROUGH_3 - Success
+-- Performing Test HAVE_CXX_WNO_STRICT_OVERFLOW
+-- Performing Test HAVE_CXX_WNO_STRICT_OVERFLOW - Success
+-- Performing Test HAVE_C_WNO_STRICT_OVERFLOW
+-- Performing Test HAVE_C_WNO_STRICT_OVERFLOW - Success
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_CXX_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION
+-- Performing Test HAVE_C_FDIAGNOSTICS_SHOW_OPTION - Success
+-- Performing Test HAVE_CXX_WNO_LONG_LONG
+-- Performing Test HAVE_CXX_WNO_LONG_LONG - Success
+-- Performing Test HAVE_C_WNO_LONG_LONG
+-- Performing Test HAVE_C_WNO_LONG_LONG - Success
+-- Performing Test HAVE_CXX_PTHREAD
+-- Performing Test HAVE_CXX_PTHREAD - Success
+-- Performing Test HAVE_C_PTHREAD
+-- Performing Test HAVE_C_PTHREAD - Success
+-- Performing Test HAVE_CXX_FOMIT_FRAME_POINTER
+-- Performing Test HAVE_CXX_FOMIT_FRAME_POINTER - Success
+-- Performing Test HAVE_C_FOMIT_FRAME_POINTER
+-- Performing Test HAVE_C_FOMIT_FRAME_POINTER - Success
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS
+-- Performing Test HAVE_CXX_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS
+-- Performing Test HAVE_C_FFUNCTION_SECTIONS - Success
+-- Performing Test HAVE_CXX_FDATA_SECTIONS
+-- Performing Test HAVE_CXX_FDATA_SECTIONS - Success
+-- Performing Test HAVE_C_FDATA_SECTIONS
+-- Performing Test HAVE_C_FDATA_SECTIONS - Success
+-- Performing Test HAVE_CXX_MSSE (check file: cmake/checks/cpu_sse.cpp)
+-- Performing Test HAVE_CXX_MSSE - Success
+-- Performing Test HAVE_CXX_MSSE2 (check file: cmake/checks/cpu_sse2.cpp)
+-- Performing Test HAVE_CXX_MSSE2 - Success
+-- Performing Test HAVE_CXX_MSSE3 (check file: cmake/checks/cpu_sse3.cpp)
+-- Performing Test HAVE_CXX_MSSE3 - Success
+-- Performing Test HAVE_CXX_MSSSE3 (check file: cmake/checks/cpu_ssse3.cpp)
+-- Performing Test HAVE_CXX_MSSSE3 - Success
+-- Performing Test HAVE_CXX_MSSE4_1 (check file: cmake/checks/cpu_sse41.cpp)
+-- Performing Test HAVE_CXX_MSSE4_1 - Success
+-- Performing Test HAVE_CXX_MPOPCNT (check file: cmake/checks/cpu_popcnt.cpp)
+-- Performing Test HAVE_CXX_MPOPCNT - Success
+-- Performing Test HAVE_CXX_MSSE4_2 (check file: cmake/checks/cpu_sse42.cpp)
+-- Performing Test HAVE_CXX_MSSE4_2 - Success
+-- Performing Test HAVE_CXX_MF16C (check file: cmake/checks/cpu_fp16.cpp)
+-- Performing Test HAVE_CXX_MF16C - Success
+-- Performing Test HAVE_CXX_MFMA
+-- Performing Test HAVE_CXX_MFMA - Success
+-- Performing Test HAVE_CXX_MAVX (check file: cmake/checks/cpu_avx.cpp)
+-- Performing Test HAVE_CXX_MAVX - Success
+-- Performing Test HAVE_CXX_MAVX2 (check file: cmake/checks/cpu_avx2.cpp)
+-- Performing Test HAVE_CXX_MAVX2 - Success
+-- Performing Test HAVE_CXX_MAVX512F (check file: cmake/checks/cpu_avx512.cpp)
+-- Performing Test HAVE_CXX_MAVX512F - Success
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD (check file: cmake/checks/cpu_avx512common.cpp)
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD - Success
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ (check file: cmake/checks/cpu_avx512skx.cpp)
+-- Performing Test HAVE_CXX_MAVX512F_MAVX512CD_MAVX512VL_MAVX512BW_MAVX512DQ - Success
+-- Performing Test HAVE_CPU_BASELINE_FLAGS
+-- Performing Test HAVE_CPU_BASELINE_FLAGS - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_1
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_1 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_2
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_SSE4_2 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_FP16
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_FP16 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX2
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX2 - Success
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_SKX
+-- Performing Test HAVE_CPU_DISPATCH_FLAGS_AVX512_SKX - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_HIDDEN - Success
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_CXX_FVISIBILITY_INLINES_HIDDEN - Success
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN
+-- Performing Test HAVE_C_FVISIBILITY_INLINES_HIDDEN - Failed
+-- Performing Test HAVE_LINK_AS_NEEDED
+-- Performing Test HAVE_LINK_AS_NEEDED - Success
+-- Performing Test HAVE_LINK_NO_UNDEFINED
+-- Performing Test HAVE_LINK_NO_UNDEFINED - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for posix_memalign
+-- Looking for posix_memalign - found
+-- Looking for malloc.h
+-- Looking for malloc.h - found
+-- Looking for memalign
+-- Looking for memalign - found
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of off64_t
+-- Check size of off64_t - failed
+-- Performing Test HAVE_C_WNO_SHORTEN_64_TO_32
+-- Performing Test HAVE_C_WNO_SHORTEN_64_TO_32 - Failed
+-- Performing Test HAVE_C_WNO_ATTRIBUTES
+-- Performing Test HAVE_C_WNO_ATTRIBUTES - Success
+-- Performing Test HAVE_C_WNO_STRICT_PROTOTYPES
+-- Performing Test HAVE_C_WNO_STRICT_PROTOTYPES - Success
+-- Performing Test HAVE_C_WNO_MISSING_PROTOTYPES
+-- Performing Test HAVE_C_WNO_MISSING_PROTOTYPES - Success
+-- Performing Test HAVE_C_WNO_MISSING_DECLARATIONS
+-- Performing Test HAVE_C_WNO_MISSING_DECLARATIONS - Success
+-- Performing Test HAVE_C_WNO_SHIFT_NEGATIVE_VALUE
+-- Performing Test HAVE_C_WNO_SHIFT_NEGATIVE_VALUE - Success
+-- Performing Test HAVE_C_WNO_UNDEF
+-- Performing Test HAVE_C_WNO_UNDEF - Success
+-- Performing Test HAVE_C_WNO_IMPLICIT_FALLTHROUGH
+-- Performing Test HAVE_C_WNO_IMPLICIT_FALLTHROUGH - Success
+-- Performing Test HAVE_C_WNO_UNUSED_PARAMETER
+-- Performing Test HAVE_C_WNO_UNUSED_PARAMETER - Success
+-- Performing Test HAVE_C_WNO_SIGN_COMPARE
+-- Performing Test HAVE_C_WNO_SIGN_COMPARE - Success
+-- Performing Test HAVE_C_WNO_STRINGOP_OVERFLOW
+-- Performing Test HAVE_C_WNO_STRINGOP_OVERFLOW - Success
+-- libjpeg-turbo: VERSION = 3.0.3, BUILD = opencv-4.10.0-libjpeg-turbo
+-- Check size of size_t
+-- Check size of size_t - done
+-- Check size of unsigned long
+-- Check size of unsigned long - done
+-- Looking for include file locale.h
+-- Looking for include file locale.h - found
+-- Looking for include file stdlib.h
+-- Looking for include file stdlib.h - found
+-- Looking for include file sys/types.h
+-- Looking for include file sys/types.h - found
+-- Looking for a ASM_NASM compiler
+-- Looking for a ASM_NASM compiler - NOTFOUND
+-- SIMD extensions disabled: could not find NASM compiler.  Performance will suffer.
+-- Performing Test HAVE_C_WNO_CAST_ALIGN
+-- Performing Test HAVE_C_WNO_CAST_ALIGN - Success
+-- Performing Test HAVE_C_WNO_MAYBE_UNINITIALIZED
+-- Performing Test HAVE_C_WNO_MAYBE_UNINITIALIZED - Success
+-- Performing Test HAVE_C_WNO_NULL_POINTER_SUBTRACTION
+-- Performing Test HAVE_C_WNO_NULL_POINTER_SUBTRACTION - Failed
+-- Performing Test HAVE_C_WNO_UNUSED_BUT_SET_VARIABLE
+-- Performing Test HAVE_C_WNO_UNUSED_BUT_SET_VARIABLE - Success
+-- libva: missing va.h header (VA_INCLUDE_DIR)
+-- VTK is not found. Please set -DVTK_DIR in CMake to VTK build directory, or to VTK install subdirectory with VTKConfig.cmake file
+-- ADE: Downloading v0.1.2d.zip from https://github.com/opencv/ade/archive/v0.1.2d.zip
+-- Checking for module 'libdc1394-2'
+--   Package 'libdc1394-2', required by 'virtual:world', not found
+-- Looking for linux/videodev2.h
+-- Looking for linux/videodev2.h - found
+-- Using whitelist: opencv_core;opencv_imgcodecs;opencv_imgproc
+-- Module opencv_calib3d disabled by whitelist
+-- Module opencv_dnn disabled by whitelist
+-- Module opencv_features2d disabled by whitelist
+-- Module opencv_flann disabled by whitelist
+-- Module opencv_gapi disabled by whitelist
+-- Module opencv_highgui disabled by whitelist
+-- Module opencv_java_bindings_generator disabled by whitelist
+-- Module opencv_js_bindings_generator disabled by whitelist
+-- Module opencv_ml disabled by whitelist
+-- Module opencv_objc_bindings_generator disabled by whitelist
+-- Module opencv_objdetect disabled by whitelist
+-- Module opencv_photo disabled by whitelist
+-- Module opencv_python_bindings_generator disabled by whitelist
+-- Module opencv_python_tests disabled by whitelist
+-- Module opencv_stitching disabled by whitelist
+-- Module opencv_video disabled by whitelist
+-- Module opencv_videoio disabled by whitelist
+-- Allocator metrics storage type: 'long long'
+-- Excluding from source files list: modules/imgproc/src/imgwarp.lasx.cpp
+-- Excluding from source files list: modules/imgproc/src/resize.lasx.cpp
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS
+-- Performing Test HAVE_CXX_WNO_DEPRECATED_DECLARATIONS - Success
+-- 
+-- General configuration for OpenCV 4.10.0 =====================================
+--   Version control:               unknown
+-- 
+--   Platform:
+--     Timestamp:                   2026-11-05T22:56:59Z
+--     Host:                        Linux 6.18.55+ x86_64
+--     CMake:                       3.30.5
+--     CMake generator:             Ninja
+--     CMake build tool:            /root/.local/bin/ninja
+--     Configuration:               Release
+-- 
+--   CPU/HW features:
+--     Baseline:                    SSE SSE2 SSE3
+--       requested:                 SSE3
+--     Dispatched code generation:  SSE4_1 SSE4_2 FP16 AVX AVX2 AVX512_SKX
+--       requested:                 SSE4_1 SSE4_2 AVX FP16 AVX2 AVX512_SKX
+--       SSE4_1 (13 files):         + SSSE3 SSE4_1
+--       SSE4_2 (1 files):          + SSSE3 SSE4_1 POPCNT SSE4_2
+--       FP16 (0 files):            + SSSE3 SSE4_1 POPCNT SSE4_2 FP16 AVX
+--       AVX (3 files):             + SSSE3 SSE4_1 POPCNT SSE4_2 AVX
+--       AVX2 (25 files):           + SSSE3 SSE4_1 POPCNT SSE4_2 FP16 FMA3 AVX AVX2
+--       AVX512_SKX (2 files):      + SSSE3 SSE4_1 POPCNT SSE4_2 FP16 FMA3 AVX AVX2 AVX_512F AVX512_COMMON AVX512_SKX
+-- 
+--   C/C++:
+--     Built as dynamic libs?:      YES
+--     C++ standard:                11
+--     C++ Compiler:                /usr/bin/c++  (ver 13.3.0)
+--     C++ flags (Release):         -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse -msse2 -msse3 -fvisibility=hidden -fvisibility-inlines-hidden -O3 -DNDEBUG  -DNDEBUG
+--     C++ flags (Debug):           -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse -msse2 -msse3 -fvisibility=hidden -fvisibility-inlines-hidden -g  -O0 -DDEBUG -D_DEBUG
+--     C Compiler:                  /usr/bin/cc
+--     C flags (Release):           -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse -msse2 -msse3 -fvisibility=hidden -O3 -DNDEBUG  -DNDEBUG
+--     C flags (Debug):             -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -msse -msse2 -msse3 -fvisibility=hidden -g  -O0 -DDEBUG -D_DEBUG
+--     Linker flags (Release):      -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  
+--     Linker flags (Debug):        -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  
+--     ccache:                      NO
+--     Precompiled headers:         NO
+--     Extra dependencies:          dl m pthread rt
+--     3rdparty dependencies:
+-- 
+--   OpenCV modules:
+--     To be built:                 core imgcodecs imgproc
+--     Disabled:                    python3 world
+--     Disabled by dependency:      calib3d dnn features2d flann gapi highgui java_bindings_generator js_bindings_generator ml objc_bindings_generator objdetect photo python_bindings_generator python_tests stitching video videoio
+--     Unavailable:                 java python2 ts
+--     Applications:                -
+--     Documentation:               NO
+--     Non-free algorithms:         NO
+-- 
+--   GUI: 
+--     VTK support:                 NO
+-- 
+--   Media I/O: 
+--     ZLib:                        build (ver 1.3.1)
+--     JPEG:                        build-libjpeg-turbo (ver 3.0.3-70)
+--       SIMD Support Request:      YES
+--       SIMD Support:              NO
+--     PNG:                         build (ver 1.6.43)
+--       SIMD Support Request:      YES
+--       SIMD Support:              YES (Intel SSE)
+--     HDR:                         NO
+--     SUNRASTER:                   NO
+--     PXM:                         NO
+--     PFM:                         NO
+-- 
+--   Video I/O:
+--     DC1394:                      NO
+-- 
+--   Parallel framework:            pthreads
+-- 
+--   Trace:                         YES (built-in)
+-- 
+--   Other third-party libraries:
+--     VA:                          NO
+--     Custom HAL:                  NO
+--     Flatbuffers:                 builtin/3rdparty (23.5.9)
+-- 
+--   Python (for build):            /usr/bin/python3
+-- 
+--   Install to:                    /root/.local/framepipe-deps
+-- -----------------------------------------------------------------
+-- 
+-- Configuring done (54.1s)
+-- Generating done (0.2s)
+-- Build files have been written to: /tmp/framepipe-deps-build/opencv-build
+[1/370] Generate opencv4.pc
+CMake Deprecation Warning at /tmp/framepipe-deps-build/opencv-src/cmake/OpenCVGenPkgconfig.cmake:113 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+[2/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/compress.c.o
+[3/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/gzclose.c.o
+[4/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/adler32.c.o
+[5/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/crc32.c.o
+[6/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/gzlib.c.o
+[7/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/gzread.c.o
+[8/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/gzwrite.c.o
+[9/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/inftrees.c.o
+[10/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/infback.c.o
+[11/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/deflate.c.o
+[12/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/uncompr.c.o
+[13/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/inffast.c.o
+[14/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/zutil.c.o
+[15/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcapistd.c.o
+[16/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/inflate.c.o
+[17/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcdiffct.c.o
+[18/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcmainct.c.o
+[19/370] Building C object 3rdparty/zlib/CMakeFiles/zlib.dir/trees.c.o
+[20/370] Linking C static library 3rdparty/lib/libzlib.a
+[21/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jclossls.c.o
+[22/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcprepct.c.o
+[23/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdapistd.c.o
+[24/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jddiffct.c.o
+[25/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcsample.c.o
+[26/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdlossls.c.o
+[27/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdmainct.c.o
+[28/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdpostct.c.o
+[29/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jutils.c.o
+[30/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdsample.c.o
+[31/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jccoefct.c.o
+[32/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jccolor.c.o
+[33/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jcdctmgr.c.o
+[34/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdcolor.c.o
+[35/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jddctmgr.c.o
+[36/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jfdctfst.c.o
+[37/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jfdctint.c.o
+[38/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jidctflt.c.o
+[39/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jidctfst.c.o
+[40/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdcoefct.c.o
+[41/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jidctred.c.o
+[42/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jdmerge.c.o
+[43/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jquant1.c.o
+[44/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jcapistd.c.o
+[45/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jcdiffct.c.o
+[46/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jquant2.c.o
+[47/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jclossls.c.o
+[48/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jcmainct.c.o
+[49/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jccolor.c.o
+[50/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdapistd.c.o
+[51/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg12-static.dir/src/jidctint.c.o
+[52/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jcprepct.c.o
+[53/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jddiffct.c.o
+[54/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdlossls.c.o
+[55/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jcsample.c.o
+[56/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdpostct.c.o
+[57/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jutils.c.o
+[58/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdmainct.c.o
+[59/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcapistd.c.o
+[60/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcdiffct.c.o
+[61/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdsample.c.o
+[62/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcmainct.c.o
+[63/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jclossls.c.o
+[64/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/jpeg16-static.dir/src/jdcolor.c.o
+[65/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcprepct.c.o
+[66/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jccolor.c.o
+[67/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdapistd.c.o
+[68/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcsample.c.o
+[69/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jddiffct.c.o
+[70/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdlossls.c.o
+[71/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdpostct.c.o
+[72/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdmainct.c.o
+[73/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jutils.c.o
+[74/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdsample.c.o
+[75/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jccoefct.c.o
+[76/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcdctmgr.c.o
+[77/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jddctmgr.c.o
+[78/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jfdctfst.c.o
+[79/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jfdctint.c.o
+[80/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jidctflt.c.o
+[81/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdcolor.c.o
+[82/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdcoefct.c.o
+[83/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jidctfst.c.o
+[84/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jidctred.c.o
+[85/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdmerge.c.o
+[86/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcapimin.c.o
+[87/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jquant1.c.o
+[88/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcicc.c.o
+[89/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcinit.c.o
+[90/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jquant2.c.o
+[91/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jclhuff.c.o
+[92/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jidctint.c.o
+[93/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcomapi.c.o
+[94/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcmaster.c.o
+[95/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcmarker.c.o
+[96/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcparam.c.o
+[97/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jctrans.c.o
+[98/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdatadst.c.o
+[99/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdapimin.c.o
+[100/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcphuff.c.o
+[101/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdatasrc.c.o
+[102/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdicc.c.o
+[103/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdinput.c.o
+[104/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdlhuff.c.o
+[105/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdhuff.c.o
+[106/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdmaster.c.o
+[107/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdtrans.c.o
+[108/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdmarker.c.o
+[109/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jerror.c.o
+[110/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdphuff.c.o
+[111/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jfdctflt.c.o
+[112/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jmemnobs.c.o
+[113/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jaricom.c.o
+[114/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jpeg_nbits.c.o
+[115/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jmemmgr.c.o
+[116/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jdarith.c.o
+[117/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jcarith.c.o
+[118/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngerror.c.o
+[119/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngget.c.o
+[120/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngmem.c.o
+[121/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngpread.c.o
+[122/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngrio.c.o
+[123/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/png.c.o
+[124/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngread.c.o
+[125/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngset.c.o
+[126/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngrutil.c.o
+[127/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngtrans.c.o
+[128/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngwio.c.o
+[129/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngrtran.c.o
+[130/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngwtran.c.o
+[131/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/intel/intel_init.c.o
+[132/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngwrite.c.o
+[133/370] Processing OpenCL kernels (core)
+[134/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/intel/filter_sse2_intrinsics.c.o
+[135/370] Building C object 3rdparty/libpng/CMakeFiles/libpng.dir/pngwutil.c.o
+[136/370] Linking C static library 3rdparty/lib/liblibpng.a
+[137/370] Building C object 3rdparty/libjpeg-turbo/CMakeFiles/libjpeg-turbo.dir/src/jchuff.c.o
+[138/370] Linking C static library 3rdparty/lib/liblibjpeg-turbo.a
+[139/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/algorithm.cpp.o
+[140/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/alloc.cpp.o
+[141/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/async.cpp.o
+[142/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.cpp.o
+[143/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/array.cpp.o
+[144/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/buffer_area.cpp.o
+[145/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/batch_distance.cpp.o
+[146/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/bindings_utils.cpp.o
+[147/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/channels.cpp.o
+[148/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/check.cpp.o
+[149/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/conjugate_gradient.cpp.o
+[150/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert_c.cpp.o
+[151/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/command_line_parser.cpp.o
+[152/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert.dispatch.cpp.o
+[153/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/arithm.dispatch.cpp.o
+[154/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/count_non_zero.dispatch.cpp.o
+[155/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/copy.cpp.o
+[156/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat.cpp.o
+[157/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/convert_scale.dispatch.cpp.o
+[158/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_gpu_mat_nd.cpp.o
+[159/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_host_mem.cpp.o
+[160/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_info.cpp.o
+[161/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/cuda_stream.cpp.o
+[162/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/directx.cpp.o
+[163/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/downhill_simplex.cpp.o
+[164/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/datastructs.cpp.o
+[165/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/gl_core_3_1.cpp.o
+[166/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/glob.cpp.o
+[167/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/hal_internal.cpp.o
+[168/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/has_non_zero.dispatch.cpp.o
+[169/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/kmeans.cpp.o
+[170/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/dxt.cpp.o
+[171/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/logger.cpp.o
+[172/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lda.cpp.o
+[173/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lapack.cpp.o
+[174/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lpsolver.cpp.o
+[175/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/lut.cpp.o
+[176/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs_core.dispatch.cpp.o
+[177/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mathfuncs.cpp.o
+[178/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix.cpp.o
+[179/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_c.cpp.o
+[180/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_iterator.cpp.o
+[181/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_decomp.cpp.o
+[182/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_expressions.cpp.o
+[183/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_sparse.cpp.o
+[184/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_transform.cpp.o
+[185/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matmul.dispatch.cpp.o
+[186/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/mean.dispatch.cpp.o
+[187/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_wrap.cpp.o
+[188/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/merge.dispatch.cpp.o
+[189/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/matrix_operations.cpp.o
+[190/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/ocl.cpp.o
+[191/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/minmax.cpp.o
+[192/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clblas.cpp.o
+[193/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_clfft.cpp.o
+[194/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opencl/runtime/opencl_core.cpp.o
+[195/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/opengl.cpp.o
+[196/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/norm.cpp.o
+[197/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/ovx.cpp.o
+[198/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/out.cpp.o
+[199/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel.cpp.o
+[200/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_openmp.cpp.o
+[201/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel_tbb.cpp.o
+[202/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/pca.cpp.o
+[203/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel_impl.cpp.o
+[204/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/parallel/parallel.cpp.o
+[205/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_base64_encoding.cpp.o
+[206/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_json.cpp.o
+[207/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_types.cpp.o
+[208/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence.cpp.o
+[209/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_xml.cpp.o
+[210/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/persistence_yml.cpp.o
+[211/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/split.dispatch.cpp.o
+[212/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stat.dispatch.cpp.o
+[213/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/rand.cpp.o
+[214/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/softfloat.cpp.o
+[215/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stl.cpp.o
+[216/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/stat_c.cpp.o
+[217/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/sum.dispatch.cpp.o
+[218/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/tables.cpp.o
+[219/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/trace.cpp.o
+[220/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/types.cpp.o
+[221/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/system.cpp.o
+[222/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/umatrix.cpp.o
+[223/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/datafile.cpp.o
+[224/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagconfigparser.cpp.o
+[225/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/filesystem.cpp.o
+[226/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/logtagmanager.cpp.o
+[227/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/opencl_kernels_core.cpp.o
+[228/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/va_intel.cpp.o
+[229/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/src/utils/samples.cpp.o
+[230/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/stat.sse4_2.cpp.o
+[231/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mathfuncs_core.avx.cpp.o
+[232/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mathfuncs_core.avx2.cpp.o
+[233/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/stat.avx2.cpp.o
+[234/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.sse4_1.cpp.o
+[235/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/arithm.sse4_1.cpp.o
+[236/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/convert.avx2.cpp.o
+[237/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/convert_scale.avx2.cpp.o
+[238/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/count_non_zero.avx2.cpp.o
+[239/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/has_non_zero.avx2.cpp.o
+[240/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/merge.avx2.cpp.o
+[241/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/mean.avx2.cpp.o
+[242/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/arithm.avx2.cpp.o
+[243/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/split.avx2.cpp.o
+[244/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/sum.avx2.cpp.o
+[245/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.avx2.cpp.o
+[246/370] Building CXX object modules/core/CMakeFiles/opencv_core.dir/matmul.avx512_skx.cpp.o
+[247/370] Linking CXX shared library lib/libopencv_core.so.4.10.0
+[248/370] Creating library symlink lib/libopencv_core.so.410 lib/libopencv_core.so
+[249/370] Processing OpenCL kernels (imgproc)
+[250/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.cpp.o
+[251/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/approx.cpp.o
+[252/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/bilateral_filter.dispatch.cpp.o
+[253/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/blend.cpp.o
+[254/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/clahe.cpp.o
+[255/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/accum.dispatch.cpp.o
+[256/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/canny.cpp.o
+[257/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color.cpp.o
+[258/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/box_filter.dispatch.cpp.o
+[259/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_hsv.dispatch.cpp.o
+[260/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_rgb.dispatch.cpp.o
+[261/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/colormap.cpp.o
+[262/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_lab.cpp.o
+[263/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours.cpp.o
+[264/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_approx.cpp.o
+[265/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_common.cpp.o
+[266/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/color_yuv.dispatch.cpp.o
+[267/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_link.cpp.o
+[268/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/convhull.cpp.o
+[269/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/contours_new.cpp.o
+[270/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/corner.cpp.o
+[271/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/cornersubpix.cpp.o
+[272/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/deriv.cpp.o
+[273/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/distransform.cpp.o
+[274/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/demosaicing.cpp.o
+[275/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/emd.cpp.o
+[276/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/emd_new.cpp.o
+[277/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/featureselect.cpp.o
+[278/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/drawing.cpp.o
+[279/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/gabor.cpp.o
+[280/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/floodfill.cpp.o
+[281/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/generalized_hough.cpp.o
+[282/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/geometry.cpp.o
+[283/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/grabcut.cpp.o
+[284/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/hershey_fonts.cpp.o
+[285/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/histogram.cpp.o
+[286/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/filter.dispatch.cpp.o
+[287/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/hough.cpp.o
+[288/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/intersection.cpp.o
+[289/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/connectedcomponents.cpp.o
+[290/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/intelligent_scissors.cpp.o
+[291/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/main.cpp.o
+[292/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/linefit.cpp.o
+[293/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/matchcontours.cpp.o
+[294/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/lsd.cpp.o
+[295/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/min_enclosing_triangle.cpp.o
+[296/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/moments.cpp.o
+[297/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/median_blur.dispatch.cpp.o
+[298/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/phasecorr.cpp.o
+[299/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.cpp.o
+[300/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/morph.dispatch.cpp.o
+[301/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/pyramids.cpp.o
+[302/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/rotcalipers.cpp.o
+[303/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/segmentation.cpp.o
+[304/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/samplers.cpp.o
+[305/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/shapedescr.cpp.o
+[306/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/spatialgradient.cpp.o
+[307/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/subdivision2d.cpp.o
+[308/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/stackblur.cpp.o
+[309/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.cpp.o
+[310/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/tables.cpp.o
+[311/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/sumpixels.dispatch.cpp.o
+[312/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/templmatch.cpp.o
+[313/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/utils.cpp.o
+[314/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/thresh.cpp.o
+[315/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/opencl_kernels_imgproc.cpp.o
+[316/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.sse4_1.cpp.o
+[317/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.sse4_1.cpp.o
+[318/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/smooth.dispatch.cpp.o
+[319/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_hsv.sse4_1.cpp.o
+[320/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.sse4_1.cpp.o
+[321/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/box_filter.sse4_1.cpp.o
+[322/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_rgb.sse4_1.cpp.o
+[323/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_yuv.sse4_1.cpp.o
+[324/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/median_blur.sse4_1.cpp.o
+[325/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/corner.avx.cpp.o
+[326/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/filter.sse4_1.cpp.o
+[327/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/morph.sse4_1.cpp.o
+[328/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/imgwarp.avx2.cpp.o
+[329/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/src/resize.avx2.cpp.o
+[330/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.avx.cpp.o
+[331/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/smooth.sse4_1.cpp.o
+[332/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/bilateral_filter.avx2.cpp.o
+[333/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/accum.avx2.cpp.o
+[334/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_hsv.avx2.cpp.o
+[335/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_rgb.avx2.cpp.o
+[336/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/box_filter.avx2.cpp.o
+[337/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/color_yuv.avx2.cpp.o
+[338/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/median_blur.avx2.cpp.o
+[339/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/filter.avx2.cpp.o
+[340/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/sumpixels.avx2.cpp.o
+[341/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/morph.avx2.cpp.o
+[342/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/utils.cpp.o
+[343/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_avif.cpp.o
+[344/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/loadsave.cpp.o
+[345/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/sumpixels.avx512_skx.cpp.o
+[346/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_base.cpp.o
+[347/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_exr.cpp.o
+[348/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_bmp.cpp.o
+[349/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_gdal.cpp.o
+[350/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_gdcm.cpp.o
+[351/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_hdr.cpp.o
+[352/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg2000.cpp.o
+[353/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg.cpp.o
+[354/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_jpeg2000_openjpeg.cpp.o
+[355/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pam.cpp.o
+[356/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pfm.cpp.o
+[357/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_pxm.cpp.o
+[358/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_png.cpp.o
+[359/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_spng.cpp.o
+[360/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_webp.cpp.o
+[361/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_sunras.cpp.o
+[362/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/grfmt_tiff.cpp.o
+[363/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/bitstrm.cpp.o
+[364/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/rgbe.cpp.o
+[365/370] Building CXX object modules/imgcodecs/CMakeFiles/opencv_imgcodecs.dir/src/exif.cpp.o
+[366/370] Building CXX object modules/imgproc/CMakeFiles/opencv_imgproc.dir/smooth.avx2.cpp.o
+[367/370] Linking CXX shared library lib/libopencv_imgproc.so.4.10.0
+[368/370] Creating library symlink lib/libopencv_imgproc.so.410 lib/libopencv_imgproc.so
+[369/370] Linking CXX shared library lib/libopencv_imgcodecs.so.4.10.0
+[370/370] Creating library symlink lib/libopencv_imgcodecs.so.410 lib/libopencv_imgcodecs.so
+-- Install configuration: "Release"
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/flatbuffers-LICENSE.txt
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/ade-LICENSE
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/cvconfig.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/opencv_modules.hpp
+-- Installing: /root/.local/framepipe-deps/lib/pkgconfig/opencv4.pc
+-- Installing: /root/.local/framepipe-deps/lib/cmake/opencv4/OpenCVModules.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/opencv4/OpenCVModules-release.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/opencv4/OpenCVConfig-version.cmake
+-- Installing: /root/.local/framepipe-deps/lib/cmake/opencv4/OpenCVConfig.cmake
+-- Installing: /root/.local/framepipe-deps/bin/setup_vars_opencv4.sh
+-- Installing: /root/.local/framepipe-deps/share/opencv4/valgrind.supp
+-- Installing: /root/.local/framepipe-deps/share/opencv4/valgrind_3rdparty.supp
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/zlib-LICENSE
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/libjpeg-turbo-README.md
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/libjpeg-turbo-LICENSE.md
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/libjpeg-turbo-README.ijg
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/libpng-LICENSE
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/libpng-README
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/opencv.hpp
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_core.so.4.10.0
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_core.so.410
+-- Set non-toolchain portion of runtime path of "/root/.local/framepipe-deps/lib/libopencv_core.so.4.10.0" to "/root/.local/framepipe-deps/lib"
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_core.so
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/affine.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/async.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/base.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/bindings_utils.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/bufferpool.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/check.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/core.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/core_c.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/block.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/border_interpolate.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/color.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/common.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/datamov_utils.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/color_detail.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/reduce.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/reduce_key_val.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/transform_detail.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/type_traits_detail.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/detail/vec_distance_detail.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/dynamic_smem.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/emulation.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/filters.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/funcattrib.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/functional.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/limits.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/reduce.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/saturate_cast.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/scan.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/simd_functions.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/transform.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/type_traits.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/utility.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/vec_distance.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/vec_math.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/vec_traits.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/warp.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/warp_reduce.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda/warp_shuffle.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda_stream_accessor.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cuda_types.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cv_cpu_dispatch.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cv_cpu_helper.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cvdef.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cvstd.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cvstd.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/cvstd_wrapper.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/detail/async_promise.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/detail/dispatch_helper.impl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/detail/exception_ptr.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/directx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/dualquaternion.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/dualquaternion.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/eigen.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/fast_math.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/hal.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/interface.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_avx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_avx512.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_cpp.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_forward.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_lasx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_lsx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_msa.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_neon.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv071.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv_010_compat_non-policy.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv_010_compat_overloaded-non-policy.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv_011_compat.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv_compat_overloaded.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_rvv_scalable.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_sse.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_sse_em.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_vsx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/intrin_wasm.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/msa_macros.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/hal/simd_utils.impl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/mat.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/mat.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/matx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/matx.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/neon_utils.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/ocl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/ocl_genbase.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/ocl_defs.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/opencl_info.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/opencl_svm.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_clblas.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_clfft.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_core.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_core_wrappers.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_gl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/autogenerated/opencl_gl_wrappers.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_clblas.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_clfft.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_core.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_core_wrappers.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_gl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_gl_wrappers.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_svm_20.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_svm_definitions.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opencl/runtime/opencl_svm_hsa_extension.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/opengl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/operations.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/optim.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/ovx.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/parallel/backend/parallel_for.openmp.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/parallel/backend/parallel_for.tbb.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/parallel/parallel_backend.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/persistence.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/quaternion.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/quaternion.inl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/saturate.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/simd_intrinsics.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/softfloat.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/sse_utils.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/traits.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/types.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/types_c.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utility.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/allocator_stats.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/allocator_stats.impl.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/filesystem.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/fp_control_utils.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/instrumentation.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/logger.defines.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/logger.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/logtag.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/tls.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/utils/trace.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/va_intel.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/version.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/core/vsx_utils.hpp
+-- Installing: /root/.local/framepipe-deps/share/licenses/opencv4/SoftFloat-COPYING.txt
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgproc.so.4.10.0
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgproc.so.410
+-- Set non-toolchain portion of runtime path of "/root/.local/framepipe-deps/lib/libopencv_imgproc.so.4.10.0" to "/root/.local/framepipe-deps/lib"
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgproc.so
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/bindings.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/detail/gcgraph.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/detail/legacy.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/hal/hal.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/hal/interface.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/imgproc.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/imgproc_c.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/segmentation.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgproc/types_c.h
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgcodecs.so.4.10.0
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgcodecs.so.410
+-- Set non-toolchain portion of runtime path of "/root/.local/framepipe-deps/lib/libopencv_imgcodecs.so.4.10.0" to "/root/.local/framepipe-deps/lib"
+-- Installing: /root/.local/framepipe-deps/lib/libopencv_imgcodecs.so
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs/imgcodecs.hpp
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs/imgcodecs_c.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs/ios.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs/legacy/constants_c.h
+-- Installing: /root/.local/framepipe-deps/include/opencv4/opencv2/imgcodecs/macosx.h
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_eye.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_eye_tree_eyeglasses.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalcatface.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalcatface_extended.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalface_alt.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalface_alt2.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalface_alt_tree.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_frontalface_default.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_fullbody.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_lefteye_2splits.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_license_plate_rus_16stages.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_lowerbody.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_profileface.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_righteye_2splits.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_russian_plate_number.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_smile.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/haarcascades/haarcascade_upperbody.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/lbpcascades/lbpcascade_frontalcatface.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/lbpcascades/lbpcascade_frontalface.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/lbpcascades/lbpcascade_frontalface_improved.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/lbpcascades/lbpcascade_profileface.xml
+-- Installing: /root/.local/framepipe-deps/share/opencv4/lbpcascades/lbpcascade_silverware.xml
+Dependencies installed in /root/.local/framepipe-deps

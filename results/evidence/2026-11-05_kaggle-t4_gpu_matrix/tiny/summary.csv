@@ -1,0 +1,17 @@
+backend,implementation,metric,frame_id,input_width,input_height,output_width,output_height,count,min_ms,max_ms,mean_ms,stddev_ms,median_ms,p95_ms,median_of_run_medians_ms,repetitions
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",application_wall_ms,tiny_0,64,64,64,64,300,0.421205,0.725270,0.500749,0.034444,0.497076,0.561421,0.489375,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",batch_wall_ms,__batch__,0,0,64,64,3,0.491848,0.555177,0.513528,0.036079,0.493560,0.555177,0.493560,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",cpu_core_wall_ms,tiny_0,64,64,64,64,300,0.064983,0.540524,0.080524,0.027960,0.077573,0.096391,0.076124,3
+cpu-omp,"openmp-rows(threads=4,schedule=dynamic4x)",startup_wall_ms,tiny_0,64,64,64,64,3,0.028073,0.031195,0.029839,0.001601,0.030248,0.031195,0.030248,3
+cpu-ref,scalar,application_wall_ms,tiny_0,64,64,64,64,300,0.393927,0.734109,0.497874,0.046774,0.497405,0.575363,0.509788,3
+cpu-ref,scalar,batch_wall_ms,__batch__,0,0,64,64,3,0.458041,0.521366,0.489192,0.031675,0.488168,0.521366,0.488168,3
+cpu-ref,scalar,cpu_core_wall_ms,tiny_0,64,64,64,64,300,0.103587,0.225552,0.130946,0.023374,0.124060,0.179179,0.127499,3
+cpu-ref,scalar,startup_wall_ms,tiny_0,64,64,64,64,3,0.023911,0.030982,0.026819,0.003699,0.025564,0.030982,0.025564,3
+cuda,cuda-basic(block=16x16),application_wall_ms,tiny_0,64,64,64,64,300,0.349770,0.683115,0.427687,0.041555,0.427003,0.485684,0.432547,3
+cuda,cuda-basic(block=16x16),batch_wall_ms,__batch__,0,0,64,64,3,0.432419,0.517175,0.461654,0.048105,0.435367,0.517175,0.435367,3
+cuda,cuda-basic(block=16x16),gpu_device_pipeline_ms,tiny_0,64,64,64,64,300,0.019648,0.049600,0.022056,0.003561,0.021280,0.025536,0.021216,3
+cuda,cuda-basic(block=16x16),gpu_transfer_inclusive_wall_ms,tiny_0,64,64,64,64,300,0.033253,0.078165,0.037255,0.005060,0.035915,0.048392,0.035446,3
+cuda,cuda-basic(block=16x16),startup_wall_ms,tiny_0,64,64,64,64,3,0.184321,0.201259,0.190910,0.009074,0.187149,0.201259,0.187149,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),application_wall_ms,tiny_0,64,64,64,64,300,0.380176,0.726971,0.463565,0.042904,0.457831,0.552667,0.457427,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),batch_wall_ms,__batch__,0,0,64,64,3,0.409727,0.460720,0.440397,0.027025,0.450743,0.460720,0.450743,3
+opencv-cpu,opencv-imgproc 4.10.0 (threads=1),cpu_core_wall_ms,tiny_0,64,64,64,64,300,0.048422,0.108391,0.061516,0.010474,0.061923,0.082454,0.064976,3

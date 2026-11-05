@@ -1,0 +1,29 @@
+== tiny
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/tiny (status measured)
+== small
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/small (status measured)
+== hd
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd (status measured)
+== uhd
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/uhd (status measured)
+== odd
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/odd (status measured)
+== upscale
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/upscale (status measured)
+== same
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/same (status measured)
+== hd_radius1
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_radius1 (status measured)
+== hd_radius3
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_radius3 (status measured)
+== hd_radius7
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_radius7 (status measured)
+== hd_radius15
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_radius15 (status measured)
+== hd_stage_resize
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_stage_resize (status measured)
+== hd_stage_blur
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_stage_blur (status measured)
+== hd_stage_edges
+benchmark: wrote 2721 samples to /kaggle/working/kaggle_gpu/hd_stage_edges (status measured)
+matrix complete: /kaggle/working/kaggle_gpu

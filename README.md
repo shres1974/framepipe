@@ -9,11 +9,14 @@ It turns frames such as a 1920×1080 camera sequence into 1280×720 grayscale,
 blurred, or normalized edge-map PNGs, in manifest order, with machine-readable
 correctness and timing reports. It does not make robotics decisions.
 
-**Status (2026-11-03):** CPU-validated. The CUDA backend compiles (nvcc
-12.6, sm_75/86/89) but has **not been executed on a GPU** yet, because the
-development host has no NVIDIA driver. See
-[docs/implementation_status.md](docs/implementation_status.md) for which gates
-passed, which are pending, and the commands that close them.
+**Status (2026-11-05):** CPU-validated and GPU-executed. On an NVIDIA Tesla T4
+(Kaggle, CUDA 13.0) all 11 CUDA hardware tests pass and the CUDA output matches
+the CPU reference within tolerance on every benchmarked input. HD
+(1920×1080 → 1280×720) processing including host↔device transfers takes
+2.24 ms vs 28.5 ms for the scalar CPU reference (12.7×). See
+[docs/benchmark_results.md](docs/benchmark_results.md). Compute Sanitizer and
+the oracle suite with the CUDA candidate have not been run yet; see
+[docs/implementation_status.md](docs/implementation_status.md).
 
 ## Quick start (Linux, no root, no GPU required)
 
