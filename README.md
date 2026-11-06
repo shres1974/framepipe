@@ -111,7 +111,7 @@ architecture is given. Check that your toolkit supports your host compiler.
 | [docs/benchmark_results.md](docs/benchmark_results.md) | What was measured, on which hardware, and what is still unknown |
 | [docs/implementation_status.md](docs/implementation_status.md) | Milestones, requirement traceability, exact commands run, open gaps |
 | [docs/decisions/](docs/decisions/) | Dependency, error-model, CLI, and scope decisions |
-| [docs/interview_notes.md](docs/interview_notes.md) | Answers to the review questions in spec Section 28 |
+
 
 ## License
 
