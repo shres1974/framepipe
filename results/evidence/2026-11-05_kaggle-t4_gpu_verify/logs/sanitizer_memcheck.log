@@ -1,0 +1,46 @@
+========= COMPUTE-SANITIZER
+Running main() from /tmp/framepipe-deps-build/gtest-src/googletest/src/gtest_main.cc
+[==========] Running 12 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 7 tests from CudaParity
+[ RUN      ] CudaParity.LaunchBoundaryAndSmallGeometry
+[       OK ] CudaParity.LaunchBoundaryAndSmallGeometry (703 ms)
+[ RUN      ] CudaParity.ResizeRatiosAndOneByOne
+[       OK ] CudaParity.ResizeRatiosAndOneByOne (12 ms)
+[ RUN      ] CudaParity.GaussianRadiiAndSigmas
+[       OK ] CudaParity.GaussianRadiiAndSigmas (58 ms)
+[ RUN      ] CudaParity.IntensityExtremesAndStructuredPatterns
+[       OK ] CudaParity.IntensityExtremesAndStructuredPatterns (16 ms)
+[ RUN      ] CudaParity.CroppedInputView
+[       OK ] CudaParity.CroppedInputView (2 ms)
+[ RUN      ] CudaParity.PinnedAndPageableTransferPathsAgree
+[       OK ] CudaParity.PinnedAndPageableTransferPathsAgree (3 ms)
+[ RUN      ] CudaParity.DeviceResidentPathMatches
+[       OK ] CudaParity.DeviceResidentPathMatches (4 ms)
+[----------] 7 tests from CudaParity (801 ms total)
+
+[----------] 2 tests from CudaLifecycle
+[ RUN      ] CudaLifecycle.NoDeviceAllocationInSteadyState
+[       OK ] CudaLifecycle.NoDeviceAllocationInSteadyState (385 ms)
+[ RUN      ] CudaLifecycle.ReprepareShapeChangesAndInstances
+[       OK ] CudaLifecycle.ReprepareShapeChangesAndInstances (11 ms)
+[----------] 2 tests from CudaLifecycle (396 ms total)
+
+[----------] 3 tests from CudaErrors
+[ RUN      ] CudaErrors.BudgetExceededIsAllocationFailure
+[       OK ] CudaErrors.BudgetExceededIsAllocationFailure (0 ms)
+[ RUN      ] CudaErrors.WrongDeviceIndex
+[       OK ] CudaErrors.WrongDeviceIndex (0 ms)
+[ RUN      ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+/tmp/framepipe/tests/gpu/test_cuda_parity.cpp:229: Skipped
+device usable; this checks the no-device path
+
+[  SKIPPED ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack (0 ms)
+[----------] 3 tests from CudaErrors (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 3 test suites ran. (1197 ms total)
+[  PASSED  ] 11 tests.
+[  SKIPPED ] 1 test, listed below:
+[  SKIPPED ] CudaErrors.ExplicitCudaUnavailableNeverFallsBack
+========= ERROR SUMMARY: 0 errors

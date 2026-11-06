@@ -199,9 +199,10 @@ only about a 1.35× faster application on this 4-vCPU host.
   workload was run.
 - The CPU columns here come from a 4-vCPU Xeon and are slower than the laptop
   numbers above. Do not mix the two tables.
-- Compute Sanitizer and the oracle suite with the `cuda` candidate have not
-  been run. Parity evidence comes from `framepipe_cuda_tests` and the
-  harness's per-input validation against cpu-ref.
+- Correctness beyond the benchmark parity checks was verified in a separate
+  run (`results/evidence/2026-11-05_kaggle-t4_gpu_verify/`): the NumPy oracle
+  suite including `cuda` (144 comparisons, 0 failures) and Compute Sanitizer
+  on all four tools (0 errors).
 - No GPU optimization has been attempted. The kernels are `cuda-basic`
   (16×16 blocks).
 
@@ -210,4 +211,4 @@ only about a 1.35× faster application on this 4-vCPU host.
 - A controlled machine (fixed clocks, no VM): results come from a laptop VM
   and a cloud VM.
 - Natural camera images. All inputs are synthetic (`scripts/generate_fixtures.py`).
-- CUDA under Compute Sanitizer, the ring workload on GPU, and Nsight profiles.
+- The ring workload on GPU, and Nsight profiles.

@@ -14,8 +14,9 @@ correctness and timing reports. It does not make robotics decisions.
 the CPU reference within tolerance on every benchmarked input. HD
 (1920×1080 → 1280×720) processing including host↔device transfers takes
 2.24 ms vs 28.5 ms for the scalar CPU reference (12.7×). See
-[docs/benchmark_results.md](docs/benchmark_results.md). Compute Sanitizer and
-the oracle suite with the CUDA candidate have not been run yet; see
+[docs/benchmark_results.md](docs/benchmark_results.md). The CUDA backend also
+passes the independent NumPy oracle suite and Compute Sanitizer (memcheck,
+racecheck, initcheck, synccheck: 0 errors); see
 [docs/implementation_status.md](docs/implementation_status.md).
 
 ## Quick start (Linux, no root, no GPU required)

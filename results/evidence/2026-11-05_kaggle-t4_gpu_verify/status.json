@@ -1,0 +1,54 @@
+{
+  "env": {
+    "rc": 0,
+    "secs": 0
+  },
+  "clone": {
+    "rc": 0,
+    "secs": 1
+  },
+  "pip": {
+    "rc": 0,
+    "secs": 8
+  },
+  "deps": {
+    "rc": 0,
+    "secs": 334
+  },
+  "configure": {
+    "rc": 0,
+    "secs": 15
+  },
+  "build": {
+    "rc": 0,
+    "secs": 51
+  },
+  "ctest_all": {
+    "rc": 0,
+    "secs": 15
+  },
+  "cuda_tests_direct": {
+    "rc": 0,
+    "secs": 1
+  },
+  "oracle_cuda": {
+    "rc": 0,
+    "secs": 24
+  },
+  "sanitizer_memcheck": {
+    "rc": 0,
+    "secs": 2
+  },
+  "sanitizer_racecheck": {
+    "rc": 0,
+    "secs": 15
+  },
+  "sanitizer_initcheck": {
+    "rc": 0,
+    "secs": 3
+  },
+  "sanitizer_synccheck": {
+    "rc": 0,
+    "secs": 1
+  }
+}

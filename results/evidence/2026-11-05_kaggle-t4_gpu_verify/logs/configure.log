@@ -1,0 +1,36 @@
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Release"
+  CMAKE_CUDA_ARCHITECTURES="native"
+  CMAKE_PREFIX_PATH="/root/.local/framepipe-deps"
+  FRAMEPIPE_BUILD_TESTS="ON"
+  FRAMEPIPE_ENABLE_CUDA="ON"
+
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for a CUDA compiler
+-- Looking for a CUDA compiler - /usr/local/cuda/bin/nvcc
+-- The CUDA compiler identification is NVIDIA 13.0.88
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /usr/local/cuda/targets/x86_64-linux/include (found version "13.0.88")
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Found OpenCV: /root/.local/framepipe-deps (found suitable version "4.10.0", minimum required is "4") found components: core imgproc imgcodecs
+-- Found nlohmann_json: /root/.local/framepipe-deps/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found suitable version "3.11.3", minimum required is "3.11")
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX
+-- Found GTest: /root/.local/framepipe-deps/lib/cmake/GTest/GTestConfig.cmake (found suitable version "1.15.2", minimum required is "1.15")
+-- Found Python3: /usr/local/bin/python (found version "3.13.16") found components: Interpreter
+-- FramePipe: CUDA backend=ON OpenMP backend=ON sanitize=OFF
+-- Configuring done (15.0s)
+-- Generating done (0.1s)
+-- Build files have been written to: /tmp/framepipe/build/cuda

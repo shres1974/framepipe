@@ -1,8 +1,8 @@
 # Implementation status
 
-Last updated: 2026-11-05. **Release state: CPU-validated; CUDA executed and
-parity-checked on a Tesla T4.** The remaining P0 GPU gaps are Compute
-Sanitizer and the oracle suite with the `cuda` candidate (see next steps).
+Last updated: 2026-11-05. **Release state: CPU-validated and GPU-validated
+on a Tesla T4.** The CUDA backend passes its hardware tests, the independent
+NumPy oracle suite, and all four Compute Sanitizer tools.
 
 ## Environment facts (development host)
 
@@ -27,7 +27,7 @@ Sanitizer and the oracle suite with the `cuda` candidate (see next steps).
 | M0 skeleton, CPU-only build, doctor | **passed** | CPU configure/build with no CUDA; `doctor` reports `cuda: built=no` on the CPU build and exits 0 |
 | M1 CPU math + independent oracle | **passed** | 84 unit tests; oracle self-tests; 96 oracle comparisons (cpu-ref, cpu-omp × 16 cases × 3 stages); mutation check |
 | M2 I/O + CLI | **passed** | `cli_integration`, `ImageIo.*`; README commands executed verbatim |
-| M3 basic CUDA parity | **passed on Tesla T4; Compute Sanitizer not run** | On Kaggle T4 (nvcc 13.0.88, `native` arch) all 11 hardware GPU tests pass (parity, launch boundaries, resize ratios, Gaussian radii, cropped views, pinned/pageable transfers, device-resident path, zero steady-state device allocation, re-prepare, budget and device-index errors). The one skip is the no-device test, as expected. Logs: `results/evidence/2026-11-05_kaggle-t4_gpu_matrix/logs/test_gpu.log` |
+| M3 basic CUDA parity | **passed on Tesla T4, including Compute Sanitizer** | On Kaggle T4 (nvcc 13.0.88, `native` arch) all 11 hardware GPU tests pass (parity, launch boundaries, resize ratios, Gaussian radii, cropped views, pinned/pageable transfers, device-resident path, zero steady-state device allocation, re-prepare, budget and device-index errors). The one skip is the no-device test, as expected. Compute Sanitizer memcheck, racecheck, initcheck, and synccheck report 0 errors. Logs: `results/evidence/2026-11-05_kaggle-t4_gpu_{matrix,verify}/logs/` |
 | M4 benchmarks + CPU baseline | **passed (CPU and GPU)** | Full spec 18.2 matrix on the laptop CPU (51 dirs). On the T4: 7 scenarios + radius and stage sweeps, repeat workload only (14 dirs), with every backend parity-checked per input. All 65 dirs validate. See benchmark_results.md |
 | M5 profiling + one optimization | **passed (CPU, inconclusive result documented)** | perf profile; OpenMP scheduling before/after; the static variant is retained; see benchmark_results.md. No GPU optimization attempted yet |
 | M6 sequences + pilot | **sequence runner passed; pilot not started** | `batch` with bounded queue, ordering, fail-fast/continue, re-prepare, memory-bound test. **No pilot user**, and no usage is claimed. Async multi-slot CUDA execution and video: not implemented |
@@ -46,7 +46,7 @@ Sanitizer and the oracle suite with the `cuda` candidate (see next steps).
 | R07 resource lifetime | passed (CPU and T4) | `Lifecycle.*` (fault injection, steady-state zero allocations, re-prepare); `CudaLifecycle.*` pass on hardware |
 | R08 backend selection | passed | auto→cpu-ref with reason; explicit cuda → exit 4, no output; wrong device index |
 | R09 CLI workflow | passed | `cli_integration` (all commands, exit codes 0/2/3/4/5/6) |
-| R10 float correctness on recorded hardware | passed for CPU backends; GPU passed vs cpu-ref (oracle suite with `cuda` not run) | oracle suite; validation.json in every benchmark, including T4 runs |
+| R10 float correctness on recorded hardware | passed (CPU and T4) | oracle suite (on T4: 144 comparisons covering cpu-ref, cpu-omp, and cuda, 0 failures); validation.json in every benchmark, including T4 runs |
 | R11 timing boundaries | passed (code review + tests) | docs/benchmark_method.md; harness tests ensure no CPU `device_pipeline` samples |
 | R12 reproducibility | passed | run/environment/config/inputs/samples in every run. The laptop CPU runs have a null git revision (no commits existed). The T4 runs record `fd080d4`, clean |
 | R13 fair CPU baseline | passed | cpu-omp (thread count recorded) and an OpenCV baseline with matched semantics |
@@ -86,21 +86,24 @@ WORKLOADS=repeat WARMUP=20 ITERATIONS=100 REPETITIONS=3 \
 for d in <out>/*/; do python3 scripts/validate_results.py $d; done        # 14 valid
 ```
 
-The harness test was fixed after this run, and the fixed version passes on
-the CPU build (113/113). It has not yet been re-run on a GPU.
+Verification run at `19ce81f` (`results/evidence/2026-11-05_kaggle-t4_gpu_verify/logs/`):
+
+```bash
+ctest --test-dir build/cuda --output-on-failure                           # 125/125 passed (harness fix confirmed on GPU)
+build/cuda/bin/framepipe_cuda_tests                                       # 11 passed, 1 skipped (no-device test)
+python3 scripts/run_oracle_suite.py --framepipe build/cuda/bin/framepipe --work-dir build/cuda/ow --candidates cpu-ref,cpu-omp,cuda
+                                                                          # 144 comparisons, 0 failures
+for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t --error-exitcode 99 build/cuda/bin/framepipe_cuda_tests; done
+                                                                          # all four: 11 tests passed, 0 errors / 0 hazards
+```
 
 ## Remaining gaps and next concrete steps
 
-1. **Finish GPU verification:** the oracle suite with the cuda candidate, and Compute Sanitizer:
-   ```bash
-   python3 scripts/run_oracle_suite.py --framepipe build/cuda/bin/framepipe --work-dir build/cuda/ow --candidates cpu-ref,cpu-omp,cuda
-   for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t --error-exitcode 99 build/cuda/bin/framepipe_cuda_tests; done
-   ```
-   Also rerun the full ctest on GPU to confirm the harness fix, and run the ring workload on GPU.
+1. Run the ring workload on GPU (only the repeat workload was measured).
 2. Rerun one CPU benchmark on the laptop so `git_revision` is recorded.
 3. Choose a LICENSE (owner decision).
 4. Paste the full spec text into `docs/implementation_spec.md`.
-5. After GPU parity passes: profile with Nsight Systems, then try one GPU optimization (a shared-memory Gaussian tile is the obvious candidate) with before/after evidence (R14).
+5. Profile with Nsight Systems, then try one GPU optimization (a shared-memory Gaussian tile is the obvious candidate) with before/after evidence (R14).
 6. CPU follow-up suggested by the data: SIMD in the Gaussian passes.
 7. P2 items not started: async multi-slot CUDA runner, video adapter, Python/ROS binding, HIP, pilot user.
 
