@@ -131,16 +131,29 @@ build_cpu() {    # <outdir-log>
   cmake --preset cpu >"$1" 2>&1 && cmake --build --preset cpu >>"$1" 2>&1
 }
 
-# GPU tests must EXECUTE, not skip. The suite skips cleanly when no device is
-# present, so "no failures" is not enough; we also forbid SKIPPED.
+# GPU tests must EXECUTE, not skip wholesale. The suite contains exactly one
+# test that is designed to skip WHEN a device IS present
+# (CudaErrors.ExplicitCudaUnavailableNeverFallsBack, which only applies with no
+# device). So require the real tests to pass and allow at most that one skip;
+# fail if nothing ran or if more than one test skipped (which would mean the
+# device was not actually used).
 gpu_tests_execute() {   # <bin>
   local out; out="$("$1" --gtest_brief=1 2>&1)"; local rc=$?
   echo "$out"
   [[ $rc -eq 0 ]] || return 1
-  if echo "$out" | grep -q 'SKIPPED'; then
-    echo "ERROR: GPU tests reported SKIPPED (no usable device?) -- not real verification" >&2
+  local passed skipped
+  passed="$(echo "$out" | grep -oE '\[  PASSED  \] [0-9]+' | grep -oE '[0-9]+' | tail -1)"
+  skipped="$(echo "$out" | grep -oE '\[  SKIPPED \] [0-9]+' | grep -oE '[0-9]+' | tail -1)"
+  passed="${passed:-0}"; skipped="${skipped:-0}"
+  if [[ "$passed" -lt 1 ]]; then
+    echo "ERROR: no GPU tests passed (device not used?) -- not real verification" >&2
     return 1
   fi
+  if [[ "$skipped" -gt 1 ]]; then
+    echo "ERROR: $skipped GPU tests skipped (expected at most 1 no-device test) -- device likely unused" >&2
+    return 1
+  fi
+  echo "GPU tests executed: $passed passed, $skipped skipped (<=1 intentional)"
   return 0
 }
 
@@ -167,24 +180,24 @@ batch_bench() {   # <build-dir> <outdir>
     --output-dir "$out" --overwrite >/dev/null 2>&1
 }
 
-# Pull a median metric out of a results summary.json (best-effort).
-metric() {   # <summary.json> <metric-name>
-  python3 - "$1" "$2" <<'PY' 2>/dev/null || echo "n/a"
+# Pull a median metric for a given frame out of a results summary.json.
+# Metrics live in groups[] with fields metric, frame_id, and
+# pooled_within_runs.median_ms.
+metric() {   # <summary.json> <metric-name> [frame_id]
+  python3 - "$1" "$2" "${3:-}" <<'PY' 2>/dev/null || echo "n/a"
 import json,sys
 try:
     s=json.load(open(sys.argv[1]))
 except Exception:
     print("n/a"); sys.exit()
-want=sys.argv[2]
-def walk(o):
-    if isinstance(o,dict):
-        for k,v in o.items():
-            if k==want and isinstance(v,(int,float)): yield v
-            yield from walk(v)
-    elif isinstance(o,list):
-        for v in o: yield from walk(v)
-vals=list(walk(s))
-print(round(min(vals),3) if vals else "n/a")
+metric=sys.argv[2]; frame=sys.argv[3]
+vals=[]
+for g in s.get("groups",[]):
+    if g.get("metric")!=metric: continue
+    if frame and g.get("frame_id")!=frame: continue
+    m=g.get("pooled_within_runs",{}).get("median_ms")
+    if isinstance(m,(int,float)): vals.append(m)
+print(round(sum(vals)/len(vals),3) if vals else "n/a")
 PY
 }
 
