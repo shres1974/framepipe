@@ -9,6 +9,7 @@
 
 #include <array>
 #include <cstddef>
+#include <functional>
 #include <memory>
 #include <optional>
 #include <string>
@@ -75,6 +76,17 @@ public:
     // Validation path: computes every selected stage plus signed Sobel
     // components (for edges) and returns host copies. Not for benchmarks.
     StageCapture process_capture_stages(InputImageView input);
+
+    // Pipelined batch processing with transfer/compute overlap. Returns false
+    // when the selected backend has no overlapped path (the caller should use
+    // repeated process_into instead). When true, frames are pulled via `next`
+    // and completed outputs reported via `emit`, both in submission order; the
+    // ConstFloatImageView passed to emit is valid only for that call. All
+    // frames must match the prepared shape.
+    using BatchNextFn = std::function<bool(InputImageView& input, std::int64_t& sequence)>;
+    using BatchEmitFn = std::function<void(std::int64_t sequence, ConstFloatImageView output)>;
+    bool supports_pipelined_batch() const noexcept;
+    void process_batch(const BatchNextFn& next, const BatchEmitFn& emit);
 
     Backend selected_backend() const noexcept;
     const ResolvedConfiguration& configuration() const noexcept;

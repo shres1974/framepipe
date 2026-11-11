@@ -187,6 +187,29 @@ StageCapture Pipeline::process_capture_stages(InputImageView input) {
     return backend_->capture(input);
 }
 
+bool Pipeline::supports_pipelined_batch() const noexcept { return backend_->supports_pipelined_batch(); }
+
+void Pipeline::process_batch(const BatchNextFn& next, const BatchEmitFn& emit) {
+    require_prepared("process_batch");
+    const auto& c = resolved_.config;
+    const int max_dim = c.resources.max_dimension;
+    const Backend b = resolved_.selected_backend;
+    const InputSpec prepared = *prepared_;
+    // Wrap the caller's pullers to enforce the same per-frame shape/view
+    // validation the synchronous process_into path applies.
+    BatchNext bnext = [&](BatchFrame& out) -> bool {
+        InputImageView in;
+        std::int64_t seq = 0;
+        if (!next(in, seq)) return false;
+        check_input_matches(in, prepared, max_dim, "process_batch", b);
+        out.input = in;
+        out.sequence = seq;
+        return true;
+    };
+    BatchEmit bemit = [&](std::int64_t seq, ConstFloatImageView view) { emit(seq, view); };
+    backend_->process_batch(bnext, bemit);
+}
+
 Backend Pipeline::selected_backend() const noexcept { return resolved_.selected_backend; }
 const ResolvedConfiguration& Pipeline::configuration() const noexcept { return resolved_; }
 bool Pipeline::is_prepared() const noexcept { return prepared_.has_value(); }
