@@ -67,13 +67,26 @@ trap cleanup EXIT
 
 # ----------------------------------------------------------------- toolchain
 section "Environment setup"
-if [[ ! -x .venv/bin/cmake ]]; then
-  note "Creating project virtualenv (.venv) with pinned tools"
+# Prefer an existing project venv; otherwise use whatever cmake/ninja/python3
+# are already on PATH (e.g. the Kaggle image, which has them). Only build a
+# dedicated .venv as a last resort when no cmake is available at all.
+if [[ -x .venv/bin/cmake ]]; then
+  export PATH="$REPO_ROOT/.venv/bin:$PATH"
+  note "Using existing project virtualenv (.venv)"
+elif command -v cmake >/dev/null && command -v ninja >/dev/null; then
+  note "Using system toolchain: cmake=$(command -v cmake) ninja=$(command -v ninja)"
+else
+  note "No cmake/ninja on PATH; creating project virtualenv (.venv)"
   python3 -m venv .venv && .venv/bin/pip install -q -r requirements.txt \
     || { note "FATAL: could not create venv / install requirements"; exit 1; }
+  export PATH="$REPO_ROOT/.venv/bin:$PATH"
 fi
-export PATH="$REPO_ROOT/.venv/bin:$PATH"
+# Ensure a usable python3 with NumPy for the oracle/fixtures.
+python3 -c 'import numpy' 2>/dev/null || pip install -q --user -r requirements.txt || true
 export FRAMEPIPE_DEPS="${FRAMEPIPE_DEPS:-$HOME/.local/framepipe-deps}"
+
+command -v cmake >/dev/null || { note "FATAL: cmake not found after setup"; exit 1; }
+note "cmake: $(cmake --version | head -1)"
 
 if [[ ! -d "$FRAMEPIPE_DEPS/lib" ]]; then
   note "Building pinned C++ dependencies into $FRAMEPIPE_DEPS (~several minutes)"
