@@ -298,8 +298,10 @@ private:
     // Two-buffer schedule. Returns the device image holding the final output.
     const DeviceImage& enqueue_pipeline() {
         const int r = config_.gaussian.radius;
-        launch(launch_grayscale(dev_u8(d_in_), dev_f32(d_gray_), s()), "grayscale");
-        launch(launch_resize(as_const(dev_f32(d_gray_)), dev_f32(d_a_), tables_, s()), "resize");
+        // Fused grayscale + resize: reads u8 input directly into d_a_, skipping
+        // the intermediate d_gray_ write/read. Bit-identical to the separate
+        // grayscale and resize kernels (see k_grayscale_resize).
+        launch(launch_grayscale_resize(dev_u8(d_in_), dev_f32(d_a_), tables_, s()), "grayscale_resize");
         if (config_.output_stage == OutputStage::Resize) return d_a_;
         launch(launch_gaussian_horizontal(as_const(dev_f32(d_a_)), dev_f32(d_b_), d_weights_, r, s()),
                "gaussian_horizontal");
