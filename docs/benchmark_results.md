@@ -203,8 +203,43 @@ only about a 1.35× faster application on this 4-vCPU host.
   run (`results/evidence/2026-11-05_kaggle-t4_gpu_verify/`): the NumPy oracle
   suite including `cuda` (144 comparisons, 0 failures) and Compute Sanitizer
   on all four tools (0 errors).
-- No GPU optimization has been attempted. The kernels are `cuda-basic`
-  (16×16 blocks).
+- The baseline kernels are `cuda-basic` (16×16 blocks). Optimization work and
+  its measured effect are recorded in the next section.
+
+## Optimization work (2026-11-11, Tesla T4, Kaggle)
+
+Three optimizations were implemented on branches and verified on a Kaggle
+Tesla T4 (`scripts/verify_gpu_optimizations.sh`, kernel
+`framepipe-opt-verify`). Settings: HD ring workload, 10 warm-up, 40
+iterations, 3 repetitions. Each CUDA branch was compiled with nvcc on the T4,
+passed the GPU parity tests (11 passed, 1 intentional no-device skip), passed
+the NumPy oracle with the `cuda` candidate (96 comparisons, 0 failures), and
+passed Compute Sanitizer (memcheck, racecheck, initcheck, synccheck: 0
+errors).
+
+| Optimization | What it changes | Correctness | Measured effect |
+|---|---|---|---|
+| `cpu`: vectorize separable Gaussian | unit-stride inner loops so the compiler auto-vectorizes both Gaussian passes; tap order preserved so bit-identical | bit-identical to scalar cpu-ref (byte-for-byte over radii 1/3/7/15); full ctest + oracle pass | CPU-side; targets the measured 58%-of-scalar Gaussian cost. Not re-timed in this T4 session (CPU here is a slow 4-vCPU Xeon; see the laptop radius table for the opportunity) |
+| `cuda`: fuse grayscale into resize | steady-state path reads u8 input directly and grayscales the four bilinear taps, removing one full-image device round-trip | parity + oracle + sanitizer pass | kernel-only; within noise end-to-end (transfer- and I/O-bound, see below) |
+| `cuda`: overlap transfer and compute | multi-stream pipelined batch: N slots each with their own stream/buffers/pinned staging, overlapping upload/compute/download across frames | parity + oracle + sanitizer pass (incl. racecheck/synccheck) | **no end-to-end gain on this workload** (see below) |
+
+### Overlap: HD ring, batch vs base (`main`), median ms
+
+| metric | `opt/cuda-overlap` | base (`main`) |
+|---|---:|---:|
+| `batch_wall_ms` | 262.6 | 265.4 |
+| `application_wall_ms` (per frame) | 64.9 | 65.7 |
+| `gpu_transfer_inclusive_wall_ms` | 2.24 | 2.26 |
+| `gpu_device_pipeline_ms` | 0.427 | 0.427 |
+
+The overlap is within noise end-to-end (~1% on batch wall time), and the data
+explains why: `application_wall_ms` is ~65 ms while the entire GPU
+transfer-plus-compute is ~2.25 ms. On this 4-vCPU host the batch is ~97%
+decode and PNG encode — the I/O bound this document has flagged throughout.
+Hiding the ~1.9 ms transfer behind GPU compute cannot move a 65 ms frame. The
+optimization is correct and allocation-safe but only helps a transfer-bound or
+GPU-resident workload (no per-frame PNG decode/encode), which this benchmark
+is not. It is recorded here as a measured null result, not a speedup.
 
 ## Not measured
 
