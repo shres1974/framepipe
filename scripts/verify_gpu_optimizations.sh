@@ -194,8 +194,8 @@ verify_cpu_branch() {   # opt/simd-gaussian
   local fails=0
   git checkout -q "$branch" || { note "  [$branch] checkout FAILED"; BRANCH_RESULT[$branch]="CHECKOUT-FAIL"; return 1; }
   note "  [$branch] at $(git rev-parse --short HEAD)"
-  step "$branch" "build cpu preset"           "$bdir/build.log"  -- build_cpu "$bdir/build.log" || ((fails++))
-  step "$branch" "ctest (all CPU + oracle)"   "$bdir/ctest.log"  -- ctest --preset cpu || ((fails++))
+  step "$branch" "build cpu preset"           "$bdir/build.log"  -- build_cpu "$bdir/build.log" || fails=$((fails+1))
+  step "$branch" "ctest (all CPU + oracle)"   "$bdir/ctest.log"  -- ctest --preset cpu || fails=$((fails+1))
   # Bit-identical to the merge base: build base, diff edge-map outputs.
   local base; base="$(git merge-base HEAD "$BASE_REF")"
   note "  [$branch] bit-exactness vs merge base $base (radii 1,3,7,15)"
@@ -216,7 +216,7 @@ verify_cpu_branch() {   # opt/simd-gaussian
   if diff -rq "$newdir" "$olddir" >"$bdir/bitexact.log" 2>&1; then
     note "  [$branch] bit-exactness: PASS (outputs byte-identical to base)"
   else
-    note "  [$branch] bit-exactness: FAIL (see bitexact.log)"; ((fails++))
+    note "  [$branch] bit-exactness: FAIL (see bitexact.log)"; fails=$((fails+1))
   fi
   [[ $fails -eq 0 ]] && BRANCH_RESULT[$branch]="PASS" || BRANCH_RESULT[$branch]="FAIL($fails)"
   return $fails
@@ -228,14 +228,14 @@ verify_cuda_branch() {   # opt/cuda-overlap | opt/fuse-grayscale-resize
   git checkout -q "$branch" || { note "  [$branch] checkout FAILED"; BRANCH_RESULT[$branch]="CHECKOUT-FAIL"; return 1; }
   note "  [$branch] at $(git rev-parse --short HEAD)"
 
-  step "$branch" "build cuda preset"          "$bdir/build.log"   -- build_cuda "$bdir/build.log" || { ((fails++)); BRANCH_RESULT[$branch]="BUILD-FAIL"; return 1; }
+  step "$branch" "build cuda preset"          "$bdir/build.log"   -- build_cuda "$bdir/build.log" || { fails=$((fails+1)); BRANCH_RESULT[$branch]="BUILD-FAIL"; return 1; }
   step "$branch" "doctor (cuda usable=yes)"    "$bdir/doctor.log"  -- "$REPO_ROOT/build/cuda/bin/framepipe" doctor --json
-  step "$branch" "GPU tests execute (no SKIP)" "$bdir/gpu.log"     -- gpu_tests_execute "$REPO_ROOT/build/cuda/bin/framepipe_cuda_tests" || ((fails++))
+  step "$branch" "GPU tests execute (no SKIP)" "$bdir/gpu.log"     -- gpu_tests_execute "$REPO_ROOT/build/cuda/bin/framepipe_cuda_tests" || fails=$((fails+1))
   step "$branch" "oracle suite (cpu-ref,cuda)" "$bdir/oracle.log"  -- \
       python3 scripts/run_oracle_suite.py --framepipe "$REPO_ROOT/build/cuda/bin/framepipe" \
-      --work-dir "$bdir/oracle_work" --candidates cpu-ref,cuda || ((fails++))
+      --work-dir "$bdir/oracle_work" --candidates cpu-ref,cuda || fails=$((fails+1))
   step "$branch" "Compute Sanitizer (4 tools)" "$bdir/sanitizer.log" -- \
-      sanitizer_suite "$REPO_ROOT/build/cuda/bin/framepipe_cuda_tests" || ((fails++))
+      sanitizer_suite "$REPO_ROOT/build/cuda/bin/framepipe_cuda_tests" || fails=$((fails+1))
 
   # Speedup vs base. Build base cuda once per branch (branches differ), measure both.
   note "  [$branch] measuring batch/application vs base ($BASE_REF)"
@@ -262,8 +262,8 @@ IFS=',' read -ra SELECTED <<< "$BRANCHES"
 for b in "${SELECTED[@]}"; do
   section "Verifying $b"
   case "$b" in
-    opt/simd-gaussian) verify_cpu_branch "$b" || ((FAIL_TOTAL++)) ;;
-    *)                 verify_cuda_branch "$b" || ((FAIL_TOTAL++)) ;;
+    opt/simd-gaussian) verify_cpu_branch "$b" || FAIL_TOTAL=$((FAIL_TOTAL+1)) ;;
+    *)                 verify_cuda_branch "$b" || FAIL_TOTAL=$((FAIL_TOTAL+1)) ;;
   esac
 done
 
