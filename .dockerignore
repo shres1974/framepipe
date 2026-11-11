@@ -1,0 +1,10 @@
+.git
+.venv
+build
+data
+results
+outputs
+docs/assets
+**/__pycache__
+*.nsys-rep
+*.qdrep

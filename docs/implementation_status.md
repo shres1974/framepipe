@@ -29,7 +29,7 @@ NumPy oracle suite, and all four Compute Sanitizer tools.
 | M2 I/O + CLI | **passed** | `cli_integration`, `ImageIo.*`; README commands executed verbatim |
 | M3 basic CUDA parity | **passed on Tesla T4, including Compute Sanitizer** | On Kaggle T4 (nvcc 13.0.88, `native` arch) all 11 hardware GPU tests pass (parity, launch boundaries, resize ratios, Gaussian radii, cropped views, pinned/pageable transfers, device-resident path, zero steady-state device allocation, re-prepare, budget and device-index errors). The one skip is the no-device test, as expected. Compute Sanitizer memcheck, racecheck, initcheck, and synccheck report 0 errors. Logs: `results/evidence/2026-11-05_kaggle-t4_gpu_{matrix,verify}/logs/` |
 | M4 benchmarks + CPU baseline | **passed (CPU and GPU)** | Full spec 18.2 matrix on the laptop CPU (51 dirs). On the T4: 7 scenarios + radius and stage sweeps, repeat workload only (14 dirs), with every backend parity-checked per input. All 65 dirs validate. See benchmark_results.md |
-| M5 profiling + one optimization | **passed (CPU, inconclusive result documented)** | perf profile; OpenMP scheduling before/after; the static variant is retained; see benchmark_results.md. No GPU optimization attempted yet |
+| M5 profiling + one optimization | **passed (CPU, inconclusive result documented); GPU optimizations measured on branches** | perf profile; OpenMP scheduling before/after; the static variant is retained; see benchmark_results.md. Three optimization branches (`opt/simd-gaussian`, `opt/fuse-grayscale-resize`, `opt/cuda-overlap`) pass parity, oracle, and sanitizer on a T4; the CUDA ones are within noise end-to-end (benchmark_results.md, "Optimization work") |
 | M6 sequences + pilot | **sequence runner passed; pilot not started** | `batch` with bounded queue, ordering, fail-fast/continue, re-prepare, memory-bound test. **No pilot user**, and no usage is claimed. Async multi-slot CUDA execution and video: not implemented |
 | M7 AMD HIP | **not started** | `hip` is not accepted or advertised anywhere |
 
@@ -50,7 +50,7 @@ NumPy oracle suite, and all four Compute Sanitizer tools.
 | R11 timing boundaries | passed (code review + tests) | docs/benchmark_method.md; harness tests ensure no CPU `device_pipeline` samples |
 | R12 reproducibility | passed | run/environment/config/inputs/samples in every run. The laptop CPU runs have a null git revision (no commits existed). The T4 runs record `fd080d4`, clean |
 | R13 fair CPU baseline | passed | cpu-omp (thread count recorded) and an OpenCV baseline with matched semantics |
-| R14 measured GPU optimization | **not done** | M3 now passed; next step |
+| R14 measured GPU optimization | **measured, null result** | two CUDA optimizations on branches, correct on T4, within noise end-to-end because the workload is I/O-bound; see benchmark_results.md |
 | R15 bounded sequences | passed | `Batch.*`, `BoundedQueue.*` |
 | R16 transparent status | passed | this file; ctest shows GPU skips; summaries record `unavailable` backends |
 | R17 AMD backend | not requested / not started | — |
@@ -99,17 +99,20 @@ for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t 
 
 ## Remaining gaps and next concrete steps
 
-1. Run the ring workload on GPU (only the repeat workload was measured).
+1. Run the full ring workload matrix on GPU (only HD ring was measured, during the optimization work).
 2. Rerun one CPU benchmark on the laptop so `git_revision` is recorded.
 3. Choose a LICENSE (owner decision).
 4. Paste the full spec text into `docs/implementation_spec.md`.
-5. Profile with Nsight Systems, then try one GPU optimization (a shared-memory Gaussian tile is the obvious candidate) with before/after evidence (R14).
-6. CPU follow-up suggested by the data: SIMD in the Gaussian passes.
-7. P2 items not started: async multi-slot CUDA runner, video adapter, Python/ROS binding, HIP, pilot user.
+5. Profile with Nsight Systems. The measured GPU bottleneck is transfers plus host I/O, not kernels, so a shared-memory Gaussian tile is low priority.
+6. Re-time `opt/simd-gaussian` on the laptop and merge it if the gain holds.
+7. Overlap decode, process, and encode in `batch`: the measured end-to-end bottleneck.
+8. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
 
 ## Known limitations
 
 - Downscaling aliases (no prefilter; the spec defines it this way).
 - `Pipeline` is not thread-safe per instance.
 - Timings come from a laptop VM without clock control. Variation between runs is up to ~30%.
-- The CI workflow (`.github/workflows/ci.yml`) has not been run on GitHub. The GPU job needs a self-hosted runner.
+- The CI workflow (`.github/workflows/ci.yml`) runs on GitHub and is green on
+  `main` (CPU, oracle, benchmark-schema, and CUDA-compile jobs). The GPU
+  execution job needs a self-hosted runner and is gated off.

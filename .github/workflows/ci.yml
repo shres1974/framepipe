@@ -69,6 +69,8 @@ jobs:
       - run: cmake --preset cpu && cmake --build --preset cpu
       - name: Schema, finite values, output consumption (no speed gate)
         run: ctest --preset cpu -L benchmark
+      - name: README showcase assets still generate (real CLI + committed evidence)
+        run: python scripts/make_showcase.py all --framepipe build/cpu/bin/framepipe
 
   cuda-compile:
     # Compiles the CUDA target with explicit architectures. Does NOT execute.
