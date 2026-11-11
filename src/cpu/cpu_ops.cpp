@@ -46,6 +46,12 @@ void resize_bilinear(const ConstFloatImageView& in, const FloatImageView& out, c
     }
 }
 
+// Both Gaussian passes are restructured so the innermost loop is unit-stride
+// over x, which the compiler auto-vectorizes. The summation order over the tap
+// index k is preserved exactly (k = -radius..radius, accumulated in that
+// order), so results stay bit-identical to the original scalar form. No
+// fast-math or FMA contraction is enabled (see CMakeLists / -ffp-contract=off),
+// so the compiler may not reassociate these additions.
 void gaussian_horizontal(const ConstFloatImageView& in, const FloatImageView& out, const std::vector<float>& weights,
                          int radius, int y_begin, int y_end) {
     const int w = in.width;
@@ -53,12 +59,37 @@ void gaussian_horizontal(const ConstFloatImageView& in, const FloatImageView& ou
     for (int y = y_begin; y < y_end; ++y) {
         const float* src = row_ptr(in, y);
         float* dst = row_ptr(out, y);
-        for (int x = 0; x < w; ++x) {
-            float acc = 0.0f;
-            for (int k = -radius; k <= radius; ++k) {  // increasing k
-                acc += wt[k + radius] * src[clampi(x + k, w)];
+        const int lo = radius;
+        const int hi = w - radius;  // exclusive
+        if (hi > lo) {
+            // Interior columns [radius, w-radius) never clamp, so src[x+k] is a
+            // plain unit-stride access as x varies and the k-accumulation (one
+            // tap row at a time) vectorizes. k=-radius first, then the rest:
+            // identical tap order to the scalar reference.
+            for (int x = lo; x < hi; ++x) dst[x] = wt[0] * src[x - radius];
+            for (int k = -radius + 1; k <= radius; ++k) {
+                const float wk = wt[k + radius];
+                const int off = k;  // src index is x + k, contiguous in x
+                for (int x = lo; x < hi; ++x) dst[x] += wk * src[x + off];
             }
-            dst[x] = acc;
+            // Clamped border columns, scalar, same tap order as the reference.
+            for (int x = 0; x < lo; ++x) {
+                float acc = 0.0f;
+                for (int k = -radius; k <= radius; ++k) acc += wt[k + radius] * src[clampi(x + k, w)];
+                dst[x] = acc;
+            }
+            for (int x = hi; x < w; ++x) {
+                float acc = 0.0f;
+                for (int k = -radius; k <= radius; ++k) acc += wt[k + radius] * src[clampi(x + k, w)];
+                dst[x] = acc;
+            }
+        } else {
+            // No non-clamping interior (radius large for this width): all scalar.
+            for (int x = 0; x < w; ++x) {
+                float acc = 0.0f;
+                for (int k = -radius; k <= radius; ++k) acc += wt[k + radius] * src[clampi(x + k, w)];
+                dst[x] = acc;
+            }
         }
     }
 }
@@ -70,12 +101,16 @@ void gaussian_vertical(const ConstFloatImageView& in, const FloatImageView& out,
     const float* wt = weights.data();
     for (int y = y_begin; y < y_end; ++y) {
         float* dst = row_ptr(out, y);
-        for (int x = 0; x < w; ++x) {
-            float acc = 0.0f;
-            for (int k = -radius; k <= radius; ++k) {  // increasing k
-                acc += wt[k + radius] * row_ptr(in, clampi(y + k, h))[x];
-            }
-            dst[x] = acc;
+        // For a fixed (y, k) the source row is contiguous, so accumulating one
+        // tap row at a time over x vectorizes. Tap order (k = -radius..radius)
+        // is preserved: initialize with k = -radius, then add the rest.
+        const float* first = row_ptr(in, clampi(y - radius, h));
+        const float w0 = wt[0];
+        for (int x = 0; x < w; ++x) dst[x] = w0 * first[x];
+        for (int k = -radius + 1; k <= radius; ++k) {
+            const float wk = wt[k + radius];
+            const float* src = row_ptr(in, clampi(y + k, h));
+            for (int x = 0; x < w; ++x) dst[x] += wk * src[x];
         }
     }
 }
