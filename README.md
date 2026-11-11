@@ -1,23 +1,100 @@
 # FramePipe
 
-A reproducible C++17 image-preprocessing pipeline: grayscale → bilinear
-resize → separable Gaussian blur → Sobel edge magnitude, with a scalar CPU
-reference, an OpenMP CPU backend, custom CUDA kernels, an independent NumPy
-oracle, and a benchmark harness that keeps timing scopes separate.
+[![ci](https://github.com/shres1974/framepipe/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/shres1974/framepipe/actions/workflows/ci.yml)
+![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus)
+![CUDA](https://img.shields.io/badge/CUDA-custom%20kernels-76B900?logo=nvidia)
+![OpenMP](https://img.shields.io/badge/OpenMP-4.5-4c78a8)
+[![GPU reproduction notebook](https://img.shields.io/badge/reproduce-Kaggle%20%2F%20Colab%20T4-20BEFF?logo=kaggle)](notebooks/reproduce_gpu.ipynb)
+
+**A C++17 / CUDA image-preprocessing pipeline that is measured, not guessed.**
+Grayscale → bilinear resize → separable Gaussian blur → Sobel edge magnitude,
+implemented four ways (scalar reference, OpenMP, custom CUDA kernels, and an
+OpenCV baseline) and checked against an independent NumPy oracle.
+
+![Input, resize, blur, and Sobel edges produced by framepipe](docs/assets/hero.png)
+
+<sub>Produced by the real CLI (`scripts/make_showcase.py hero`). The edge panel is contrast-stretched for
+display; the unmodified output is [docs/assets/edges_1280x720.png](docs/assets/edges_1280x720.png).</sub>
+
+## Results at a glance
+
+HD frame (1920×1080 → 1280×720, edges), NVIDIA Tesla T4 + 4-vCPU Xeon, median of 300 samples:
+
+| Backend | Core processing | vs scalar | Whole frame (decode → PNG write) |
+|---|---:|---:|---:|
+| cpu-ref (scalar reference) | 28.5 ms | 1.0× | 99 ms |
+| cpu-omp (4 threads) | 14.1 ms | 2.0× | 88 ms |
+| OpenCV 4.10 (1 thread, matched semantics) | 11.3 ms | 2.5× | 83 ms |
+| **CUDA, including host↔device transfers** | **2.24 ms** | **12.7×** | **74 ms** |
+| CUDA kernels only (data already on GPU) | 0.36 ms | not comparable¹ | n/a |
+
+<sub>¹ Excludes the host↔device transfers that a CPU backend never pays; shown to locate the cost, not as a speedup.</sub>
+
+The last column is the honest one: **a 12.7× faster core gives a 1.35× faster
+application**, because PNG decode and encode dominate. On the GPU, 84% of the
+time is transfers, not kernels. The project measures both and reports them
+separately instead of quoting the best number.
+
+| | |
+|---|---|
+| ![Core time per backend and resolution](docs/assets/core_latency.png) | ![CUDA time split into kernels and transfers](docs/assets/gpu_breakdown.png) |
+
+![End-to-end HD frame time: processing vs I/O](docs/assets/end_to_end.png)
+
+Every number above is read from committed evidence
+([results/evidence/](results/evidence/)) by `scripts/make_showcase.py figures`; full tables,
+caveats, and the CPU laptop matrix are in [docs/benchmark_results.md](docs/benchmark_results.md).
+
+## Engineering highlights
+
+- **Independent oracle.** A separate NumPy implementation of the
+  [numerical contract](docs/numerical_contract.md) checks every backend
+  (144 comparisons on the T4, 0 failures). The oracle is itself
+  mutation-checked: flipping the Sobel-y sign breaks 10 comparisons,
+  `floor`→`trunc` breaks 9, and changing one grayscale weight by 1/256 breaks 36.
+- **GPU correctness beyond parity.** Compute Sanitizer memcheck, racecheck,
+  initcheck, and synccheck all report 0 errors. The hardware tests cover
+  launch boundaries, odd sizes, cropped views, and pinned vs pageable transfers.
+- **Bit-exact CPU parallelism.** The OpenMP backend is byte-identical to the
+  scalar reference (tested), so speedups never trade away correctness.
+- **Resource discipline.** Zero device and host allocations in steady state
+  (tested with fault injection), bounded batch queues, and explicit
+  device-memory budgets.
+- **Honest benchmarking.** Timing scopes (kernel, transfer-inclusive,
+  application, startup, batch) are never mixed. Each backend is parity-checked
+  before it is timed. Raw samples, environment, config hash, and git revision
+  are recorded and validated against a JSON schema. Null results, such as
+  transfer/compute overlap giving no end-to-end gain, are published as null
+  results.
+- **No silent fallbacks.** Asking for `--backend cuda` on a machine without a
+  GPU exits with code 4 and writes nothing. `auto` records why it chose what it chose.
+- **CPU build never needs CUDA.** CI runs Debug, Release, ASan+UBSan, oracle,
+  benchmark-schema, and CUDA-compile jobs.
+
+![Terminal demo: doctor, process, validate, and an explicit CUDA failure](docs/assets/demo.gif)
+
+## What it is for
 
 It turns frames such as a 1920×1080 camera sequence into 1280×720 grayscale,
 blurred, or normalized edge-map PNGs, in manifest order, with machine-readable
 correctness and timing reports. It does not make robotics decisions.
 
-**Status (2026-11-05):** CPU-validated and GPU-executed. On an NVIDIA Tesla T4
-(Kaggle, CUDA 13.0) all 11 CUDA hardware tests pass and the CUDA output matches
-the CPU reference within tolerance on every benchmarked input. HD
-(1920×1080 → 1280×720) processing including host↔device transfers takes
-2.24 ms vs 28.5 ms for the scalar CPU reference (12.7×). See
-[docs/benchmark_results.md](docs/benchmark_results.md). The CUDA backend also
-passes the independent NumPy oracle suite and Compute Sanitizer (memcheck,
-racecheck, initcheck, synccheck: 0 errors); see
-[docs/implementation_status.md](docs/implementation_status.md).
+**Status:** CPU-validated and GPU-validated on an NVIDIA Tesla T4 (Kaggle,
+CUDA 13.0): all 11 CUDA hardware tests, the NumPy oracle suite, and Compute
+Sanitizer pass. See [docs/implementation_status.md](docs/implementation_status.md).
+
+## Try it with Docker (CPU, no local dependencies)
+
+```bash
+docker build -t framepipe .        # builds pinned deps, runs the full test suite (~6 min first time)
+docker run --rm framepipe doctor
+docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" framepipe process \
+  --input /opt/framepipe/fixtures/checkerboard_rgb.png --output edges.png \
+  --config /opt/framepipe/configs/edges_720p.json --width 320 --height 240
+```
+
+To reproduce the GPU numbers on a free T4, open
+[notebooks/reproduce_gpu.ipynb](notebooks/reproduce_gpu.ipynb) on Kaggle or Colab.
 
 ## Quick start (Linux, no root, no GPU required)
 
@@ -111,6 +188,11 @@ architecture is given. Check that your toolkit supports your host compiler.
 | [docs/benchmark_results.md](docs/benchmark_results.md) | What was measured, on which hardware, and what is still unknown |
 | [docs/implementation_status.md](docs/implementation_status.md) | Milestones, requirement traceability, exact commands run, open gaps |
 | [docs/decisions/](docs/decisions/) | Dependency, error-model, CLI, and scope decisions |
+| [docs/writeup.md](docs/writeup.md) | The story behind the numbers: why 12.7× faster kernels give a 1.35× faster app |
+| [CHANGELOG.md](CHANGELOG.md) | What each version contains |
+
+To regenerate the README images: `python3 scripts/make_showcase.py all --framepipe build/cpu/bin/framepipe`.
+The terminal GIF is rendered from [docs/demo.tape](docs/demo.tape) with VHS (instructions in the file).
 
 
 ## License
