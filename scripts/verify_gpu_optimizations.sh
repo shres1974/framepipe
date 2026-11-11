@@ -190,7 +190,9 @@ PY
 
 # ----------------------------------------------------------------- per branch
 verify_cpu_branch() {   # opt/simd-gaussian
-  local branch="$1" bdir="$RESULTS_ROOT/${branch//\//_}"; mkdir -p "$bdir"
+  local branch="$1"
+  local bdir="$RESULTS_ROOT/${branch//\//_}"
+  mkdir -p "$bdir"
   local fails=0
   git checkout -q "$branch" || { note "  [$branch] checkout FAILED"; BRANCH_RESULT[$branch]="CHECKOUT-FAIL"; return 1; }
   note "  [$branch] at $(git rev-parse --short HEAD)"
@@ -223,7 +225,9 @@ verify_cpu_branch() {   # opt/simd-gaussian
 }
 
 verify_cuda_branch() {   # opt/cuda-overlap | opt/fuse-grayscale-resize
-  local branch="$1" bdir="$RESULTS_ROOT/${branch//\//_}"; mkdir -p "$bdir"
+  local branch="$1"
+  local bdir="$RESULTS_ROOT/${branch//\//_}"
+  mkdir -p "$bdir"
   local fails=0
   git checkout -q "$branch" || { note "  [$branch] checkout FAILED"; BRANCH_RESULT[$branch]="CHECKOUT-FAIL"; return 1; }
   note "  [$branch] at $(git rev-parse --short HEAD)"
