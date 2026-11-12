@@ -97,6 +97,21 @@ docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" framepipe process \
 To reproduce the GPU numbers on a free T4, open
 [notebooks/reproduce_gpu.ipynb](notebooks/reproduce_gpu.ipynb) on Kaggle or Colab.
 
+The quickest way to see what the project does is `compare`. It runs every
+backend on one image and checks each one against the scalar reference:
+
+```
+$ framepipe compare --input photo.png --output-dir cmp/
+compare: photo.png (1920x1080 rgb8 -> 1280x720, stage edges, median of 20)
+  backend         time  speedup  max |err|    status
+  cpu-ref      6.87 ms     1.0x  (reference)  ok
+  cpu-omp      2.03 ms     3.4x  0 (exact)    within tolerance
+  cuda               -        -  -            unavailable (not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF)
+```
+
+`cmp/` gets each backend's output plus an error map (`<backend>_error.png`)
+scaled so that white means "at the tolerance limit".
+
 ## Quick start (Linux, no root, no GPU required)
 
 ```bash
@@ -147,6 +162,7 @@ unsupported format, 4 backend unavailable, 5 processing/resource failure,
 | `process` | `framepipe process --input in.png --output out.png [--config F] [--backend auto\|cpu-ref\|cpu-omp\|cuda] [--output-stage resize\|blur\|edges] [--width W --height H --radius R --sigma S --threads N] [--report F\|-] [--overwrite]` |
 | `batch` | `framepipe batch --manifest frames.jsonl --output-dir out/ [--continue-on-error] [--decode-threads N] [--queue-capacity N] [--sync-write]` |
 | `validate` | `framepipe validate --input in.png --candidate cuda --reference cpu-ref --report v.json` or `--reference oracle:DIR` |
+| `compare` | `framepipe compare --input in.png [--backends cpu-ref,cpu-omp,cuda] [--output-dir DIR] [--report F\|-]`: speed and max error of every backend vs cpu-ref, with error-map images |
 | `benchmark` | `framepipe benchmark --manifest m.jsonl --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --output-dir results/local/run1` |
 
 Configuration precedence: built-in defaults < `--config` JSON < explicit
