@@ -80,7 +80,7 @@ caveats, and the CPU laptop matrix are in [docs/benchmark_results.md](docs/bench
 - **CPU build never needs CUDA.** CI runs Debug, Release, ASan+UBSan, oracle,
   benchmark-schema, and CUDA-compile jobs.
 
-![Terminal demo: doctor, process, validate, and an explicit CUDA failure](docs/assets/demo.gif)
+![Terminal demo: doctor, process, compare, and an explicit CUDA failure](docs/assets/demo.gif)
 
 ## What it is for
 
