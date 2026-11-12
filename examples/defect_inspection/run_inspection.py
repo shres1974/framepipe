@@ -85,6 +85,7 @@ def main():
     ap.add_argument("--backend", default="auto")
     ap.add_argument("--min-area-grid", type=lambda s: [int(x) for x in s.split(",")], default=[1, 2, 3, 4, 6, 8, 12],
                     help="candidate minimum region areas for calibration (default 1,2,3,4,6,8,12)")
+    ap.add_argument("--figure", help="also write a summary figure (PNG) of test detections, including mistakes")
     a = ap.parse_args()
     meta = json.load(open(os.path.join(a.samples, "labels.json")))
     labels, W, H = meta["images"], meta["width"], meta["height"]
@@ -156,7 +157,56 @@ def main():
           f"defects localized {loc_hits}/{loc_total}")
     print(f"  framepipe {report['framepipe']['backend']}: {report['framepipe']['batch_fps']:.1f} images/s "
           f"(decode + edges + PNG write)")
+    if a.figure:
+        draw_summary(a, results, labels, threshold, report)
     return 0
+
+
+def draw_summary(a, results, labels, threshold, report):
+    """One figure: input | edge map | detections for a few test images, chosen to
+    include correct detections, a clean pass, and every mistake."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Rectangle
+
+    wrong = [f for f, r in results.items() if r["truth"] != r["predicted"]]
+    hits = [f for f, r in results.items() if r["truth"] == "defect" and r["predicted"] == "defect"]
+    clean = [f for f, r in results.items() if r["truth"] == "good" and r["predicted"] == "good"]
+    chosen = hits[:2] + clean[:1] + wrong[:3]
+    fig, axes = plt.subplots(len(chosen), 3, figsize=(15, 2.9 * len(chosen)), dpi=72, squeeze=False)
+    for row, fid in zip(axes, chosen):
+        r = results[fid]
+        src = np.asarray(Image.open(os.path.join(a.samples, fid + ".png")))
+        edges = load_edges(os.path.join(a.out, "edges_test", fid + ".png"))
+        row[0].imshow(src, cmap="gray", vmin=0, vmax=255)
+        row[1].imshow(np.clip(edges / max(threshold * 2, 1e-6), 0, 1), cmap="magma")
+        row[2].imshow(src, cmap="gray", vmin=0, vmax=255)
+        for d in r["defects"]:
+            x0, y0, x1, y1 = d["box"]
+            row[2].add_patch(Rectangle((x0 - 6, y0 - 6), x1 - x0 + 12, y1 - y0 + 12, fill=False, ec="#4c9be8",
+                                       lw=1.5, ls="--"))
+        for f in r["regions"]:
+            x0, y0, x1, y1 = f["box"]
+            row[2].add_patch(Rectangle((x0 - 3, y0 - 3), x1 - x0 + 6, y1 - y0 + 6, fill=False, ec="#e8483b", lw=2))
+        ok = r["truth"] == r["predicted"]
+        verdict = f"predicted {r['predicted'].upper()} (truth: {r['truth']})" + ("" if ok else "  \u2717 MISTAKE")
+        row[0].set_ylabel(fid, fontsize=9)
+        row[2].set_title(verdict, fontsize=10, color="#222" if ok else "#c0392b")
+        for ax in row:
+            ax.set_xticks([])
+            ax.set_yticks([])
+    axes[0][0].set_title("camera image", fontsize=10)
+    axes[0][1].set_title("FramePipe edge map", fontsize=10)
+    t = report["test"]
+    fig.suptitle(f"Surface-defect inspection on held-out images: accuracy {t['accuracy']:.1%}, "
+                 f"recall {t['recall']:.1%}, precision {t['precision']:.1%}   "
+                 f"(red = detected region, dashed blue = ground truth)", fontsize=11)
+    fig.tight_layout(rect=(0, 0, 1, 0.97))
+    fig.savefig(a.figure, facecolor="white")
+    plt.close(fig)
+    print(f"  wrote {a.figure}")
 
 
 if __name__ == "__main__":
