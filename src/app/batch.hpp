@@ -6,10 +6,15 @@
 // frame is recorded and excluded from completed throughput. A shape change
 // drains outstanding work and re-prepares (prepare() is synchronous).
 //
-// Threads: one decoder thread reads/decodes frames into a bounded queue of
-// capacity `queue_capacity`; the calling thread processes, quantizes, and
-// writes frames in sequence order. Retained decoded frames are therefore
-// bounded by queue_capacity + 1.
+// Threads: `decode_threads` decoder threads read/decode frames (possibly out
+// of order) into a bounded reorder window of capacity `queue_capacity`; the
+// calling thread takes them in sequence order, processes, quantizes, and
+// writes them. Frames held by the window (being decoded or decoded and
+// waiting) never exceed queue_capacity, so retained decoded frames are
+// bounded by queue_capacity + 1 regardless of the decoder count. With
+// async_write, a writer thread PNG-encodes and writes frames from a second
+// bounded FIFO (also queue_capacity); a frame's completed_ms is when it
+// reached its final status.
 
 #include <cstdint>
 #include <functional>
@@ -28,6 +33,12 @@ struct BatchOptions {
     bool overwrite = false;
     bool continue_on_error = false;
     std::size_t queue_capacity = 2;
+    // Number of decoder threads (>= 1). Decoding is the largest per-frame
+    // cost for large PNG inputs, so more than one decoder raises throughput.
+    int decode_threads = 1;
+    // Encode and write PNGs on a dedicated writer thread (FIFO, so outputs
+    // still complete in manifest order) instead of on the processing thread.
+    bool async_write = false;
     // Test hook: called on the decoder thread after each successful decode.
     std::function<void(const std::string& frame_id)> on_decoded;
 };

@@ -30,7 +30,7 @@ NumPy oracle suite, and all four Compute Sanitizer tools.
 | M3 basic CUDA parity | **passed on Tesla T4, including Compute Sanitizer** | On Kaggle T4 (nvcc 13.0.88, `native` arch) all 11 hardware GPU tests pass (parity, launch boundaries, resize ratios, Gaussian radii, cropped views, pinned/pageable transfers, device-resident path, zero steady-state device allocation, re-prepare, budget and device-index errors). The one skip is the no-device test, as expected. Compute Sanitizer memcheck, racecheck, initcheck, and synccheck report 0 errors. Logs: `results/evidence/2026-11-05_kaggle-t4_gpu_{matrix,verify}/logs/` |
 | M4 benchmarks + CPU baseline | **passed (CPU and GPU)** | Full spec 18.2 matrix on the laptop CPU (51 dirs). On the T4: 7 scenarios + radius and stage sweeps, repeat workload only (14 dirs), with every backend parity-checked per input. All 65 dirs validate. See benchmark_results.md |
 | M5 profiling + one optimization | **passed (CPU, inconclusive result documented); GPU optimizations measured on branches** | perf profile; OpenMP scheduling before/after; the static variant is retained; see benchmark_results.md. Three optimization branches (`opt/simd-gaussian`, `opt/fuse-grayscale-resize`, `opt/cuda-overlap`) pass parity, oracle, and sanitizer on a T4; the CUDA ones are within noise end-to-end (benchmark_results.md, "Optimization work") |
-| M6 sequences + pilot | **sequence runner passed; pilot not started** | `batch` with bounded queue, ordering, fail-fast/continue, re-prepare, memory-bound test. **No pilot user**, and no usage is claimed. Async multi-slot CUDA execution and video: not implemented |
+| M6 sequences + pilot | **sequence runner passed; pilot not started** | `batch` with parallel decode into a bounded reorder window, async writer, ordering, fail-fast/continue, re-prepare, memory-bound test; 3.4–3.6× throughput on the laptop (benchmark_results.md). **No pilot user**, and no usage is claimed. Async multi-slot CUDA execution is on a branch (null result); video: not implemented |
 | M7 AMD HIP | **not started** | `hip` is not accepted or advertised anywhere |
 
 ## Requirements traceability (R01–R17)
@@ -51,7 +51,7 @@ NumPy oracle suite, and all four Compute Sanitizer tools.
 | R12 reproducibility | passed | run/environment/config/inputs/samples in every run. The laptop CPU runs have a null git revision (no commits existed). The T4 runs record `fd080d4`, clean |
 | R13 fair CPU baseline | passed | cpu-omp (thread count recorded) and an OpenCV baseline with matched semantics |
 | R14 measured GPU optimization | **measured, null result** | two CUDA optimizations on branches, correct on T4, within noise end-to-end because the workload is I/O-bound; see benchmark_results.md |
-| R15 bounded sequences | passed | `Batch.*`, `BoundedQueue.*` |
+| R15 bounded sequences | passed | `Batch.*`, `BoundedQueue.*`, `OrderedWindow.*` (also under ThreadSanitizer) |
 | R16 transparent status | passed | this file; ctest shows GPU skips; summaries record `unavailable` backends |
 | R17 AMD backend | not requested / not started | — |
 
@@ -103,9 +103,8 @@ for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t 
 2. Rerun one CPU benchmark on the laptop so `git_revision` is recorded.
 3. Paste the full spec text into `docs/implementation_spec.md`.
 4. Profile with Nsight Systems. The measured GPU bottleneck is transfers plus host I/O, not kernels, so a shared-memory Gaussian tile is low priority.
-5. Re-time `opt/simd-gaussian` on the laptop and merge it if the gain holds.
-6. Overlap decode, process, and encode in `batch`: the measured end-to-end bottleneck.
-7. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
+5. Re-measure `batch` throughput on the T4 host with the parallel batch runner (only measured on the laptop so far).
+6. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
 
 ## Known limitations
 

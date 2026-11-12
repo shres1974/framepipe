@@ -241,6 +241,48 @@ optimization is correct and allocation-safe but only helps a transfer-bound or
 GPU-resident workload (no per-frame PNG decode/encode), which this benchmark
 is not. It is recorded here as a measured null result, not a speedup.
 
+### Vectorized Gaussian on the laptop (2026-11-11, merged to `main`)
+
+`opt/simd-gaussian` re-timed on the original laptop (Core Ultra 5 135H, WSL2)
+against the build just before it, alternating base and vectorized runs over
+two rounds. HD edges, `cpu_core_wall_ms` median (ms) of 120 samples per run,
+each round shown separately. cpu-omp uses 8 threads:
+
+| | base r1 / r2 | vectorized r1 / r2 | speedup |
+|---|---|---|---:|
+| cpu-ref, radius 3 | 17.95 / 17.54 | 9.34 / 8.59 | ~2.0× |
+| cpu-omp, radius 3 | 3.36 / 3.65 | 1.71 / 1.74 | ~2.0× |
+| cpu-ref, radius 15 | 54.35 / 50.88 | 16.47 / 14.99 | ~3.3× |
+| cpu-omp, radius 15 | 10.16 / 9.90 | 2.91 / 2.84 | ~3.5× |
+
+The gain is well above the ~30% run-to-run noise on this host and grows with
+radius, as the profile predicted. PNG outputs are byte-identical to the base
+build for radii 1/3/7/15, both stages, and both CPU backends. The full ctest
+suite and the oracle pass. Evidence:
+`results/evidence/2026-11-11_ultra5-135h-wsl2_simd_gaussian/`.
+
+## Batch I/O overlap (2026-11-11, laptop, merged to `main`)
+
+This attacks the bottleneck every section above points to: per-frame PNG
+decode and encode. On this host, decoding a 1080p PNG takes ~35 ms, decoding
+a 4K PNG takes ~145 ms, and processing takes 2–5 ms. `batch` now decodes on
+several threads into a bounded reorder window and writes on a separate thread
+(see [architecture.md](architecture.md)). Throughput in fps, cpu-omp with 4
+threads, median of 3 interleaved cold runs:
+
+| Scenario | serial (old: 1 decoder, sync write) | 2 decoders, async | 4 decoders, window 4, sync | 4 decoders, window 4, async (new default) |
+|---|---:|---:|---:|---:|
+| HD, 40 frames | 19.7 | 38.1 | 58.8 | **71.0** (3.6×) |
+| 4K, 12 frames | 4.7 | 9.5 | 14.4 | **16.2** (3.4×) |
+
+This is the first change in the project that moves the end-to-end number by
+more than noise. The GPU (12.7× core) and the vectorized Gaussian (2–3.5× core)
+mostly sped up the ~5% of each frame that is not I/O. The reorder window must
+cover every decoder: 4 decoders with a window of 2 measured ~35 fps. That is
+why the default window is max(2, decoders). Outputs are byte-identical to the
+serial path. Evidence:
+`results/evidence/2026-11-11_ultra5-135h-wsl2_batch_overlap/`.
+
 ## Not measured
 
 - A controlled machine (fixed clocks, no VM): results come from a laptop VM
