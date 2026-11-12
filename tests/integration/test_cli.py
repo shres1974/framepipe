@@ -86,7 +86,7 @@ try:
     check("doctor" in p.stdout and "benchmark" in p.stdout, "top help lists commands")
     run(ok=2)
     run("frobnicate", ok=2)
-    for cmd in ("doctor", "process", "batch", "validate", "benchmark"):
+    for cmd in ("doctor", "process", "batch", "validate", "compare", "benchmark"):
         p = run(cmd, "--help", ok=0)
         check("Usage:" in p.stdout, f"{cmd} --help prints usage")
 
@@ -255,6 +255,40 @@ try:
     p = run("validate", "--input", inp, "--reference", "oracle:" + od, "--output-stage", "resize",
             "--width", "4", "--height", "3", ok=6)
     check("FAILED" in p.stderr, "validate failure reported")
+
+    # ------------------------------------------------------------- compare
+    cd = os.path.join(T, "compare")
+    cr = os.path.join(T, "compare_report.json")
+    p = run("compare", "--input", inp, "--width", "40", "--height", "30", "--iterations", "3",
+            "--output-dir", cd, "--report", cr, ok=0)
+    c = json.load(open(cr))
+    rows = {r["backend"]: r for r in c["backends"]}
+    check(c["status"] == "passed" and list(rows)[0] == "cpu-ref", f"compare report {c['status']}")
+    check(rows["cpu-ref"]["status"] == "reference" and rows["cpu-ref"]["vs_cpu_ref"] is None, "cpu-ref is reference")
+    check("cpu-ref" in p.stderr and "speedup" in p.stderr, "compare prints a table")
+    check(os.path.exists(os.path.join(cd, "cpu-ref.png")), "compare writes outputs")
+    for b, info in names.items():
+        if b == "cpu-ref":
+            continue
+        if info["usable"]:
+            check(rows[b]["status"] == "passed", f"compare {b} within tolerance")
+            w, h, er = read_png_gray(os.path.join(cd, b + "_error.png"))
+            check((w, h) == (40, 30), f"{b} error map shape")
+            if b == "cpu-omp":
+                check(rows[b]["vs_cpu_ref"]["exact_match"], "cpu-omp is exact")
+                check(all(v == 0 for row in er for v in row), "exact match gives a black error map")
+        else:
+            check(rows[b]["status"] == "unavailable" and rows[b]["reason"], f"compare lists unavailable {b}")
+    # Same output as process for the same configuration.
+    pp = os.path.join(T, "c_process.png")
+    run("process", "--input", inp, "--output", pp, "--backend", "cpu-ref", "--width", "40", "--height", "30", ok=0)
+    check(open(pp, "rb").read() == open(os.path.join(cd, "cpu-ref.png"), "rb").read(), "compare output == process")
+    run("compare", "--input", inp, "--output-dir", cd, "--width", "40", "--height", "30", ok=3)  # no --overwrite
+    run("compare", "--input", inp, "--backend", "cpu-ref", ok=2)
+    run("compare", "--input", inp, "--iterations", "0", ok=2)
+    run("compare", "--input", inp, "--backends", "cpu-ref,auto", ok=2)
+    if not names["cuda"]["usable"]:
+        run("compare", "--input", inp, "--backends", "cuda", "--width", "8", "--height", "8", ok=4)
 
     # ------------------------------------------------------------- batch
     bd = os.path.join(T, "batch")
