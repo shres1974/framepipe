@@ -1,7 +1,9 @@
 # VHS + the FramePipe CPU binary, for rendering docs/demo.tape.
-# The VHS image is Debian 12, so FramePipe must be built on the same base:
+# The VHS image is Debian 12, so FramePipe must be built on the same base.
+# The build context is a directory holding only the 1080p demo scene:
 #   docker build --build-arg BASE=debian:bookworm -t framepipe:bookworm .
-#   docker build -t framepipe-demo -f docs/Dockerfile.demo .
+#   python3 scripts/make_showcase.py scene --out build/demo_ctx/scene.png
+#   docker build -t framepipe-demo -f docs/Dockerfile.demo build/demo_ctx
 #   docker run --rm -v "$PWD:/vhs" framepipe-demo docs/demo.tape
 FROM framepipe:bookworm AS fp
 
@@ -11,4 +13,5 @@ COPY --from=fp /usr/local/lib/libopencv_core.so.410 \
                /usr/local/lib/libopencv_imgcodecs.so.410 /usr/local/lib/
 COPY --from=fp /usr/local/bin/framepipe /usr/local/bin/framepipe
 COPY --from=fp /opt/framepipe /opt/framepipe
+COPY scene.png /opt/framepipe/samples/scene.png
 RUN ldconfig && framepipe --help > /dev/null

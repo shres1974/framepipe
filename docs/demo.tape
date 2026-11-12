@@ -2,7 +2,8 @@
 # (https://github.com/charmbracelet/vhs). Every command below really runs.
 #
 #   docker build --build-arg BASE=debian:bookworm -t framepipe:bookworm .
-#   docker build -t framepipe-demo -f docs/Dockerfile.demo .
+#   python3 scripts/make_showcase.py scene --out build/demo_ctx/scene.png
+#   docker build -t framepipe-demo -f docs/Dockerfile.demo build/demo_ctx
 #   docker run --rm -v "$PWD:/vhs" framepipe-demo docs/demo.tape
 
 Output docs/assets/demo.gif
@@ -17,7 +18,7 @@ Set Theme "Catppuccin Mocha"
 Set TypingSpeed 35ms
 
 Hide
-Type "cd /tmp && cp /opt/framepipe/fixtures/random_rgb_257x129.png in.png && clear"
+Type "cd /tmp && cp /opt/framepipe/fixtures/random_rgb_257x129.png in.png && cp /opt/framepipe/samples/scene.png scene.png && clear"
 Enter
 Show
 
@@ -38,11 +39,16 @@ Type "framepipe process --input in.png --output edges.png --backend cpu-omp --wi
 Enter
 Sleep 3.5s
 
-Type "# Check cpu-omp against the scalar reference, within the documented tolerances"
+Hide
+Type "clear"
 Enter
-Type "framepipe validate --input in.png --candidate cpu-omp --reference cpu-ref --report v.json; echo exit=$?"
+Show
+
+Type "# Every backend on one 1080p image: speed, and max error vs the scalar reference"
 Enter
-Sleep 3s
+Type "framepipe compare --input scene.png --output-dir cmp; ls cmp"
+Enter
+Sleep 4s
 
 Hide
 Type "clear"
