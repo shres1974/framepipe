@@ -34,13 +34,21 @@ HD frame (1920×1080 → 1280×720, edges), NVIDIA Tesla T4 + 4-vCPU Xeon, media
 The last column is the honest one: **a 12.7× faster core gives a 1.35× faster
 application**, because PNG decode and encode dominate. On the GPU, 84% of the
 time is transfers, not kernels. The project measures both and reports them
-separately instead of quoting the best number.
+separately instead of quoting the best number. It then fixes the real
+bottleneck: overlapping I/O in `batch` gives **3.6× more frames per second**
+on the CPU alone (below).
 
 | | |
 |---|---|
 | ![Core time per backend and resolution](docs/assets/core_latency.png) | ![CUDA time split into kernels and transfers](docs/assets/gpu_breakdown.png) |
 
 ![End-to-end HD frame time: processing vs I/O](docs/assets/end_to_end.png)
+
+That bottleneck is what `batch` attacks. It decodes frames on several threads
+into a bounded reorder window and writes PNGs on a separate thread, so I/O
+overlaps processing. Output order and bytes are unchanged:
+
+![Batch throughput before and after overlapping I/O](docs/assets/batch_throughput.png)
 
 Every number above is read from committed evidence
 ([results/evidence/](results/evidence/)) by `scripts/make_showcase.py figures`; full tables,
