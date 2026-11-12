@@ -145,7 +145,7 @@ unsupported format, 4 backend unavailable, 5 processing/resource failure,
 |---|---|
 | `doctor` | `framepipe doctor --json` — build capabilities and runtime usability, reported separately |
 | `process` | `framepipe process --input in.png --output out.png [--config F] [--backend auto\|cpu-ref\|cpu-omp\|cuda] [--output-stage resize\|blur\|edges] [--width W --height H --radius R --sigma S --threads N] [--report F\|-] [--overwrite]` |
-| `batch` | `framepipe batch --manifest frames.jsonl --output-dir out/ [--continue-on-error] [--queue-capacity 2]` |
+| `batch` | `framepipe batch --manifest frames.jsonl --output-dir out/ [--continue-on-error] [--decode-threads N] [--queue-capacity N] [--sync-write]` |
 | `validate` | `framepipe validate --input in.png --candidate cuda --reference cpu-ref --report v.json` or `--reference oracle:DIR` |
 | `benchmark` | `framepipe benchmark --manifest m.jsonl --backends cpu-ref,cpu-omp,opencv-cpu,cuda --scopes host_processing,device_pipeline,application,startup,batch --output-dir results/local/run1` |
 
