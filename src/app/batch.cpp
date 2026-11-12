@@ -4,9 +4,11 @@
 #include <atomic>
 #include <chrono>
 #include <filesystem>
+#include <mutex>
 #include <thread>
 #include <vector>
 
+#include "app/bounded_queue.hpp"
 #include "app/ordered_window.hpp"
 #include "framepipe/errors.hpp"
 #include "framepipe/pipeline.hpp"
@@ -25,6 +27,12 @@ struct Decoded {
     std::string error;
     ErrorCategory category = ErrorCategory::IoFailure;
     double accepted_ms = 0;
+};
+
+// A processed, quantized frame waiting to be PNG-encoded and written.
+struct Encoded {
+    std::int64_t sequence;
+    HostU8Image image;
 };
 
 double ms(clk::time_point t0) { return std::chrono::duration<double, std::milli>(clk::now() - t0).count(); }
@@ -98,11 +106,66 @@ BatchResult run_batch(const io::Manifest& manifest, const BatchOptions& opt) {
         for (auto& th : decoders) th.join();
     };
 
+    // Final per-frame status is set either here (processing failures, or
+    // synchronous writes) or on the writer thread, so it is guarded.
+    std::mutex rec_m;
+    auto finish = [&](std::int64_t seq, const std::string& rel, const std::string* err) {
+        std::lock_guard<std::mutex> lk(rec_m);
+        auto& rec = res.frames[static_cast<std::size_t>(seq)];
+        rec.completed_ms = ms(t0);
+        if (err) {
+            rec.status = "failed";
+            rec.error = *err;
+            ++res.failed;
+            if (!opt.continue_on_error) res.fail_fast_triggered = true;
+        } else {
+            rec.output_path = rel;
+            rec.status = "completed";
+            ++res.completed;
+        }
+    };
+    std::atomic<bool> write_failed{false};
+    auto write_frame = [&](Encoded& e) {
+        const std::string rel = res.frames[static_cast<std::size_t>(e.sequence)].frame_id + ".png";
+        std::string err;
+        try {
+            io::write_png_gray((fs::path(opt.output_dir) / rel).string(), e.image);
+            finish(e.sequence, rel, nullptr);
+            return;
+        } catch (const Error& x) {
+            err = x.what();
+        } catch (const std::exception& x) {
+            err = x.what();
+        }
+        finish(e.sequence, "", &err);
+        if (!opt.continue_on_error) write_failed = true;
+    };
+    const bool fail_fast = !opt.continue_on_error;
+
+    // Writer thread: PNG encode + file write overlap with processing the next
+    // frame. It consumes in FIFO (= manifest) order, so completion order is
+    // preserved. After a fail-fast write failure it drains without writing.
+    BoundedQueue<Encoded> to_write(opt.queue_capacity);
+    std::thread writer;
+    if (opt.async_write) {
+        writer = std::thread([&] {
+            while (auto e = to_write.pop()) {
+                if (fail_fast && write_failed) continue;
+                write_frame(*e);
+            }
+        });
+    }
+    auto stop_writer = [&] {
+        to_write.close();
+        if (writer.joinable()) writer.join();
+    };
+
     HostFloatImage out(opt.config.resize.width, opt.config.resize.height);
     std::optional<InputSpec> prepared;
     std::int64_t expected = 0;
     try {
         while (auto item = window.take()) {
+            if (fail_fast && write_failed) break;
             if (item->sequence != expected) {
                 throw Error(ErrorCategory::Internal, "sequence order violated in batch runner");
             }
@@ -122,27 +185,26 @@ BatchResult run_batch(const io::Manifest& manifest, const BatchOptions& opt) {
                     prepared = spec;
                 }
                 pipeline.process_into(view, out.view());
-                const std::string rel = rec.frame_id + ".png";
-                io::write_png_gray((fs::path(opt.output_dir) / rel).string(), io::quantize_image(out.cview()));
-                rec.output_path = rel;
-                rec.status = "completed";
-                rec.completed_ms = ms(t0);
-                ++res.completed;
-            } catch (const Error& e) {
-                rec.status = "failed";
-                rec.error = e.what();
-                rec.completed_ms = ms(t0);
-                ++res.failed;
-                if (!opt.continue_on_error) {
-                    res.fail_fast_triggered = true;
-                    break;
+                Encoded e{item->sequence, io::quantize_image(out.cview())};
+                if (opt.async_write) {
+                    if (!to_write.push(std::move(e))) break;  // blocks while the writer is behind
+                } else {
+                    write_frame(e);
                 }
+            } catch (const Error& e) {
+                const std::string msg = e.what();
+                finish(item->sequence, "", &msg);
+                if (fail_fast) break;
             }
+            if (fail_fast && write_failed) break;
         }
     } catch (...) {
+        to_write.clear();
+        stop_writer();
         stop_decoders();
         throw;
     }
+    stop_writer();
     stop_decoders();
     res.batch_wall_ms = ms(t0);
     res.queue_high_water = window.high_water_mark();

@@ -220,16 +220,60 @@ TEST(Batch, ParallelDecodeMatchesSerialByteForByte) {
     o.decode_threads = 4;
     o.queue_capacity = 3;
     const auto parallel = app::run_batch(manifest, o);
+    o.output_dir = (d / "async").string();
+    o.async_write = true;
+    const auto async = app::run_batch(manifest, o);
     ASSERT_EQ(serial.completed, 24u);
     ASSERT_EQ(parallel.completed, 24u);
+    ASSERT_EQ(async.completed, 24u);
     EXPECT_EQ(parallel.reprepare_count, serial.reprepare_count);
+    EXPECT_EQ(async.reprepare_count, serial.reprepare_count);
     EXPECT_LE(parallel.queue_high_water, 3u);
     for (int i = 0; i < 24; ++i) {
         EXPECT_EQ(parallel.frames[i].frame_id, "f" + std::to_string(i));
+        EXPECT_EQ(async.frames[i].output_path, "f" + std::to_string(i) + ".png");
         const std::string name = "f" + std::to_string(i) + ".png";
         EXPECT_EQ(read_bytes(d / "serial" / name), read_bytes(d / "parallel" / name)) << name;
+        EXPECT_EQ(read_bytes(d / "serial" / name), read_bytes(d / "async" / name)) << name;
         if (i > 0) {
             EXPECT_GE(parallel.frames[i].completed_ms, parallel.frames[i - 1].completed_ms);
+            EXPECT_GE(async.frames[i].completed_ms, async.frames[i - 1].completed_ms);
+        }
+    }
+}
+
+TEST(Batch, AsyncWriteFailureFailsFastAndContinueRecordsIt) {
+    const auto d = fresh_dir("writefail");
+    std::string m;
+    for (int i = 0; i < 8; ++i) m += "{\"frame_id\":\"f" + std::to_string(i) + "\",\"path\":\"a.png\"}\n";
+    write_png(d / "a.png", 16, 16, 7);
+    write_text(d / "m.jsonl", m);
+    const auto manifest = io::load_manifest((d / "m.jsonl").string());
+    for (bool cont : {false, true}) {
+        const auto out = d / (cont ? "cont" : "fast");
+        fs::create_directories(out / "f2.png");  // a directory where f2.png must go: the write fails
+        app::BatchOptions o;
+        o.config = cfg(8, 8);
+        o.output_dir = out.string();
+        o.overwrite = true;
+        o.decode_threads = 2;
+        o.async_write = true;
+        o.continue_on_error = cont;
+        const auto r = app::run_batch(manifest, o);
+        EXPECT_EQ(r.frames[2].status, "failed");
+        EXPECT_FALSE(r.frames[2].error.empty());
+        EXPECT_EQ(r.frames[0].status, "completed");
+        EXPECT_EQ(r.frames[1].status, "completed");
+        if (cont) {
+            EXPECT_EQ(r.completed, 7u);
+            EXPECT_EQ(r.failed, 1u);
+            EXPECT_EQ(r.not_processed, 0u);
+        } else {
+            EXPECT_TRUE(r.fail_fast_triggered);
+            EXPECT_EQ(r.failed, 1u);
+            EXPECT_EQ(r.completed, 2u) << "no frame after the failed write may be written";
+            EXPECT_EQ(r.not_processed, 5u);
+            for (int i = 3; i < 8; ++i) EXPECT_FALSE(fs::exists(out / ("f" + std::to_string(i) + ".png")));
         }
     }
 }
