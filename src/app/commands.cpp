@@ -609,6 +609,14 @@ int cmd_compare(const std::vector<std::string>& args) {
     const std::string in = *a.get("input");
     const bool overwrite = a.has("overwrite");
     if (a.has("report") && *a.get("report") != "-") check_output_path(*a.get("report"), {in}, overwrite);
+    if (a.has("output-dir")) {  // fail before doing any work
+        for (Backend b : backends) {
+            for (const char* suffix : {".png", "_error.png"}) {
+                check_output_path((fs::path(*a.get("output-dir")) / (std::string(backend_name(b)) + suffix)).string(),
+                                  {in}, overwrite);
+            }
+        }
+    }
 
     const auto dec = io::read_image(in, cfg.resources.max_dimension);
     const auto spec = spec_of(dec.image.view());
@@ -721,6 +729,31 @@ int cmd_compare(const std::vector<std::string>& args) {
         jrows.push_back(j);
     }
     rep["backends"] = jrows;
+    if (a.has("output-dir")) {
+        // Outputs are the normal 8-bit PNGs; error maps use the normative
+        // tolerance as full scale, so any visible pixel is a near-failure.
+        const fs::path dir = *a.get("output-dir");
+        ojson files = ojson::array();
+        for (const auto& r : rows) {
+            if (!r.output) continue;
+            const std::string name = backend_name(r.backend);
+            const fs::path outp = dir / (name + ".png");
+            check_output_path(outp.string(), {in}, overwrite);
+            ensure_parent_dir(outp.string());
+            io::write_png_gray(outp.string(), io::quantize_image(r.output->cview()));
+            files.push_back(outp.string());
+            if (r.cmp) {
+                const fs::path errp = dir / (name + "_error.png");
+                check_output_path(errp.string(), {in}, overwrite);
+                io::write_png_gray(errp.string(), error_map(rows.front().output->cview(), r.output->cview(),
+                                                            tolerance_for(final_stage)));
+                files.push_back(errp.string());
+            }
+        }
+        rep["files"] = files;
+        std::cerr << "compare: wrote " << files.size() << " images to " << dir.string()
+                  << " (<backend>_error.png: black = exact, white = at the tolerance)\n";
+    }
     if (a.has("report")) emit_report(*a.get("report"), rep, overwrite);
     return all_ok ? 0 : exit_code::kCorrectnessFailure;
 }
