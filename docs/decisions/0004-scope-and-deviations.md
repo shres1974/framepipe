@@ -32,4 +32,5 @@ Status: accepted, 2026-11-03
    still computed by one thread with the scalar operator code, so results are
    bit-identical to cpu-ref (tested).
 
-7. **License** is left for the repository owner to select (spec Section 9).
+7. **License:** MIT, selected by the repository owner on 2026-11-11 (spec Section 9).
+   All dependencies are compatible (see `THIRD_PARTY_NOTICES.md`).

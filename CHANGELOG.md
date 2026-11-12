@@ -2,9 +2,9 @@
 
 All notable changes to FramePipe. Versions follow [Semantic Versioning](https://semver.org/).
 
-## [0.1.0] - unreleased
+## [0.1.0] - 2026-11-11
 
-First public version.
+First public version, released under the MIT license.
 
 ### Pipeline
 - Grayscale → bilinear half-pixel resize → separable Gaussian blur → Sobel

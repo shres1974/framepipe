@@ -101,12 +101,11 @@ for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t 
 
 1. Run the full ring workload matrix on GPU (only HD ring was measured, during the optimization work).
 2. Rerun one CPU benchmark on the laptop so `git_revision` is recorded.
-3. Choose a LICENSE (owner decision).
-4. Paste the full spec text into `docs/implementation_spec.md`.
-5. Profile with Nsight Systems. The measured GPU bottleneck is transfers plus host I/O, not kernels, so a shared-memory Gaussian tile is low priority.
-6. Re-time `opt/simd-gaussian` on the laptop and merge it if the gain holds.
-7. Overlap decode, process, and encode in `batch`: the measured end-to-end bottleneck.
-8. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
+3. Paste the full spec text into `docs/implementation_spec.md`.
+4. Profile with Nsight Systems. The measured GPU bottleneck is transfers plus host I/O, not kernels, so a shared-memory Gaussian tile is low priority.
+5. Re-time `opt/simd-gaussian` on the laptop and merge it if the gain holds.
+6. Overlap decode, process, and encode in `batch`: the measured end-to-end bottleneck.
+7. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
 
 ## Known limitations
 

@@ -4,6 +4,7 @@
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus)
 ![CUDA](https://img.shields.io/badge/CUDA-custom%20kernels-76B900?logo=nvidia)
 ![OpenMP](https://img.shields.io/badge/OpenMP-4.5-4c78a8)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![GPU reproduction notebook](https://img.shields.io/badge/reproduce-Kaggle%20%2F%20Colab%20T4-20BEFF?logo=kaggle)](notebooks/reproduce_gpu.ipynb)
 
 **A C++17 / CUDA image-preprocessing pipeline that is measured, not guessed.**
@@ -197,5 +198,5 @@ The terminal GIF is rendered from [docs/demo.tape](docs/demo.tape) with VHS (ins
 
 ## License
 
-Not yet selected; to be chosen by the repository owner. See
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for dependencies.
+[MIT](LICENSE). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for
+dependencies and their licenses.
