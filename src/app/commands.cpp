@@ -18,6 +18,7 @@
 #include "app/cli_args.hpp"
 #include "benchmark/environment.hpp"
 #include "benchmark/harness.hpp"
+#include "benchmark/stats.hpp"
 #include "core/sha256.hpp"
 #include "framepipe/build_info.hpp"
 #include "framepipe/errors.hpp"
@@ -45,6 +46,7 @@ const char* kTopHelp =
     "  process     Process one image (grayscale -> resize -> blur -> edges)\n"
     "  batch       Process an ordered JSON Lines image manifest\n"
     "  validate    Compare a candidate backend against cpu-ref or oracle fixtures\n"
+    "  compare     Time every backend on one image and check each against cpu-ref\n"
     "  benchmark   Measure declared timing scopes and save raw samples\n"
     "\n"
     "Run 'framepipe <command> --help' for command options.\n"
@@ -560,6 +562,169 @@ int cmd_validate(const std::vector<std::string>& args) {
     return all ? 0 : exit_code::kCorrectnessFailure;
 }
 
+// ---------------------------------------------------------------- compare
+// One-command demonstration: every requested backend on one image, timed
+// in-process and checked against cpu-ref under the normative tolerance.
+int cmd_compare(const std::vector<std::string>& args) {
+    const auto specs = with_config(
+        {{"input", true, "Input PNG/JPEG (8-bit gray or RGB)", "PATH"},
+         {"backends", true, "Comma list of cpu-ref,cpu-omp,cuda (default: all; unavailable ones are listed)", "LIST"},
+         {"iterations", true, "Timed iterations per backend, 1..1000 (default 20)", "N"},
+         {"warmup", true, "Untimed warm-up iterations per backend, 0..100 (default 3)", "N"},
+         {"output-dir", true, "Also write <backend>.png outputs and <backend>_error.png maps here", "DIR"},
+         {"report", true, "Write a JSON report ('-' for stdout)", "PATH"},
+         {"overwrite", false, "Allow overwriting existing files"}});
+    if (want_help(args)) {
+        std::cout << format_help(
+            "framepipe compare --input IN [--backends cpu-ref,cpu-omp,cuda] [--output-dir DIR] [options]",
+            "Runs each backend on one image, reports median processing time, speedup over cpu-ref,\n"
+            "and the maximum error against cpu-ref under the normative per-stage tolerance.\n"
+            "Timing is an in-process quick look (decode excluded, host<->device transfers included);\n"
+            "use 'framepipe benchmark' for rigorous, recorded measurements. Exit 6 on a tolerance failure.\n"
+            "Without --threads or --config, cpu-omp uses half the logical CPUs (at most 8).",
+            specs);
+        return 0;
+    }
+    const auto a = parse_options(args, specs);
+    if (!a.has("input")) throw Error(ErrorCategory::InvalidArgument, "--input is required");
+    if (a.has("backend")) throw Error(ErrorCategory::InvalidArgument, "use --backends instead of --backend for compare");
+    PipelineConfig cfg = resolve_config(a);
+    if (!a.has("threads") && !a.has("config")) {
+        cfg.cpu.threads = std::clamp(static_cast<int>(std::thread::hardware_concurrency()) / 2, 1, 8);
+    }
+    const int iters = a.get_int("iterations", 20);
+    const int warmup = a.get_int("warmup", 3);
+    if (iters < 1 || iters > 1000) throw Error(ErrorCategory::InvalidArgument, "--iterations must be in [1, 1000]");
+    if (warmup < 0 || warmup > 100) throw Error(ErrorCategory::InvalidArgument, "--warmup must be in [0, 100]");
+    const bool explicit_list = a.has("backends");
+    std::vector<Backend> backends;
+    for (const auto& n : split_csv(a.get_or("backends", "cpu-ref,cpu-omp,cuda"))) {
+        const Backend b = parse_backend(n);
+        if (b == Backend::Auto) throw Error(ErrorCategory::InvalidArgument, "--backends must name concrete backends");
+        if (std::find(backends.begin(), backends.end(), b) == backends.end()) backends.push_back(b);
+    }
+    // cpu-ref is the reference and always runs first.
+    backends.erase(std::remove(backends.begin(), backends.end(), Backend::CpuReference), backends.end());
+    backends.insert(backends.begin(), Backend::CpuReference);
+    const std::string in = *a.get("input");
+    const bool overwrite = a.has("overwrite");
+    if (a.has("report") && *a.get("report") != "-") check_output_path(*a.get("report"), {in}, overwrite);
+
+    const auto dec = io::read_image(in, cfg.resources.max_dimension);
+    const auto spec = spec_of(dec.image.view());
+    const Stage final_stage = cfg.output_stage == OutputStage::Edges  ? Stage::Edges
+                              : cfg.output_stage == OutputStage::Blur ? Stage::BlurVertical
+                                                                      : Stage::Resized;
+
+    struct Row {
+        Backend backend;
+        std::string implementation, status, reason;
+        double median_ms = 0;
+        std::optional<CompareResult> cmp;
+        std::optional<HostFloatImage> output;
+    };
+    std::vector<Row> rows;
+    for (Backend b : backends) {
+        Row row;
+        row.backend = b;
+        const auto av = query_backend(b, cfg.device_index);
+        if (!av.usable) {
+            if (explicit_list) {
+                throw Error(ErrorCategory::BackendUnavailable,
+                            std::string(backend_name(b)) + " backend requested but unusable: " + av.reason);
+            }
+            row.status = "unavailable";
+            row.reason = av.reason;
+            rows.push_back(std::move(row));
+            continue;
+        }
+        PipelineConfig bc = cfg;
+        bc.backend = b;
+        Pipeline p(bc);
+        p.prepare(spec);
+        row.implementation = p.configuration().implementation;
+        HostFloatImage out(cfg.resize.width, cfg.resize.height);
+        for (int i = 0; i < warmup; ++i) p.process_into(dec.image.view(), out.view());
+        std::vector<double> samples;
+        samples.reserve(static_cast<std::size_t>(iters));
+        for (int i = 0; i < iters; ++i) {
+            const auto t = clk::now();
+            p.process_into(dec.image.view(), out.view());
+            samples.push_back(std::chrono::duration<double, std::milli>(clk::now() - t).count());
+        }
+        row.median_ms = bench::median_of(samples);
+        row.output = std::move(out);
+        if (!rows.empty() && rows.front().output) {
+            row.cmp = compare_float_images(rows.front().output->cview(), row.output->cview(),
+                                           tolerance_for(final_stage), cfg.output_stage == OutputStage::Edges);
+            row.status = row.cmp->passed ? "passed" : "failed";
+        } else {
+            row.status = "reference";
+        }
+        rows.push_back(std::move(row));
+    }
+
+    const double ref_ms = rows.front().median_ms;
+    bool all_ok = true;
+    std::ostringstream table;
+    table << "compare: " << in << " (" << shape_string(spec) << " -> " << shape_string(cfg.resize.width, cfg.resize.height)
+          << ", stage " << to_string(cfg.output_stage) << ", median of " << iters << ")\n";
+    char line[256];
+    std::snprintf(line, sizeof line, "  %-8s %11s %8s  %-12s %s\n", "backend", "time", "speedup", "max |err|", "status");
+    table << line;
+    for (const auto& r : rows) {
+        if (r.status == "unavailable") {
+            std::snprintf(line, sizeof line, "  %-8s %11s %8s  %-12s unavailable (%s)\n", backend_name(r.backend), "-", "-",
+                          "-", r.reason.c_str());
+        } else {
+            char err[32];
+            if (!r.cmp) {
+                std::snprintf(err, sizeof err, "(reference)");
+            } else if (r.cmp->exact_match) {
+                std::snprintf(err, sizeof err, "0 (exact)");
+            } else {
+                std::snprintf(err, sizeof err, "%.2e", r.cmp->max_abs_error);
+            }
+            const char* status = !r.cmp ? "ok" : (r.cmp->passed ? "within tolerance" : "FAILED tolerance");
+            std::snprintf(line, sizeof line, "  %-8s %8.2f ms %7.1fx  %-12s %s\n", backend_name(r.backend), r.median_ms,
+                          ref_ms / r.median_ms, err, status);
+            all_ok = all_ok && (!r.cmp || r.cmp->passed);
+        }
+        table << line;
+    }
+    std::cerr << table.str();
+
+    ojson rep;
+    rep["schema_version"] = 1;
+    rep["command"] = "compare";
+    rep["status"] = all_ok ? "passed" : "failed";
+    rep["timing_note"] = "in-process median of process_into calls after warm-up; decode excluded; CUDA includes "
+                         "host<->device transfers. Not a benchmark: use 'framepipe benchmark'.";
+    rep["input"] = {{"path", in}, {"width", spec.width}, {"height", spec.height}, {"format", to_string(spec.format)}};
+    rep["iterations"] = iters;
+    rep["warmup"] = warmup;
+    rep["resolved_config"] = ojson::parse(config_to_json(cfg));
+    rep["math_config_hash"] = math_config_hash(cfg);
+    ojson jrows = ojson::array();
+    for (const auto& r : rows) {
+        ojson j;
+        j["backend"] = backend_name(r.backend);
+        j["status"] = r.status;
+        if (r.status == "unavailable") {
+            j["reason"] = r.reason;
+        } else {
+            j["implementation"] = r.implementation;
+            j["median_ms"] = r.median_ms;
+            j["speedup_vs_cpu_ref"] = ref_ms / r.median_ms;
+            j["vs_cpu_ref"] = r.cmp ? ojson::parse(compare_result_json(*r.cmp)) : ojson(nullptr);
+        }
+        jrows.push_back(j);
+    }
+    rep["backends"] = jrows;
+    if (a.has("report")) emit_report(*a.get("report"), rep, overwrite);
+    return all_ok ? 0 : exit_code::kCorrectnessFailure;
+}
+
 // ---------------------------------------------------------------- benchmark
 int cmd_benchmark(const std::vector<std::string>& args, const std::string& cmdline) {
     std::vector<OptionSpec> specs{
@@ -643,6 +808,7 @@ int run_cli(const std::vector<std::string>& args) {
         if (cmd == "process") return cmd_process(rest);
         if (cmd == "batch") return cmd_batch(rest);
         if (cmd == "validate") return cmd_validate(rest);
+        if (cmd == "compare") return cmd_compare(rest);
         if (cmd == "benchmark") return cmd_benchmark(rest, cmdline);
         std::cerr << "framepipe: unknown command '" << cmd << "'\n\n" << kTopHelp;
         return exit_code::kInvalidArguments;
