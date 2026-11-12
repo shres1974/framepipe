@@ -80,6 +80,14 @@ It turns frames such as a 1920×1080 camera sequence into 1280×720 grayscale,
 blurred, or normalized edge-map PNGs, in manifest order, with machine-readable
 correctness and timing reports. It does not make robotics decisions.
 
+It is the preprocessing step in front of a vision system. The
+[defect-inspection example](examples/defect_inspection/) shows one end to
+end: FramePipe edge maps feed a simple crack/scratch/pit detector that is
+calibrated on a training split. On held-out synthetic surfaces it reaches
+96.7% accuracy and localizes 44 of 45 defects. Both mistakes are shown.
+
+![Defect inspection on held-out images](docs/assets/defect_inspection.png)
+
 **Status:** CPU-validated and GPU-validated on an NVIDIA Tesla T4 (Kaggle,
 CUDA 13.0): all 11 CUDA hardware tests, the NumPy oracle suite, and Compute
 Sanitizer pass. See [docs/implementation_status.md](docs/implementation_status.md).
