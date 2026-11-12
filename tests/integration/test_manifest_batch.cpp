@@ -10,6 +10,7 @@
 
 #include "app/batch.hpp"
 #include "app/bounded_queue.hpp"
+#include "app/ordered_window.hpp"
 #include "framepipe/errors.hpp"
 #include "io/manifest.hpp"
 #include "test_util.hpp"
@@ -101,6 +102,55 @@ TEST(BoundedQueue, BlocksWhenFullAndPreservesOrder) {
     EXPECT_FALSE(q.pop().has_value());
     prod.join();
     EXPECT_LE(q.high_water_mark(), 2u);
+}
+
+TEST(OrderedWindow, ReordersOutOfOrderProducersAndBoundsHeldItems) {
+    constexpr int kTotal = 200;
+    constexpr std::size_t kCap = 3;
+    app::OrderedWindow<int> w(kCap, kTotal);
+    std::atomic<int> claim{0};
+    std::atomic<int> in_flight{0}, peak{0};
+    std::vector<std::thread> producers;
+    for (int t = 0; t < 4; ++t) {
+        producers.emplace_back([&, t] {
+            for (int i = claim++; i < kTotal; i = claim++) {
+                if (!w.acquire(i)) return;
+                const int now = ++in_flight;
+                int p = peak.load();
+                while (now > p && !peak.compare_exchange_weak(p, now)) {}
+                // Uneven work so items finish out of order.
+                std::this_thread::sleep_for(std::chrono::microseconds((i * 37 + t * 11) % 200));
+                --in_flight;
+                w.put(i, i * 10);
+            }
+        });
+    }
+    for (int i = 0; i < kTotal; ++i) {
+        auto v = w.take();
+        ASSERT_TRUE(v.has_value());
+        EXPECT_EQ(*v, i * 10) << "items must come out in sequence order";
+    }
+    EXPECT_FALSE(w.take().has_value()) << "take() after the last item must return nullopt";
+    for (auto& p : producers) p.join();
+    EXPECT_LE(w.high_water_mark(), kCap);
+    EXPECT_LE(static_cast<std::size_t>(peak.load()), kCap) << "producers ran ahead of the window";
+}
+
+TEST(OrderedWindow, CloseWakesBlockedProducersAndConsumer) {
+    app::OrderedWindow<int> w(1, 10);
+    ASSERT_TRUE(w.acquire(0));
+    std::atomic<bool> producer_returned{false};
+    std::thread blocked([&] {
+        EXPECT_FALSE(w.acquire(1)) << "seq 1 is outside a window of 1 until seq 0 is taken";
+        producer_returned = true;
+    });
+    std::thread consumer([&] { EXPECT_FALSE(w.take().has_value()); });
+    std::this_thread::sleep_for(std::chrono::milliseconds(30));
+    EXPECT_FALSE(producer_returned.load());
+    w.close();
+    blocked.join();
+    consumer.join();
+    EXPECT_TRUE(producer_returned.load());
 }
 
 TEST(Batch, PreservesOrderIdsAndHandlesShapeChanges) {
