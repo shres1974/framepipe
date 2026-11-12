@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "20261112T013218Z-718b-180c7",
+  "started_utc": "2026-11-12T01:32:18Z",
+  "finished_utc": "2026-11-12T01:32:27Z",
+  "command_line": "framepipe benchmark --manifest ../../data/bench/hd.jsonl --config ../../data/bench/hd.config.json --radius 15 --backends cpu-ref,cpu-omp --threads 8 --scopes host_processing --warmup 10 --iterations 60 --repetitions 2 --output-dir runs/base_r15_2",
+  "git_revision": "09f6c8be85c85dbe428c938767bba37ed1175c8a",
+  "git_dirty": false,
+  "git_note": null,
+  "experiment_status": "measured",
+  "manifest": {
+    "path": "../../data/bench/hd.jsonl",
+    "sha256": "80efc70bba8ab3e48ee68be1f77405b364a630972304bbeac02be335b212abfd",
+    "frames": 1
+  },
+  "backend_run_order": [
+    {
+      "repetition": 0,
+      "order": [
+        "cpu-ref",
+        "cpu-omp"
+      ]
+    },
+    {
+      "repetition": 1,
+      "order": [
+        "cpu-omp",
+        "cpu-ref"
+      ]
+    }
+  ],
+  "failures": [],
+  "scopes": [
+    "host_processing"
+  ],
+  "math_config_hash": "18fea59eb684d4d82f6acb552dbaeee74bf6aecbc04968875e7a0fdf5c2cbdf1",
+  "measurement_settings": {
+    "debug_sync": false,
+    "stage_downloads": false,
+    "sanitizers": false,
+    "per_frame_logging": false,
+    "clock_changes": "none performed"
+  }
+}

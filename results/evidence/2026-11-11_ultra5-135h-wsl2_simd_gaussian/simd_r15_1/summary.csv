@@ -1,0 +1,3 @@
+backend,implementation,metric,frame_id,input_width,input_height,output_width,output_height,count,min_ms,max_ms,mean_ms,stddev_ms,median_ms,p95_ms,median_of_run_medians_ms,repetitions
+cpu-omp,"openmp-rows(threads=8,schedule=dynamic4x)",cpu_core_wall_ms,hd_0,1920,1080,1280,720,120,2.431443,5.598436,3.024633,0.490065,2.914607,3.821714,2.979030,2
+cpu-ref,scalar,cpu_core_wall_ms,hd_0,1920,1080,1280,720,120,13.467320,25.453507,17.226124,3.070761,16.470247,22.262928,17.016967,2
