@@ -293,6 +293,8 @@ int cmd_batch(const std::vector<std::string>& args) {
          {"report", true, "Batch report path (default OUTPUT_DIR/batch_report.json; '-' for stdout)", "PATH"},
          {"continue-on-error", false, "Record failed frames and continue (default: fail fast)"},
          {"queue-capacity", true, "Bounded decode queue capacity (default 2)", "N"},
+         {"decode-threads", true, "Threads that read and decode frames, 1..16 (default 1)", "N"},
+         {"async-write", false, "PNG-encode and write on a dedicated writer thread"},
          {"overwrite", false, "Allow overwriting existing outputs"}});
     if (want_help(args)) {
         std::cout << format_help("framepipe batch --manifest M.jsonl --output-dir DIR [options]",
@@ -313,6 +315,11 @@ int cmd_batch(const std::vector<std::string>& args) {
     const int qc = a.get_int("queue-capacity", 2);
     if (qc < 1 || qc > 64) throw Error(ErrorCategory::InvalidArgument, "--queue-capacity must be in [1, 64]");
     bo.queue_capacity = static_cast<std::size_t>(qc);
+    bo.decode_threads = a.get_int("decode-threads", bo.decode_threads);
+    if (bo.decode_threads < 1 || bo.decode_threads > 16) {
+        throw Error(ErrorCategory::InvalidArgument, "--decode-threads must be in [1, 16]");
+    }
+    if (a.has("async-write")) bo.async_write = true;
     const io::Manifest m = io::load_manifest(*a.get("manifest"), true);
     const std::string report = a.get_or("report", (fs::path(bo.output_dir) / "batch_report.json").string());
     const std::string mapping = (fs::path(bo.output_dir) / "outputs.jsonl").string();
@@ -353,7 +360,9 @@ int cmd_batch(const std::vector<std::string>& args) {
     r["policy"] = {{"backpressure", "blocking (no drops)"},
                    {"order", "manifest order"},
                    {"on_error", bo.continue_on_error ? "continue_and_record" : "fail_fast"},
-                   {"queue_capacity", bo.queue_capacity}};
+                   {"queue_capacity", bo.queue_capacity},
+                   {"decode_threads", bo.decode_threads},
+                   {"async_write", bo.async_write}};
     r["manifest"] = {{"path", m.path}, {"sha256", m.sha256}, {"frames", m.entries.size()}};
     r["counts"] = {{"submitted", res.submitted},
                    {"completed", res.completed},

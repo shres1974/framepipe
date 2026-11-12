@@ -293,6 +293,19 @@ try:
     b4 = json.load(open(os.path.join(T, "b4", "batch_report.json")))
     check(b4["counts"]["completed"] == 2 and b4["counts"]["failed"] == 1, "continue-on-error counts")
     check(b4["throughput_completed_fps"] is None or b4["throughput_completed_fps"] > 0, "throughput from completed")
+    # Parallel decode + async write: same outputs as the default path, recorded in the policy.
+    outp = os.path.join(T, "b5")
+    run("batch", "--manifest", os.path.join(bd, "m.jsonl"), "--output-dir", outp, "--backend", "cpu-ref",
+        "--width", "16", "--height", "12", "--decode-threads", "3", "--async-write", ok=0)
+    b5 = json.load(open(os.path.join(outp, "batch_report.json")))
+    check(b5["policy"]["decode_threads"] == 3 and b5["policy"]["async_write"] is True, f"policy {b5['policy']}")
+    check([f["frame_id"] for f in b5["frames"]] == ["frame_9", "frame_10", "frame_2"], "parallel batch order")
+    for name in ("frame_9.png", "frame_10.png", "frame_2.png"):
+        same = open(os.path.join(outd, name), "rb").read() == open(os.path.join(outp, name), "rb").read()
+        check(same, f"parallel batch output {name} matches serial")
+    for bad in ("0", "17", "x"):
+        run("batch", "--manifest", os.path.join(bd, "m.jsonl"), "--output-dir", os.path.join(T, "b6"),
+            "--decode-threads", bad, ok=2)
 finally:
     shutil.rmtree(T, ignore_errors=True)
 
