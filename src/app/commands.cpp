@@ -2,6 +2,7 @@
 
 #include "app/commands.hpp"
 
+#include <algorithm>
 #include <chrono>
 #include <cmath>
 #include <cstring>
@@ -9,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <thread>
 
 #include <nlohmann/json.hpp>
 
@@ -292,9 +294,11 @@ int cmd_batch(const std::vector<std::string>& args) {
          {"output-dir", true, "Directory for <frame_id>.png outputs and outputs.jsonl", "DIR"},
          {"report", true, "Batch report path (default OUTPUT_DIR/batch_report.json; '-' for stdout)", "PATH"},
          {"continue-on-error", false, "Record failed frames and continue (default: fail fast)"},
-         {"queue-capacity", true, "Bounded decode queue capacity (default 2)", "N"},
-         {"decode-threads", true, "Threads that read and decode frames, 1..16 (default 1)", "N"},
-         {"async-write", false, "PNG-encode and write on a dedicated writer thread"},
+         {"queue-capacity", true, "Reorder window: frames decoding or decoded but not yet processed "
+                                  "(default: max(2, decode threads))", "N"},
+         {"decode-threads", true, "Threads that read and decode frames, 1..16 (default: half the CPUs, at most 4)",
+          "N"},
+         {"sync-write", false, "PNG-encode and write on the processing thread instead of a writer thread"},
          {"overwrite", false, "Allow overwriting existing outputs"}});
     if (want_help(args)) {
         std::cout << format_help("framepipe batch --manifest M.jsonl --output-dir DIR [options]",
@@ -312,14 +316,21 @@ int cmd_batch(const std::vector<std::string>& args) {
     bo.output_dir = *a.get("output-dir");
     bo.overwrite = a.has("overwrite");
     bo.continue_on_error = a.has("continue-on-error");
-    const int qc = a.get_int("queue-capacity", 2);
-    if (qc < 1 || qc > 64) throw Error(ErrorCategory::InvalidArgument, "--queue-capacity must be in [1, 64]");
-    bo.queue_capacity = static_cast<std::size_t>(qc);
-    bo.decode_threads = a.get_int("decode-threads", bo.decode_threads);
+    // Defaults measured in results/evidence/2026-11-11_ultra5-135h-wsl2_batch_overlap:
+    // decode dominates per-frame cost, and the window must cover every decoder.
+    const int hw = static_cast<int>(std::max(1u, std::thread::hardware_concurrency()));
+    bo.decode_threads = a.get_int("decode-threads", std::clamp(hw / 2, 1, 4));
     if (bo.decode_threads < 1 || bo.decode_threads > 16) {
         throw Error(ErrorCategory::InvalidArgument, "--decode-threads must be in [1, 16]");
     }
-    if (a.has("async-write")) bo.async_write = true;
+    const int qc = a.get_int("queue-capacity", std::max(2, bo.decode_threads));
+    if (qc < 1 || qc > 64) throw Error(ErrorCategory::InvalidArgument, "--queue-capacity must be in [1, 64]");
+    if (qc < bo.decode_threads) {
+        std::cerr << "batch: note: --queue-capacity " << qc << " < --decode-threads " << bo.decode_threads
+                  << "; some decoders will wait for a free slot\n";
+    }
+    bo.queue_capacity = static_cast<std::size_t>(qc);
+    bo.async_write = !a.has("sync-write");
     const io::Manifest m = io::load_manifest(*a.get("manifest"), true);
     const std::string report = a.get_or("report", (fs::path(bo.output_dir) / "batch_report.json").string());
     const std::string mapping = (fs::path(bo.output_dir) / "outputs.jsonl").string();
