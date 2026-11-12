@@ -1,6 +1,6 @@
 # Implementation status
 
-Last updated: 2026-11-05. **Release state: CPU-validated and GPU-validated
+Last updated: 2026-11-11 (0.2.0). **Release state: CPU-validated and GPU-validated
 on a Tesla T4.** The CUDA backend passes its hardware tests, the independent
 NumPy oracle suite, and all four Compute Sanitizer tools.
 
@@ -26,7 +26,7 @@ NumPy oracle suite, and all four Compute Sanitizer tools.
 |---|---|---|
 | M0 skeleton, CPU-only build, doctor | **passed** | CPU configure/build with no CUDA; `doctor` reports `cuda: built=no` on the CPU build and exits 0 |
 | M1 CPU math + independent oracle | **passed** | 84 unit tests; oracle self-tests; 96 oracle comparisons (cpu-ref, cpu-omp × 16 cases × 3 stages); mutation check |
-| M2 I/O + CLI | **passed** | `cli_integration`, `ImageIo.*`; README commands executed verbatim |
+| M2 I/O + CLI | **passed** | `cli_integration`, `ImageIo.*`; README commands executed verbatim; `compare` command (speed + parity table, error maps) |
 | M3 basic CUDA parity | **passed on Tesla T4, including Compute Sanitizer** | On Kaggle T4 (nvcc 13.0.88, `native` arch) all 11 hardware GPU tests pass (parity, launch boundaries, resize ratios, Gaussian radii, cropped views, pinned/pageable transfers, device-resident path, zero steady-state device allocation, re-prepare, budget and device-index errors). The one skip is the no-device test, as expected. Compute Sanitizer memcheck, racecheck, initcheck, and synccheck report 0 errors. Logs: `results/evidence/2026-11-05_kaggle-t4_gpu_{matrix,verify}/logs/` |
 | M4 benchmarks + CPU baseline | **passed (CPU and GPU)** | Full spec 18.2 matrix on the laptop CPU (51 dirs). On the T4: 7 scenarios + radius and stage sweeps, repeat workload only (14 dirs), with every backend parity-checked per input. All 65 dirs validate. See benchmark_results.md |
 | M5 profiling + one optimization | **passed (CPU, inconclusive result documented); GPU optimizations measured on branches** | perf profile; OpenMP scheduling before/after; the static variant is retained; see benchmark_results.md. Three optimization branches (`opt/simd-gaussian`, `opt/fuse-grayscale-resize`, `opt/cuda-overlap`) pass parity, oracle, and sanitizer on a T4; the CUDA ones are within noise end-to-end (benchmark_results.md, "Optimization work") |
@@ -103,7 +103,7 @@ for t in memcheck racecheck initcheck synccheck; do compute-sanitizer --tool $t 
 2. Rerun one CPU benchmark on the laptop so `git_revision` is recorded.
 3. Paste the full spec text into `docs/implementation_spec.md`.
 4. Profile with Nsight Systems. The measured GPU bottleneck is transfers plus host I/O, not kernels, so a shared-memory Gaussian tile is low priority.
-5. Re-measure `batch` throughput on the T4 host with the parallel batch runner (only measured on the laptop so far).
+5. Re-measure `batch` throughput on the T4 host with the parallel batch runner (only measured on the laptop so far), and run `compare` and the defect example on the T4 (cells exist in `notebooks/reproduce_gpu.ipynb`; not yet executed).
 6. P2 items not started: video adapter, Python/ROS binding, HIP, pilot user.
 
 ## Known limitations
