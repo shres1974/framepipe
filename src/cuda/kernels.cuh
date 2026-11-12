@@ -49,6 +49,12 @@ struct DevTables {
 // completion boundary and are checked by the caller.
 cudaError_t launch_grayscale(DevU8 in, DevF32 out, cudaStream_t s);
 cudaError_t launch_resize(DevF32C in, DevF32 out, DevTables t, cudaStream_t s);
+// Fused grayscale + bilinear resize: reads the u8 input directly, applies the
+// exact grayscale used by launch_grayscale to each of the four bilinear taps,
+// then interpolates. Numerically identical to grayscale-then-resize because
+// bilinear is applied to the same per-pixel gray values. Avoids one full-image
+// device round-trip (the intermediate gray buffer) in the steady-state path.
+cudaError_t launch_grayscale_resize(DevU8 in, DevF32 out, DevTables t, cudaStream_t s);
 cudaError_t launch_gaussian_horizontal(DevF32C in, DevF32 out, const float* weights, int radius, cudaStream_t s);
 cudaError_t launch_gaussian_vertical(DevF32C in, DevF32 out, const float* weights, int radius, cudaStream_t s);
 cudaError_t launch_sobel_edges(DevF32C in, DevF32 out, cudaStream_t s);
