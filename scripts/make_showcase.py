@@ -289,10 +289,42 @@ def fig_end_to_end(evidence):
     return fig
 
 
+def fig_batch_throughput(_evidence):
+    """Batch throughput before/after I/O overlap, from the laptop evidence CSV."""
+    import csv
+
+    d = os.path.join(ROOT, "results", "evidence", "2026-11-11_ultra5-135h-wsl2_batch_overlap")
+    rows = list(csv.DictReader(open(os.path.join(d, "summary.csv"))))
+    order = [("1", "2", "sync", "serial (before)"), ("2", "2", "async", "2 decoders + writer"),
+             ("4", "4", "sync", "4 decoders, sync write"), ("4", "4", "async", "4 decoders + writer (default)")]
+    colors = ["#8c8c8c", "#9ecae9", "#4c78a8", "#54a24b"]
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.8), dpi=120)
+    for ax, (sc, title) in zip(axes, [("hd", "1080p \u2192 720p, 40 frames"), ("uhd", "4K \u2192 1080p, 12 frames")]):
+        vals = []
+        for dec, win, mode, _ in order:
+            r = next(x for x in rows if x["scenario"] == sc and x["decode_threads"] == dec and x["window"] == win
+                     and x["write"] == mode)
+            vals.append(float(r["fps_median"]))
+        bars = ax.bar(range(len(vals)), vals, color=colors)
+        for b, v in zip(bars, vals):
+            ax.text(b.get_x() + b.get_width() / 2, v * 1.02, f"{v:.1f}", ha="center", fontsize=8)
+        ax.set_xticks(range(len(vals)))
+        ax.set_xticklabels([o[3] for o in order], fontsize=7, rotation=12)
+        ax.set_title(f"{title}: {vals[-1] / vals[0]:.1f}\u00d7 faster", fontsize=10)
+        ax.set_ylabel("frames per second (median of 3)")
+        ax.spines[["top", "right"]].set_visible(False)
+    fig.suptitle("framepipe batch: overlapping PNG decode and encode with processing", fontsize=11)
+    env = json.load(open(os.path.join(d, "doctor.json")))["environment"]["host"]
+    fig.text(0.01, 0.01, f"Measured: {env['cpu_model']} ({env['logical_cpus']} CPUs, WSL2), cpu-omp 4 threads, "
+             f"edges, real PNG output. Source: {os.path.relpath(d, ROOT)}/", fontsize=7, color="#555")
+    fig.tight_layout(rect=(0, 0.04, 1, 0.95))
+    return fig
+
+
 def cmd_figures(a):
     os.makedirs(ASSETS, exist_ok=True)
     for name, fn in [("core_latency", fig_core_latency), ("gpu_breakdown", fig_gpu_breakdown),
-                     ("end_to_end", fig_end_to_end)]:
+                     ("end_to_end", fig_end_to_end), ("batch_throughput", fig_batch_throughput)]:
         fig = fn(a.evidence)
         p = os.path.join(ASSETS, f"{name}.png")
         fig.savefig(p, facecolor="white")
