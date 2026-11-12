@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "command": "batch",
+  "status": "completed",
+  "policy": {
+    "backpressure": "blocking (no drops)",
+    "order": "manifest order",
+    "on_error": "fail_fast",
+    "queue_capacity": 2,
+    "decode_threads": 2,
+    "async_write": true
+  },
+  "manifest": {
+    "path": "results/evidence/2026-11-11_ultra5-135h-wsl2_batch_overlap/manifests/hd_seq.jsonl",
+    "sha256": "77fb8253a6cd7857fc784d22f76c33b395baf230d89d0e8dcac2cddafd59135a",
+    "frames": 40
+  },
+  "counts": {
+    "submitted": 40,
+    "completed": 40,
+    "failed": 0,
+    "not_processed": 0,
+    "dropped": 0
+  },
+  "batch_wall_ms": 1049.026267,
+  "throughput_completed_fps": 38.130599069165164,
+  "throughput_definition": "completed frames / batch wall seconds (single cold run, includes startup of reader)",
+  "reprepare_count": 0,
+  "queue_high_water": 2,
+  "selected_backend": "cpu-omp",
+  "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+  "selection_reason": "explicitly requested",
+  "resolved_config": {
+    "schema_version": 1,
+    "backend": "cpu-omp",
+    "device_index": 0,
+    "output_stage": "edges",
+    "resize": {
+      "width": 1280,
+      "height": 720,
+      "mode": "bilinear_half_pixel",
+      "aspect_policy": "stretch"
+    },
+    "gaussian": {
+      "radius": 3,
+      "sigma": 1.2
+    },
+    "border": "replicate",
+    "cpu": {
+      "threads": 4
+    },
+    "cuda": {
+      "implementation": "basic"
+    },
+    "resources": {
+      "max_dimension": 16384,
+      "max_device_bytes": 1073741824,
+      "max_pinned_host_bytes": 268435456,
+      "max_in_flight_frames": 1
+    }
+  },
+  "math_config_hash": "ac3000705531a06a0cc43bc15f5daad10cf50e0c16366a7263976a261b64bf46",
+  "frames": [
+    {
+      "sequence": 0,
+      "frame_id": "hd_000",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_000.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 0.163714,
+      "completed_ms": 82.735957
+    },
+    {
+      "sequence": 1,
+      "frame_id": "hd_001",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_001.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 0.208045,
+      "completed_ms": 95.552528
+    },
+    {
+      "sequence": 2,
+      "frame_id": "hd_002",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_002.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 55.148469,
+      "completed_ms": 127.991203
+    },
+    {
+      "sequence": 3,
+      "frame_id": "hd_003",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_003.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 71.563569,
+      "completed_ms": 144.78691
+    },
+    {
+      "sequence": 4,
+      "frame_id": "hd_004",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_004.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 115.19754,
+      "completed_ms": 189.936358
+    },
+    {
+      "sequence": 5,
+      "frame_id": "hd_005",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_005.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 127.714431,
+      "completed_ms": 202.073871
+    },
+    {
+      "sequence": 6,
+      "frame_id": "hd_006",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_006.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 170.840767,
+      "completed_ms": 236.219809
+    },
+    {
+      "sequence": 7,
+      "frame_id": "hd_007",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_007.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 177.633754,
+      "completed_ms": 252.245454
+    },
+    {
+      "sequence": 8,
+      "frame_id": "hd_008",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_008.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 220.746666,
+      "completed_ms": 282.758903
+    },
+    {
+      "sequence": 9,
+      "frame_id": "hd_009",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_009.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 234.144729,
+      "completed_ms": 297.831394
+    },
+    {
+      "sequence": 10,
+      "frame_id": "hd_010",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_010.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 269.105912,
+      "completed_ms": 341.877631
+    },
+    {
+      "sequence": 11,
+      "frame_id": "hd_011",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_011.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 280.368105,
+      "completed_ms": 354.231748
+    },
+    {
+      "sequence": 12,
+      "frame_id": "hd_012",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_012.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 325.14525,
+      "completed_ms": 385.41553
+    },
+    {
+      "sequence": 13,
+      "frame_id": "hd_013",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_013.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 331.339733,
+      "completed_ms": 403.445184
+    },
+    {
+      "sequence": 14,
+      "frame_id": "hd_014",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_014.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 371.023156,
+      "completed_ms": 437.525507
+    },
+    {
+      "sequence": 15,
+      "frame_id": "hd_015",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_015.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 388.835892,
+      "completed_ms": 453.510274
+    },
+    {
+      "sequence": 16,
+      "frame_id": "hd_016",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_016.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 419.827095,
+      "completed_ms": 481.856545
+    },
+    {
+      "sequence": 17,
+      "frame_id": "hd_017",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_017.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 437.504797,
+      "completed_ms": 505.347481
+    },
+    {
+      "sequence": 18,
+      "frame_id": "hd_018",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_018.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 468.568568,
+      "completed_ms": 526.627259
+    },
+    {
+      "sequence": 19,
+      "frame_id": "hd_019",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_019.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 486.204513,
+      "completed_ms": 560.014164
+    },
+    {
+      "sequence": 20,
+      "frame_id": "hd_020",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_020.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 512.548415,
+      "completed_ms": 574.598856
+    },
+    {
+      "sequence": 21,
+      "frame_id": "hd_021",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_021.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 545.993978,
+      "completed_ms": 605.006939
+    },
+    {
+      "sequence": 22,
+      "frame_id": "hd_022",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_022.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 555.329063,
+      "completed_ms": 629.595009
+    },
+    {
+      "sequence": 23,
+      "frame_id": "hd_023",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_023.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 590.988319,
+      "completed_ms": 653.36935
+    },
+    {
+      "sequence": 24,
+      "frame_id": "hd_024",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_024.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 615.888348,
+      "completed_ms": 683.269125
+    },
+    {
+      "sequence": 25,
+      "frame_id": "hd_025",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_025.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 637.152278,
+      "completed_ms": 701.345798
+    },
+    {
+      "sequence": 26,
+      "frame_id": "hd_026",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_026.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 669.339575,
+      "completed_ms": 735.122101
+    },
+    {
+      "sequence": 27,
+      "frame_id": "hd_027",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_027.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 683.706247,
+      "completed_ms": 754.228615
+    },
+    {
+      "sequence": 28,
+      "frame_id": "hd_028",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_028.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 719.084049,
+      "completed_ms": 790.155209
+    },
+    {
+      "sequence": 29,
+      "frame_id": "hd_029",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_029.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 731.667032,
+      "completed_ms": 800.312407
+    },
+    {
+      "sequence": 30,
+      "frame_id": "hd_030",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_030.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 771.704385,
+      "completed_ms": 841.122213
+    },
+    {
+      "sequence": 31,
+      "frame_id": "hd_031",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_031.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 783.039914,
+      "completed_ms": 850.03057
+    },
+    {
+      "sequence": 32,
+      "frame_id": "hd_032",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_032.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 827.079929,
+      "completed_ms": 892.540474
+    },
+    {
+      "sequence": 33,
+      "frame_id": "hd_033",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_033.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 832.933037,
+      "completed_ms": 903.841373
+    },
+    {
+      "sequence": 34,
+      "frame_id": "hd_034",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_034.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 877.450785,
+      "completed_ms": 936.536468
+    },
+    {
+      "sequence": 35,
+      "frame_id": "hd_035",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_035.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 884.004776,
+      "completed_ms": 946.33193
+    },
+    {
+      "sequence": 36,
+      "frame_id": "hd_036",
+      "input_path": "../../../../data/bench/scene_1920x1080_0.png",
+      "output_path": "hd_036.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 921.998731,
+      "completed_ms": 982.744244
+    },
+    {
+      "sequence": 37,
+      "frame_id": "hd_037",
+      "input_path": "../../../../data/bench/scene_1920x1080_1.png",
+      "output_path": "hd_037.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 929.51597,
+      "completed_ms": 1000.978776
+    },
+    {
+      "sequence": 38,
+      "frame_id": "hd_038",
+      "input_path": "../../../../data/bench/scene_1920x1080_2.png",
+      "output_path": "hd_038.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 968.803655,
+      "completed_ms": 1035.913431
+    },
+    {
+      "sequence": 39,
+      "frame_id": "hd_039",
+      "input_path": "../../../../data/bench/scene_1920x1080_3.png",
+      "output_path": "hd_039.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 986.001376,
+      "completed_ms": 1048.948262
+    }
+  ]
+}

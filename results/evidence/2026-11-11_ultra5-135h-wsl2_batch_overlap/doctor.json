@@ -1,0 +1,98 @@
+{
+  "framepipe_version": "0.1.0",
+  "build": {
+    "framepipe_version": "0.1.0",
+    "build_type": "Release",
+    "cxx_compiler": "GNU 13.3.0",
+    "cxx_flags": "-O3 -DNDEBUG",
+    "cmake_version": "3.30.5",
+    "opencv_version_build": "4.10.0",
+    "openmp_built": true,
+    "openmp_version": "4.5",
+    "sanitizers": false,
+    "cuda_built": false,
+    "cuda_compiler_version": null,
+    "cuda_flags": null,
+    "cuda_architectures": null,
+    "cuda_debug_sync": false,
+    "fast_math": false
+  },
+  "backends": [
+    {
+      "backend": "cpu-ref",
+      "built": true,
+      "usable": true,
+      "reason": "always available"
+    },
+    {
+      "backend": "cpu-omp",
+      "built": true,
+      "usable": true,
+      "reason": "OpenMP available"
+    },
+    {
+      "backend": "cuda",
+      "built": false,
+      "usable": false,
+      "reason": "not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF"
+    }
+  ],
+  "auto_selection": {
+    "selected": "cpu-ref",
+    "reason": "auto: CUDA unavailable (not built: configured with FRAMEPIPE_ENABLE_CUDA=OFF); selected cpu-ref"
+  },
+  "environment": {
+    "schema_version": 1,
+    "host": {
+      "cpu_model": "Intel(R) Core(TM) Ultra 5 135H",
+      "logical_cpus": 18,
+      "hardware_concurrency": 18,
+      "ram_bytes": 8326000640,
+      "kernel": "Linux 6.18.58.1-microsoft-standard-WSL2",
+      "machine": "x86_64",
+      "os": "Ubuntu 24.04.3 LTS",
+      "cpu_scaling_governor": null,
+      "virtualization_hint": "WSL2 (Microsoft kernel)"
+    },
+    "build": {
+      "framepipe_version": "0.1.0",
+      "build_type": "Release",
+      "cxx_compiler": "GNU 13.3.0",
+      "cxx_flags": "-O3 -DNDEBUG",
+      "cmake_version": "3.30.5",
+      "opencv_version_build": "4.10.0",
+      "openmp_built": true,
+      "openmp_version": "4.5",
+      "sanitizers": false,
+      "cuda_built": false,
+      "cuda_compiler_version": null,
+      "cuda_flags": null,
+      "cuda_architectures": null,
+      "cuda_debug_sync": false,
+      "fast_math": false
+    },
+    "dependencies": {
+      "opencv_runtime": "4.10.0",
+      "opencv_threads": 18,
+      "nlohmann_json": "3.11.3"
+    },
+    "cuda": {
+      "built": false,
+      "toolkit_version": null,
+      "runtime_version": null,
+      "driver_version": null,
+      "device_count": 0,
+      "selected_device_index": 0,
+      "error": "CUDA backend not built",
+      "devices": []
+    },
+    "settings": {
+      "omp_num_threads_env": null,
+      "cuda_visible_devices_env": null
+    },
+    "unknown_reasons": {
+      "cpu_scaling_governor": "cpufreq not exposed (common in VMs/WSL)",
+      "gpu": "CUDA backend not built"
+    }
+  }
+}

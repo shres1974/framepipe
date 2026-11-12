@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "command": "batch",
+  "status": "completed",
+  "policy": {
+    "backpressure": "blocking (no drops)",
+    "order": "manifest order",
+    "on_error": "fail_fast",
+    "queue_capacity": 2,
+    "decode_threads": 2,
+    "async_write": true
+  },
+  "manifest": {
+    "path": "results/evidence/2026-11-11_ultra5-135h-wsl2_batch_overlap/manifests/uhd_seq.jsonl",
+    "sha256": "5f81d3cfa94f38f3d76b59384ec59b9447fe943f0bb5adecd83ba0c99bad5fa9",
+    "frames": 12
+  },
+  "counts": {
+    "submitted": 12,
+    "completed": 12,
+    "failed": 0,
+    "not_processed": 0,
+    "dropped": 0
+  },
+  "batch_wall_ms": 1229.549598,
+  "throughput_completed_fps": 9.759671362195833,
+  "throughput_definition": "completed frames / batch wall seconds (single cold run, includes startup of reader)",
+  "reprepare_count": 0,
+  "queue_high_water": 2,
+  "selected_backend": "cpu-omp",
+  "implementation": "openmp-rows(threads=4,schedule=dynamic4x)",
+  "selection_reason": "explicitly requested",
+  "resolved_config": {
+    "schema_version": 1,
+    "backend": "cpu-omp",
+    "device_index": 0,
+    "output_stage": "edges",
+    "resize": {
+      "width": 1920,
+      "height": 1080,
+      "mode": "bilinear_half_pixel",
+      "aspect_policy": "stretch"
+    },
+    "gaussian": {
+      "radius": 3,
+      "sigma": 1.2
+    },
+    "border": "replicate",
+    "cpu": {
+      "threads": 4
+    },
+    "cuda": {
+      "implementation": "basic"
+    },
+    "resources": {
+      "max_dimension": 16384,
+      "max_device_bytes": 1073741824,
+      "max_pinned_host_bytes": 268435456,
+      "max_in_flight_frames": 1
+    }
+  },
+  "math_config_hash": "928ddf6b2961c627f8a0fb5d38a7e7b589ff3d51f7a4407894899b49e7ba5bd1",
+  "frames": [
+    {
+      "sequence": 0,
+      "frame_id": "uhd_000",
+      "input_path": "../../../../data/bench/scene_3840x2160_0.png",
+      "output_path": "uhd_000.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 0.301014,
+      "completed_ms": 266.196101
+    },
+    {
+      "sequence": 1,
+      "frame_id": "uhd_001",
+      "input_path": "../../../../data/bench/scene_3840x2160_1.png",
+      "output_path": "uhd_001.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 0.383295,
+      "completed_ms": 284.148134
+    },
+    {
+      "sequence": 2,
+      "frame_id": "uhd_002",
+      "input_path": "../../../../data/bench/scene_3840x2160_2.png",
+      "output_path": "uhd_002.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 214.274526,
+      "completed_ms": 454.915454
+    },
+    {
+      "sequence": 3,
+      "frame_id": "uhd_003",
+      "input_path": "../../../../data/bench/scene_3840x2160_3.png",
+      "output_path": "uhd_003.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 245.171412,
+      "completed_ms": 490.247158
+    },
+    {
+      "sequence": 4,
+      "frame_id": "uhd_004",
+      "input_path": "../../../../data/bench/scene_3840x2160_0.png",
+      "output_path": "uhd_004.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 421.968754,
+      "completed_ms": 647.616167
+    },
+    {
+      "sequence": 5,
+      "frame_id": "uhd_005",
+      "input_path": "../../../../data/bench/scene_3840x2160_1.png",
+      "output_path": "uhd_005.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 452.566,
+      "completed_ms": 680.646685
+    },
+    {
+      "sequence": 6,
+      "frame_id": "uhd_006",
+      "input_path": "../../../../data/bench/scene_3840x2160_2.png",
+      "output_path": "uhd_006.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 614.762608,
+      "completed_ms": 860.57675
+    },
+    {
+      "sequence": 7,
+      "frame_id": "uhd_007",
+      "input_path": "../../../../data/bench/scene_3840x2160_3.png",
+      "output_path": "uhd_007.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 643.060488,
+      "completed_ms": 877.489029
+    },
+    {
+      "sequence": 8,
+      "frame_id": "uhd_008",
+      "input_path": "../../../../data/bench/scene_3840x2160_0.png",
+      "output_path": "uhd_008.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 801.396541,
+      "completed_ms": 1026.392075
+    },
+    {
+      "sequence": 9,
+      "frame_id": "uhd_009",
+      "input_path": "../../../../data/bench/scene_3840x2160_1.png",
+      "output_path": "uhd_009.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 828.660683,
+      "completed_ms": 1052.123506
+    },
+    {
+      "sequence": 10,
+      "frame_id": "uhd_010",
+      "input_path": "../../../../data/bench/scene_3840x2160_2.png",
+      "output_path": "uhd_010.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 986.440266,
+      "completed_ms": 1209.94728
+    },
+    {
+      "sequence": 11,
+      "frame_id": "uhd_011",
+      "input_path": "../../../../data/bench/scene_3840x2160_3.png",
+      "output_path": "uhd_011.png",
+      "source_timestamp_ns": null,
+      "status": "completed",
+      "error": null,
+      "accepted_ms": 1017.266297,
+      "completed_ms": 1229.484636
+    }
+  ]
+}
