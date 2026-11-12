@@ -65,12 +65,32 @@ benchmark `summary.json` records both.
 
 ## Sequence runner (`framepipe batch`)
 
-One decoder thread reads and decodes frames into a `BoundedQueue` (default
-capacity 2). The calling thread processes, quantizes, and writes frames in
-sequence order. `push` blocks when the queue is full, so no frames are
-dropped and retained decoded frames are bounded by capacity + 2. Fail-fast by
-default: on the first failure the queue is closed and cleared, the producer
-is joined, remaining frames are recorded `not_processed`. `--continue-on-error`
+Three kinds of thread connected by two bounded structures:
+
+1. **Decoders.** `--decode-threads` threads (default: half the CPUs, at most 4)
+   claim frame numbers in increasing order, then read and decode them. They
+   may finish out of order.
+2. **Reorder window** (`OrderedWindow`, capacity `--queue-capacity`, default
+   max(2, decoders)). A decoder must reserve frame *i* before starting it, and
+   the reservation blocks while *i* is a full window ahead of the processing
+   thread. Decoded frames held at once are therefore bounded regardless of the
+   decoder count. The window hands frames out strictly in manifest order.
+3. **Processing thread** (the caller). It takes frames in order, re-prepares
+   on a shape change, then processes and quantizes.
+4. **Writer FIFO** (`BoundedQueue`, same capacity) and **one writer thread**.
+   The writer PNG-encodes and writes, so encoding frame *N* overlaps processing
+   frame *N+1*. FIFO order keeps completions in manifest order. `--sync-write`
+   writes on the processing thread instead.
+
+No frames are dropped. Retained memory is bounded by about 2 × capacity frames
+and does not grow with manifest length
+(`Batch.BackpressureBoundsDecodedFramesAndMemory`). Outputs are byte-identical
+to the serial path (`Batch.ParallelDecodeMatchesSerialByteForByte`). The
+throughput gain is recorded in
+`results/evidence/2026-11-11_ultra5-135h-wsl2_batch_overlap/`. Fail-fast is the
+default. On the first failure, whether in processing or in a write, the window
+closes, the decoders are joined, and the writer finishes only the frames
+*before* the failure. The remaining frames are recorded `not_processed`. `--continue-on-error`
 records every failure and excludes it from throughput. A shape change calls
 `prepare` (synchronous, so prior work is complete). Output names are
 `<frame_id>.png`; frame IDs are restricted to `[A-Za-z0-9._-]` and cannot
