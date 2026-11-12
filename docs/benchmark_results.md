@@ -241,6 +241,26 @@ optimization is correct and allocation-safe but only helps a transfer-bound or
 GPU-resident workload (no per-frame PNG decode/encode), which this benchmark
 is not. It is recorded here as a measured null result, not a speedup.
 
+### Vectorized Gaussian on the laptop (2026-11-11, merged to `main`)
+
+`opt/simd-gaussian` re-timed on the original laptop (Core Ultra 5 135H, WSL2)
+against the build just before it, alternating base and vectorized runs over
+two rounds. HD edges, `cpu_core_wall_ms` median (ms) of 120 samples per run,
+each round shown separately. cpu-omp uses 8 threads:
+
+| | base r1 / r2 | vectorized r1 / r2 | speedup |
+|---|---|---|---:|
+| cpu-ref, radius 3 | 17.95 / 17.54 | 9.34 / 8.59 | ~2.0× |
+| cpu-omp, radius 3 | 3.36 / 3.65 | 1.71 / 1.74 | ~2.0× |
+| cpu-ref, radius 15 | 54.35 / 50.88 | 16.47 / 14.99 | ~3.3× |
+| cpu-omp, radius 15 | 10.16 / 9.90 | 2.91 / 2.84 | ~3.5× |
+
+The gain is well above the ~30% run-to-run noise on this host and grows with
+radius, as the profile predicted. PNG outputs are byte-identical to the base
+build for radii 1/3/7/15, both stages, and both CPU backends. The full ctest
+suite and the oracle pass. Evidence:
+`results/evidence/2026-11-11_ultra5-135h-wsl2_simd_gaussian/`.
+
 ## Not measured
 
 - A controlled machine (fixed clocks, no VM): results come from a laptop VM
