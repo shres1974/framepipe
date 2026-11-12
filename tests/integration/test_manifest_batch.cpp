@@ -4,7 +4,9 @@
 #include <chrono>
 #include <filesystem>
 #include <fstream>
+#include <iterator>
 #include <thread>
+#include <vector>
 
 #include <opencv2/imgcodecs.hpp>
 
@@ -187,6 +189,48 @@ TEST(Batch, PreservesOrderIdsAndHandlesShapeChanges) {
         EXPECT_EQ(out.cols, 16);
         EXPECT_EQ(out.rows, 12);
         (void)in;
+    }
+}
+
+namespace {
+std::string read_bytes(const fs::path& p) {
+    std::ifstream f(p, std::ios::binary);
+    return {std::istreambuf_iterator<char>(f), std::istreambuf_iterator<char>()};
+}
+}  // namespace
+
+TEST(Batch, ParallelDecodeMatchesSerialByteForByte) {
+    const auto d = fresh_dir("parallel");
+    std::string m;
+    // Mixed shapes force re-prepare between frames that decode concurrently.
+    const int sizes[][2] = {{64, 48}, {33, 17}, {64, 48}, {64, 48}, {9, 9}, {120, 80}, {64, 48}, {33, 17}};
+    for (int i = 0; i < 24; ++i) {
+        const auto& s = sizes[i % 8];
+        write_png(d / ("in" + std::to_string(i) + ".png"), s[0], s[1], (i * 23) % 256);
+        m += "{\"frame_id\":\"f" + std::to_string(i) + "\",\"path\":\"in" + std::to_string(i) + ".png\"}\n";
+    }
+    write_text(d / "m.jsonl", m);
+    const auto manifest = io::load_manifest((d / "m.jsonl").string());
+    app::BatchOptions o;
+    o.config = cfg(20, 14);
+    o.output_dir = (d / "serial").string();
+    o.decode_threads = 1;
+    const auto serial = app::run_batch(manifest, o);
+    o.output_dir = (d / "parallel").string();
+    o.decode_threads = 4;
+    o.queue_capacity = 3;
+    const auto parallel = app::run_batch(manifest, o);
+    ASSERT_EQ(serial.completed, 24u);
+    ASSERT_EQ(parallel.completed, 24u);
+    EXPECT_EQ(parallel.reprepare_count, serial.reprepare_count);
+    EXPECT_LE(parallel.queue_high_water, 3u);
+    for (int i = 0; i < 24; ++i) {
+        EXPECT_EQ(parallel.frames[i].frame_id, "f" + std::to_string(i));
+        const std::string name = "f" + std::to_string(i) + ".png";
+        EXPECT_EQ(read_bytes(d / "serial" / name), read_bytes(d / "parallel" / name)) << name;
+        if (i > 0) {
+            EXPECT_GE(parallel.frames[i].completed_ms, parallel.frames[i - 1].completed_ms);
+        }
     }
 }
 

@@ -1,11 +1,13 @@
 #include "app/batch.hpp"
 
+#include <algorithm>
 #include <atomic>
 #include <chrono>
 #include <filesystem>
 #include <thread>
+#include <vector>
 
-#include "app/bounded_queue.hpp"
+#include "app/ordered_window.hpp"
 #include "framepipe/errors.hpp"
 #include "framepipe/pipeline.hpp"
 #include "io/image_io.hpp"
@@ -60,35 +62,47 @@ BatchResult run_batch(const io::Manifest& manifest, const BatchOptions& opt) {
         }
     }
 
-    BoundedQueue<Decoded> queue(opt.queue_capacity);
-    std::atomic<bool> cancel{false};
+    const auto total = static_cast<std::int64_t>(manifest.entries.size());
+    OrderedWindow<Decoded> window(opt.queue_capacity, total);
+    std::atomic<std::int64_t> next_claim{0};
     const auto t0 = clk::now();
     const int max_dim = opt.config.resources.max_dimension;
 
-    std::thread producer([&] {
-        for (std::size_t i = 0; i < manifest.entries.size() && !cancel.load(); ++i) {
+    // Decoder workers claim sequence numbers in increasing order and may
+    // finish out of order; the window hands frames to this thread in order.
+    auto decode_worker = [&] {
+        for (std::int64_t i = next_claim++; i < total; i = next_claim++) {
+            if (!window.acquire(i)) return;  // blocks while the window is full: backpressure
+            const auto& entry = manifest.entries[static_cast<std::size_t>(i)];
             Decoded d;
-            d.sequence = static_cast<std::int64_t>(i);
+            d.sequence = i;
             d.accepted_ms = ms(t0);
             try {
-                d.image = io::read_image(manifest.entries[i].resolved_path, max_dim);
-                if (opt.on_decoded) opt.on_decoded(manifest.entries[i].frame_id);
+                d.image = io::read_image(entry.resolved_path, max_dim);
+                if (opt.on_decoded) opt.on_decoded(entry.frame_id);
             } catch (const Error& e) {
                 d.error = e.what();
                 d.category = e.category();
             } catch (const std::exception& e) {
                 d.error = e.what();
             }
-            if (!queue.push(std::move(d))) break;  // blocks while full: backpressure
+            window.put(i, std::move(d));
         }
-        queue.close();
-    });
+    };
+    const int n_decoders = std::max(1, std::min(opt.decode_threads, static_cast<int>(std::max<std::int64_t>(total, 1))));
+    std::vector<std::thread> decoders;
+    decoders.reserve(static_cast<std::size_t>(n_decoders));
+    for (int t = 0; t < n_decoders; ++t) decoders.emplace_back(decode_worker);
+    auto stop_decoders = [&] {
+        window.close();
+        for (auto& th : decoders) th.join();
+    };
 
     HostFloatImage out(opt.config.resize.width, opt.config.resize.height);
     std::optional<InputSpec> prepared;
     std::int64_t expected = 0;
     try {
-        while (auto item = queue.pop()) {
+        while (auto item = window.take()) {
             if (item->sequence != expected) {
                 throw Error(ErrorCategory::Internal, "sequence order violated in batch runner");
             }
@@ -121,23 +135,17 @@ BatchResult run_batch(const io::Manifest& manifest, const BatchOptions& opt) {
                 ++res.failed;
                 if (!opt.continue_on_error) {
                     res.fail_fast_triggered = true;
-                    cancel.store(true);
-                    queue.clear();
-                    queue.close();
                     break;
                 }
             }
         }
     } catch (...) {
-        cancel.store(true);
-        queue.clear();
-        queue.close();
-        producer.join();
+        stop_decoders();
         throw;
     }
-    producer.join();
+    stop_decoders();
     res.batch_wall_ms = ms(t0);
-    res.queue_high_water = queue.high_water_mark();
+    res.queue_high_water = window.high_water_mark();
     for (const auto& f : res.frames) {
         if (f.status == "not_processed") ++res.not_processed;
     }
