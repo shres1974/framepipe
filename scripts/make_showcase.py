@@ -5,6 +5,7 @@ Usage:
   make_showcase.py hero    --framepipe build/cpu/bin/framepipe [--input PHOTO]
   make_showcase.py figures [--evidence results/evidence/2026-11-05_kaggle-t4_gpu_matrix]
   make_showcase.py all     --framepipe build/cpu/bin/framepipe
+  make_showcase.py scene   --out PATH   (just the procedural 1920x1080 input scene)
 
 hero     Runs the real `framepipe process` CLI (cpu-ref) on one input at each
          output stage and composes input | resize | blur | edges into
@@ -334,11 +335,19 @@ def cmd_figures(a):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("what", choices=["hero", "figures", "all"])
+    ap.add_argument("what", choices=["hero", "figures", "all", "scene"])
     ap.add_argument("--framepipe", help="path to a built framepipe binary (hero)")
     ap.add_argument("--input", help="your own photo for the hero image (default: procedural scene)")
     ap.add_argument("--evidence", default=DEFAULT_EVIDENCE, help="benchmark evidence directory (figures)")
+    ap.add_argument("--out", help="output PNG path (scene)")
     a = ap.parse_args()
+    if a.what == "scene":
+        if not a.out:
+            sys.exit("make_showcase: scene requires --out PATH")
+        os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+        render_scene(a.out)
+        print(f"make_showcase: wrote {a.out}", file=sys.stderr)
+        return 0
     if a.what in ("hero", "all"):
         cmd_hero(a)
     if a.what in ("figures", "all"):
