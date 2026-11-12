@@ -104,9 +104,33 @@ scheduling smoothed the tail but did not remove the cliff, and the docs say so.
 3. **Build an independent oracle and mutation-test it.** Parity between two
    backends you wrote yourself can hide a shared bug.
 4. **Publish null results.** They tell the next person where *not* to look.
+5. **Then fix the bottleneck you measured.** Here that was threads and a
+   queue, not a faster kernel.
 
-The next real win is the I/O path: overlap decode, process, and encode across
-threads, and offer cheaper output encodings. That is a CPU change, not a CUDA one.
+The next real win was always going to be the I/O path, so I built it.
+
+## Fixing the actual bottleneck
+
+Decoding a 1080p PNG took ~35 ms on the laptop, and a 4K PNG ~145 ms.
+Processing took 2–5 ms. One decoder thread therefore capped `batch` at about
+1/decode-time, no matter how fast the kernels were. The fix is plain
+systems work, not CUDA:
+
+- **Several decoder threads** claim frame numbers in order and may finish out
+  of order.
+- **A bounded reorder window** hands frames back in manifest order. A decoder
+  must reserve its slot before it starts, so memory stays bounded however
+  many decoders run.
+- **A writer thread** PNG-encodes frame *N* while frame *N+1* is processed.
+
+![Batch throughput](assets/batch_throughput.png)
+
+HD went from 19.7 to 71 frames per second, and 4K from 4.7 to 16.2. That's
+3.4–3.6× on the CPU alone, more than the GPU ever achieved end to end. The
+outputs are byte-identical to the serial path, and the threading code passes
+ThreadSanitizer. One measurement changed the design: four decoders with a
+two-slot window ran at ~35 fps, because decoders sat idle waiting for a slot.
+The default window therefore always covers every decoder.
 
 ---
 
