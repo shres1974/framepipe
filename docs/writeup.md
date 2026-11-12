@@ -95,18 +95,6 @@ and verified the output is bit-identical. Separately, a thread sweep found a sha
 as the thread count approached the VM's logical CPU count. Changing the
 scheduling smoothed the tail but did not remove the cliff, and the docs say so.
 
-## Takeaways
-
-1. **Measure the whole application before optimizing kernels.** Here the
-   kernels were about 0.5% of the frame.
-2. **Keep timing scopes separate and labeled.** "Kernel time" and
-   "application time" are different claims.
-3. **Build an independent oracle and mutation-test it.** Parity between two
-   backends you wrote yourself can hide a shared bug.
-4. **Publish null results.** They tell the next person where *not* to look.
-5. **Then fix the bottleneck you measured.** Here that was threads and a
-   queue, not a faster kernel.
-
 The next real win was always going to be the I/O path, so I built it.
 
 ## Fixing the actual bottleneck
@@ -131,6 +119,18 @@ outputs are byte-identical to the serial path, and the threading code passes
 ThreadSanitizer. One measurement changed the design: four decoders with a
 two-slot window ran at ~35 fps, because decoders sat idle waiting for a slot.
 The default window therefore always covers every decoder.
+
+## Takeaways
+
+1. **Measure the whole application before optimizing kernels.** Here the
+   kernels were about 0.5% of the frame.
+2. **Keep timing scopes separate and labeled.** "Kernel time" and
+   "application time" are different claims.
+3. **Build an independent oracle and mutation-test it.** Parity between two
+   backends you wrote yourself can hide a shared bug.
+4. **Publish null results.** They tell the next person where *not* to look.
+5. **Then fix the bottleneck you measured.** Here that was threads and a
+   queue, not a faster kernel.
 
 ---
 
