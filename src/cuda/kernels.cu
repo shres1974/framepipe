@@ -38,6 +38,37 @@ __global__ void k_grayscale(DevU8 in, DevF32 out) {
     row(out, y)[x] = static_cast<float>(g) / 255.0f;
 }
 
+// Grayscale one input pixel exactly as k_grayscale does, returning the [0,1]
+// float. Kept in one place so the fused kernel stays bit-identical.
+__device__ __forceinline__ float gray_at(const DevU8& in, int x, int y) {
+    const std::uint8_t* src = in.data + static_cast<std::size_t>(y) * in.pitch;
+    unsigned g;
+    if (in.channels == 3) {
+        const unsigned r = src[3 * x], gg = src[3 * x + 1], b = src[3 * x + 2];
+        g = (77u * r + 150u * gg + 29u * b + 128u) >> 8;
+    } else {
+        g = src[x];
+    }
+    return static_cast<float>(g) / 255.0f;
+}
+
+__global__ void k_grayscale_resize(DevU8 in, DevF32 out, DevTables t) {
+    const int x = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
+    const int y = static_cast<int>(blockIdx.y * blockDim.y + threadIdx.y);
+    if (x >= out.width || y >= out.height) return;
+    const int y0 = t.y0[y], y1 = t.y1[y];
+    const int x0 = t.x0[x], x1 = t.x1[x];
+    const float ax = t.wx[x], ay = t.wy[y];
+    // Grayscale the four bilinear taps on the fly, then interpolate. Identical
+    // to resizing a precomputed gray image because the same gray values feed
+    // the same bilinear expression.
+    const float g00 = gray_at(in, x0, y0), g01 = gray_at(in, x1, y0);
+    const float g10 = gray_at(in, x0, y1), g11 = gray_at(in, x1, y1);
+    const float top = g00 + (g01 - g00) * ax;
+    const float bottom = g10 + (g11 - g10) * ax;
+    row(out, y)[x] = top + (bottom - top) * ay;
+}
+
 __global__ void k_resize(DevF32C in, DevF32 out, DevTables t) {
     const int x = static_cast<int>(blockIdx.x * blockDim.x + threadIdx.x);
     const int y = static_cast<int>(blockIdx.y * blockDim.y + threadIdx.y);
@@ -110,6 +141,11 @@ cudaError_t launch_grayscale(DevU8 in, DevF32 out, cudaStream_t s) {
 
 cudaError_t launch_resize(DevF32C in, DevF32 out, DevTables t, cudaStream_t s) {
     k_resize<<<grid_for(out.width, out.height), dim3(kBlockX, kBlockY), 0, s>>>(in, out, t);
+    return cudaGetLastError();
+}
+
+cudaError_t launch_grayscale_resize(DevU8 in, DevF32 out, DevTables t, cudaStream_t s) {
+    k_grayscale_resize<<<grid_for(out.width, out.height), dim3(kBlockX, kBlockY), 0, s>>>(in, out, t);
     return cudaGetLastError();
 }
 
