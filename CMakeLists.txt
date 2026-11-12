@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(FramePipe VERSION 0.1.0 LANGUAGES CXX)
+project(FramePipe VERSION 0.2.0 LANGUAGES CXX)
 
 option(FRAMEPIPE_ENABLE_CUDA "Build the custom CUDA backend (explicit request; fails if unavailable)" OFF)
 option(FRAMEPIPE_BUILD_TESTS "Build unit and integration tests" ON)
