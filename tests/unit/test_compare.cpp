@@ -4,6 +4,8 @@
 
 #include <nlohmann/json.hpp>
 
+#include "framepipe/errors.hpp"
+
 #include "test_util.hpp"
 
 using namespace fptest;
@@ -73,4 +75,23 @@ TEST(Compare, SpecToleranceTable) {
     EXPECT_EQ(tolerance_for(Stage::SobelX).atol, 2e-5);
     EXPECT_EQ(tolerance_for(Stage::SobelY).rtol, 1e-5);
     EXPECT_EQ(tolerance_for(Stage::Edges).atol, 1e-5);
+}
+
+TEST(Compare, ErrorMapScalesByTolerance) {
+    // Tolerance atol=0.1, rtol=0 so the limit is 0.1 everywhere.
+    const auto ref = make_float_from({{0.5f, 0.5f, 0.5f, 0.5f, 0.5f}});
+    const auto cand = make_float_from({{0.5f, 0.55f, 0.6f, 0.9f, std::numeric_limits<float>::quiet_NaN()}});
+    const auto m = error_map(ref.cview(), cand.cview(), {0.1, 0.0});
+    ASSERT_EQ(m.width(), 5);
+    EXPECT_EQ(m.row(0)[0], 0) << "exact match is black";
+    EXPECT_NEAR(m.row(0)[1], 128, 1) << "half the tolerance is mid-gray";
+    EXPECT_EQ(m.row(0)[2], 255) << "at the tolerance is white";
+    EXPECT_EQ(m.row(0)[3], 255) << "beyond the tolerance saturates";
+    EXPECT_EQ(m.row(0)[4], 255) << "non-finite is white";
+}
+
+TEST(Compare, ErrorMapRejectsShapeMismatch) {
+    const auto a = make_float_from({{0.f, 0.f}});
+    const auto b = make_float_from({{0.f}});
+    EXPECT_THROW(error_map(a.cview(), b.cview(), {1e-5, 1e-5}), framepipe::Error);
 }

@@ -1,8 +1,11 @@
 #include "validation/compare.hpp"
 
+#include <algorithm>
 #include <cmath>
 
 #include <nlohmann/json.hpp>
+
+#include "framepipe/errors.hpp"
 
 namespace framepipe {
 
@@ -105,6 +108,35 @@ std::string compare_result_json(const CompareResult& r, int indent) {
     j["psnr_db"] = r.psnr_db ? nlohmann::ordered_json(*r.psnr_db) : nlohmann::ordered_json(nullptr);
     j["message"] = r.message;
     return j.dump(indent);
+}
+
+}  // namespace framepipe
+
+namespace framepipe {
+
+HostU8Image error_map(const ConstFloatImageView& ref, const ConstFloatImageView& cand, Tolerance tol) {
+    if (ref.width != cand.width || ref.height != cand.height) {
+        throw Error(ErrorCategory::InvalidArgument, "error_map: dimension mismatch " + shape_string(ref.width, ref.height) +
+                                                         " vs " + shape_string(cand.width, cand.height));
+    }
+    HostU8Image out(ref.width, ref.height, PixelFormat::Gray8);
+    for (int y = 0; y < ref.height; ++y) {
+        const float* pr = row_ptr(ref, y);
+        const float* pc = row_ptr(cand, y);
+        std::uint8_t* dst = out.row(y);
+        for (int x = 0; x < ref.width; ++x) {
+            const double rv = pr[x], cv = pc[x];
+            if (!std::isfinite(rv) || !std::isfinite(cv)) {
+                dst[x] = 255;
+                continue;
+            }
+            const double limit = tol.atol + tol.rtol * std::fabs(rv);
+            const double e = std::fabs(cv - rv);
+            const double frac = limit > 0.0 ? e / limit : (e > 0.0 ? 1.0 : 0.0);
+            dst[x] = static_cast<std::uint8_t>(std::lround(std::min(frac, 1.0) * 255.0));
+        }
+    }
+    return out;
 }
 
 }  // namespace framepipe

@@ -7,6 +7,7 @@
 #include <optional>
 #include <string>
 
+#include "framepipe/image.hpp"
 #include "framepipe/image_view.hpp"
 #include "framepipe/pipeline.hpp"
 
@@ -45,5 +46,11 @@ CompareResult compare_float_images(const ConstFloatImageView& reference, const C
                                    Tolerance tol, bool range01 = false);
 
 std::string compare_result_json(const CompareResult& r, int indent = -1);
+
+// Visual error map for diagnostics: 8-bit gray where 0 = exact match and
+// 255 = error at or above the per-pixel tolerance atol + rtol*|r|. Values in
+// between are linear in error / tolerance. Non-finite pairs map to 255.
+// Throws Error(InvalidArgument) on a dimension mismatch.
+HostU8Image error_map(const ConstFloatImageView& reference, const ConstFloatImageView& candidate, Tolerance tol);
 
 }  // namespace framepipe
